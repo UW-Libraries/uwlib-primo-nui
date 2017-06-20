@@ -101,8 +101,7 @@ var SERVERS = {
 };
 
 /*Note that for SSL environments (https) define the server as: var PROXY_SERVER = https://your-server:443*/
-var PROXY_SERVER = 'http://il-primo17:1703';
-
+var PROXY_SERVER = 'http://alliance-primo-sb.hosted.exlibrisgroup.com:80';
 
 let buildParams = {
     customFile: customFile,
