@@ -1,0 +1,311 @@
+/* UW Branding Font */
+
+/* TEMPORARY */
+
+a[href^="http://sandbox01-na.alma.exlibrisgroup.com"]:after {
+   content: "\27f8 Should be Alma Iframe";
+   position: relative;
+   display: inline-block;
+   left: 2em;
+   text-transform: uppercase;
+   font-weight: bold;
+   color: hotpink;
+}
+
+/* Maybe remove the infamous gray bar */
+body.md-dialog-is-showing  {
+    overflow-x:visible!important;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i');
+body {
+    font-family: 'Open Sans', sans-serif;
+} 
+
+/* Upper Left Branding Image */
+prm-topbar .top-nav-bar {
+    align-items: stretch;
+}
+prm-topbar prm-logo {
+    flex: 1 1 auto;
+    align-self: center;
+    max-width: 100% !important;
+    height: initial;
+/*     padding: 0 0.5em;
+    background-color: lime;    */ 
+    min-width: auto;
+}
+prm-logo .product-logo {  
+    padding: 0 0.85em;
+    line-height: 0px;
+/*     background-color: purple; */
+    min-width: auto;
+}
+prm-logo .logo-image, prm-logo img {
+    width: 100%;
+    max-width: 392px;
+    min-width: 120px;
+}
+prm-topbar .top-nav-bar > div.flex-50 {
+/*     background-color: darkred; */
+    max-width: 1em;
+}
+prm-search-topbar prm-search-bookmark-filter {
+    flex-grow: 0;
+}
+
+/* toolbar menu text */
+prm-topbar .md-button.button-over-dark {
+    color: #fff;
+}
+prm-topbar .md-button.button-over-dark:hover:not([disabled]),
+prm-topbar .md-button.button-over-dark:focus:not([disabled]) {
+    color: #D7A900;
+}
+prm-main-menu .md-button:focus {
+    outline: 1px dotted #D7A900;
+}
+prm-main-menu[menu-type="menu"] .md-button {
+    font-size: 90%;
+    box-shadow: none !important;
+}  
+
+/* text-space on the home page */
+md-card.default-card {
+    background-color: #fff;
+}
+
+/* alert bar for login */
+.alert-bar {
+    background-color: #4A7C01;
+}
+
+
+
+/* login alerts */
+.prm-alert-border, .bar.alert-bar {
+    background-color: #4A7C01;
+    border-color: #444;
+    color: #fff;
+    border-radius: 0;
+}
+.bar prm-authentication .md-button {
+    color: #fff;
+}
+.bar prm-authentication .md-button:hover:not([disabled]),
+.bar prm-authentication .md-button:focus:not([disabled]) {
+    color: #000;
+    background-color: #d7a900;
+}
+.bar prm-authentication + md-divider {
+    display: none;
+}
+.bar button.dismiss-alert-button {
+    color: #fff;
+}
+.bar button.dismiss-alert-button:hover:not([disabled]),
+.bar button.dismiss-alert-button:focus:not([disabled]) {
+    color: #000;
+    background-color: #d7a900;
+}
+
+
+/* result item background colors */
+prm-search-result-list .results-title,
+prm-search-result-list md-list-item {
+    background-color: white;
+}
+
+prm-facet-group button.md-button.section-title {
+   line-height: 1;
+   border-radius: 0;
+   color: #fff;
+   background-color: #85754D;
+   border: solid 1px #444;
+   padding: 0.375em 0.375em;
+   margin-bottom: 0;
+}
+prm-facet-group button.md-button.section-title:hover:not([disabled]),
+prm-facet-group button.md-button.section-title:focus:not([disabled]) {
+    background-color: #D7A900;
+    color: #000;
+}
+
+prm-facet-group button.md-button.section-title div.layout-row {
+    justify-content: space-between;
+}
+prm-facet-group button.md-button.section-title .section-title-header,
+prm-facet-group button.md-button.section-title prm-icon {
+    color: inherit;
+}
+
+prm-facet-group div.section-content {
+    background-color: #fff;
+    color: #001add;
+    border: solid 1px #444;
+    border-top-width: 0;
+    padding-bottom: 0.125em;
+}
+
+prm-facet-group div.expand-section-button {
+    text-align: right;
+}
+
+#virtualBrowse,
+prm-full-view#fullView div#services-index button[aria-label="brief.results.tabs.browseshelf"] {
+    display: none;
+}
+
+/* fullview overall */
+.full-view-inner-container {
+    background-color: white;
+}
+
+prm-alma-mashup {
+    border: solid 1px #444;
+}
+
+/* Item Title */
+prm-brief-result .item-title span {
+    color: inherit;
+}
+prm-brief-result .item-title a {
+    color: #4b2e83;
+}
+prm-brief-result .item-title a:hover,
+prm-brief-result .item-title a:focus  {
+    color: #85754d;
+}
+prm-full-view prm-brief-result .item-title {
+    cursor: default;
+}
+prm-full-view prm-brief-result .item-title a:hover,
+prm-full-view prm-brief-result .item-title a:focus  {
+    color: #4b2e83;
+    cursor: default;
+}
+
+prm-login-alma-mashup > .bar.alert-bar {
+    border-bottom: none;    
+}
+
+/* facet links */
+prm-breadcrumbs .md-chip.facet-excluded {
+    color: #000;
+}
+.section-content .md-chips .md-chip .md-chip-content {
+    color: #001add;
+}
+.md-button.button-as-link.link-alt-color {
+    color: #001add;    
+}
+
+md-input-container .md-input {
+    border-width: 1px;
+}
+
+button[aria-label="creationdate"] + div {
+    padding-left: 0.85em;
+    padding-right: 0.35em;
+}
+md-input-container.md-input-has-value label:not(.md-no-float) {
+    opacity: 1;
+}
+md-input-container label, 
+md-input-container label:not(.md-no-float):not(._md-container-ignore) {
+    color: #000;
+}
+md-input-container label[translate="facets.date.slider.from"] + input,
+md-input-container label[translate="facets.date.slider.to"] + input  {
+    font-size: 80%;
+    border: solid 1px #aaa;
+    border-bottom-width: 1px;
+    border-bottom-color: #aaa;
+}
+md-input-container + md-input-container {
+    margin-left: 4px;
+}
+md-input-container.md-input-focused .md-input, md-input-container.md-input-resized .md-input, md-input-container .md-input.ng-invalid.ng-dirty {
+    border-width: 1px;
+    border-color: #444;
+}
+
+md-input-container::after,
+md-input-container.md-input-focused::after {
+    height: 2px;
+    background-color: #4B2E83;
+}
+
+.list-item-count {
+    opacity: 1;
+    color: #444;
+    
+}
+
+prm-brief-result-container .media-content-type {
+    color: #444;
+    font-size: 87.5%;
+}
+
+.result-item-actions > .md-button {
+    opacity: 0.8;
+}
+
+/* citation trail buttons */
+prm-citation-trails-indication {
+    margin-right: 0.5em;
+} 
+prm-citation-trails-indication .md-button.button-with-icon, 
+prm-citation-trails-indication .md-button.md-icon-button {
+    background-color: #4b2e83;
+    color: #fff;
+}
+prm-citation-trails-indication .md-button.button-with-icon._md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon.hovered:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon.md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon:focus:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon:hover:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button._md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button.hovered:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button.md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button:focus:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button:hover:not([disabled]) {
+    color: #d7a900;
+}
+prm-citation-trails-indication .md-button.button-with-icon._md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon.hovered:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon.md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon:focus:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon:hover:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button._md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button.hovered:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button.md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button:focus:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button:hover:not([disabled]) {
+    background-color: rgb(62,32,108);
+}
+prm-citation-trails-item .item-type {
+    color: #85754D;
+    font-size: 1rem;
+}
+
+/* fix availability & request options wrapping */
+.__gt-xs .full-view-section-content {
+    padding-left: 10em;
+}
+prm-full-view .services-index-under #services-index {
+    max-width: 10em; /* 7.5em + 2.5em */
+}
+prm-full-view prm-brief-result-container .result-item-text {
+    padding-left: 4.5em; /* + 2.5em given increased width of share/save sidebar */
+}
+
+
+div#services-index .md-button{
+    white-space: normal;
+    line-height: normal;
+    padding-top: 8px; 
+    padding-bottom: 8px; 
+}
+
+   
