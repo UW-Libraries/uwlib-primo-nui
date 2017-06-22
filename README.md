@@ -6,6 +6,11 @@ This repo is a clone of Ex Libris's primo-explore-devenv repo but with UW specif
 
 This will enable you to pull from the Ex Libris repo in case they push out an update.
 
+## Running Gulp
+For now, I am using *browserify* to manage our local code. This requires a slight change to how you run gulp:
+
+`gulp run --view UW_NEW --browserify`
+
 ## To Get Update from Ex Libris
 
 ```
