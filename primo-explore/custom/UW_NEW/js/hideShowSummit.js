@@ -1,4 +1,4 @@
-let app = angular.module('showHideSummit',[]);
+let app = angular.module('hideShowSummit',[]);
 export default app;
 
 /* Hide/Show Other Institutions Button */

@@ -309,3 +309,28 @@ div#services-index .md-button{
 }
 
    
+/* in prm-full-view-after, we hide optional notes we might like to add to 
+   certain item's full display
+ */
+prm-full-view-after #localOptionalStatements {
+   display: none;
+}
+
+prm-full-view .localNote {
+    padding: 0.5em 1em;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #165788;
+}
+prm-full-view .localNote a:link, 
+prm-full-view .localNote a:visited {
+    color: #FFE816;
+}
+prm-full-view .localNote a:hover, 
+prm-full-view .localNote a:focus {
+    text-decoration: underline;
+}
+prm-full-view .localNote a svg {
+   color: #FFE816;
+   margin-left: 1px;
+}

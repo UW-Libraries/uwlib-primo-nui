@@ -1,14 +1,13 @@
-let app = angular.module('forceSkin',[]);
+let app = angular.module('changeAlmaSkin',[]);
 export default app;
 
-/*
 app.directive('prmFullViewServiceContainerAfter', function() {
     var controller = ['$scope', function ($scope) {
         
         $scope.fixSkin = function() {
             var OLD_SKIN = 'uw_sandbox_skin';
             var NEW_SKIN = 'uw_new_sandbox_skin';
-            console.log('FIXSKINFIXSKINFIXSKINFIXSKINFIXSKINFIXSKINFIXSKINFIXSKIN');
+            
             var section = document.getElementById($scope.parentid);
             if(section === undefined || section === null)
                 return;
@@ -39,4 +38,3 @@ app.directive('prmFullViewServiceContainerAfter', function() {
     
 });
 
-*/
