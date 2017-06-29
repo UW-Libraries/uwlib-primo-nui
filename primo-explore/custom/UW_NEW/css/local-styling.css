@@ -317,10 +317,16 @@ prm-full-view-after #localOptionalStatements {
 }
 
 prm-full-view .localNote {
-    padding: 0.5em 1em;
+    padding: 0.75em 1em;
     font-size: 0.9rem;
     color: #fff;
     background-color: #165788;
+}
+prm-full-view .localNote p {
+   margin: 0;  
+}
+parm-full-view .localNote p + p {
+   margin-top: 0.5em;
 }
 prm-full-view .localNote a:link, 
 prm-full-view .localNote a:visited {
