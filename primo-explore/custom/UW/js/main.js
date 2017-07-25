@@ -1,4 +1,3 @@
-//import changeAlmaSkin from './changeAlmaSkin';
 import summitTabs from './hideShowSummit';
 import sFDE from './singleFullDisplayEdits';
 
