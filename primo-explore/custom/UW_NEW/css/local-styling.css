@@ -340,3 +340,44 @@ prm-full-view .localNote a svg {
    color: #FFE816;
    margin-left: 1px;
 }
+
+
+/* Alerts - UW Library */
+div#libAlerts-outer {
+   background-color: #C61029;
+   color: #fff;   
+   line-height: 1.25;
+   font-size: 1.125rem;   
+   padding: 0.75rem
+}
+div#libAlerts {
+   margin: 0 auto;
+   max-width: 94%;
+   padding-left: calc(70px + 0.75em);
+   position: relative;
+   min-height: 70px;   
+}
+div#libAlerts:before {
+   content: '';
+   background-image: url('/primo-explore/custom/UW_NEW/img/alert.png');
+   background-size: cover;
+   display: block;
+   width: 70px;
+   height: 70px;
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+#libAlerts > div + div {
+    margin-top: 0.75em;
+}
+div#libAlerts p {
+   margin: 0;
+}
+div#libAlerts p + p {
+   margin-top: 0.5em;
+}
+/* adds a little dividing line between UW-wide alerts and library alerts if both are present */
+div#uwalert-alert-message + div#libAlerts-outer {
+  border-top: solid 1px #d7a900
+}

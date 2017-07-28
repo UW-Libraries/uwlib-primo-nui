@@ -146,38 +146,49 @@ var app = angular.module('viewCustom', ['angularLoad']);
    app.component('prmFullViewServiceContainerAfter', {
       bindings: {parentCtrl: '<'}, /*bind to parentCtrl to read PNX*/
       controller: 'genericSFDEController',
-      templateUrl: '/primo-explore/custom/UW_NEW/html/fullPageOptionalNotes.html'
+      templateUrl: '/html/fullPageOptionalNotes.html'
    }).controller('genericSFDEController',GenericSFDEController);
    /* ====== */
 
    /* ====== Load Alerts ===== */
    app.component('prmTopBarBefore', {
-      controller: ['$scope', 'angularLoad', function($scope, angularLoad) {
-         this._$scope = $scope;
+      controller: function(angularLoad) {
          this.$postLink = function() {
-            angularLoad.loadScript('https://www.washington.edu/static/alert.js');
-            angularLoad.loadScript('https://www.lib.washington.edu/scripts/libalert.js');
-            angularLoad.loadScript('https://www.lib.washington.edu/static/public/primo/primo-nui-alerts.js');            
-            angular.element(document.getElementsByTagName('body')[0]).prepend('<div id="libAlerts"></div>');
-            
-            var clearWatch = this._$scope.$watch(
-               function() {
-                  if(typeof displayLibAlert == 'undefined') 
-                     return false;
-                  if(typeof displayPrimoLibAlert == 'undefined')
-                     return false;
-                  return true;                  
-               },                  
-               function(loadedVal, nullVal) {
-                  if(!loadedVal)
-                     return;
-                  displayLibAlert(); 
-                  displayPrimoLibAlert();
-                  clearWatch();
-               }
-            );
+            /* we use an if to only do it once. Otherwise, alert repetition can occur */
+            if(!document.getElementById('libAlerts-outer')) {
+               /* first create a space within primo-explore for the UW Library alerts to live */
+               angular.element(document.getElementsByTagName('primo-explore')[0]).prepend('<div id="libAlerts-outer" class="hide"><div id="libAlerts"></div></div>');
+               /* load the general UW library alerts JS. Once loaded (then) display the alerts if any */
+               angularLoad.loadScript('https://www.lib.washington.edu/scripts/libalert.js').then(function() {
+                  displayLibAlert();
+                  if(document.querySelector('#libAlerts .alert') != null)
+                     angular.element(document.getElementById('libAlerts-outer')).removeClass('hide');                  
+               });
+               /* load the general Primo library alerts JS. Once loaded (then) display the alerts if any */
+               angularLoad.loadScript('https://www.lib.washington.edu/static/public/primo/primo-alerts.js').then(function() {
+                  displayPrimoLibAlert(); 
+                  if(document.querySelector('#libAlerts .alert') != null)
+                     angular.element(document.getElementById('libAlerts-outer')).removeClass('hide');                      
+               });;            
+            }
+            /* we do UW-wide alerts after so that they appear on top */
+            if(!document.getElementById('uwalert-alert-message')) {
+               /* load the UW alerts script and then some magick to make sure it doesn't mess with 
+                  Primo's modal placement calculations */
+               angularLoad.loadScript('https://www.washington.edu/static/alert.js').then(function() {
+                  /* once the script is loaded, try to move the alert's div */
+                  angular.element(document.getElementsByTagName('primo-explore')[0]).prepend(document.getElementById('uwalert-alert-message'));
+                  /* just in case, we proxy the UW alert's addElement function to always place the UW alert at the 
+                     start of primo-explore */
+                  var org_addElement = window.addElement;
+                  window.addElement = function() {
+                     org_addElement.apply(this,arguments);
+                     angular.element(document.getElementsByTagName('primo-explore')[0]).prepend(document.getElementById('uwalert-alert-message'));
+                  };
+               });
+            }
         };
-      }]
+      }
    });
    /* ====== */
 })();
