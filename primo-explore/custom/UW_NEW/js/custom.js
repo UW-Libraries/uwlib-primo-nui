@@ -149,6 +149,15 @@ var app = angular.module('viewCustom', ['angularLoad']);
       templateUrl: '/html/fullPageOptionalNotes.html'
    }).controller('genericSFDEController',GenericSFDEController);
    /* ====== */
+   
+   app.component('prmBriefResultContainerAfter', {
+      bindings: {parentCtrl: '<'}, /*bind to parentCtrl to read PNX*/
+      controller: function() {
+         console.log(this.parentCtrl.item.pnx);
+      },
+      templateUrl: ''
+   });
+   
 
    /* ====== Load Alerts ===== */
    app.component('prmTopBarBefore', {
