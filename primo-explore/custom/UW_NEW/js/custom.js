@@ -10,12 +10,7 @@ var app = angular.module('viewCustom', ['angularLoad']);
 /* ======  Hide/Show Summit Holdings ====== */
    app.component('prmAlmaMoreInstAfter', {
       controller: 'institutionToggleController',
-      template: `<md-button class="md-raised" ng-click="toggleLibs()" id="summitButton"
-                  aria-controls="summitLinks" aria-expanded="false"
-                  aria-label="Show/Hide Summit Libraries">
-                  {{ showLibs ? 'Hide Libraries' : 'Show Libraries' }}
-                  <span aria-hidden="true">{{showLibs ? '&laquo;' : '&raquo;' }}</span>
-                 </md-button>`
+      templateUrl: '/primo-explore/custom/UW_NEW/html/hideShowSummit.html'
    })
    .controller('institutionToggleController', ['$scope', function($scope) {
       this.$onInit = function() {
@@ -146,19 +141,49 @@ var app = angular.module('viewCustom', ['angularLoad']);
    app.component('prmFullViewServiceContainerAfter', {
       bindings: {parentCtrl: '<'}, /*bind to parentCtrl to read PNX*/
       controller: 'genericSFDEController',
-      templateUrl: '/html/fullPageOptionalNotes.html'
+      templateUrl: '/primo-explore/custom/UW_NEW/html/fullPageOptionalNotes.html'
    }).controller('genericSFDEController',GenericSFDEController);
    /* ====== */
    
+   
+   /* ====== Code for making edits to individual brief results ====== */
+   /* Includes:
+         - Changes PCI Ebook and Ebook chapters to display a media type of 
+           Book or Book Chapter. (appears to fix this for full display too)
+   */
+   class GenericBriefResultController {
+      constructor($scope, $element) {
+         this._$scope = $scope;
+         this._$elem = $element;
+      }
+      $doCheck() {
+         /* run check to fix PCI ebookx */
+         this.fixPCIeBookContent();
+      }
+      fixPCIeBookContent() {
+         /* only run the fixes if it's PCI content (pnxID begins with TN) and
+            if the content type is eBook or eBook chapter.
+            To make the change permanent, we have to turn off the two attributes
+            angular uses to update the value: ng-if and translate.
+         */
+         var pnxID = this.parentCtrl.item.pnx.control.recordid[0];
+         if(pnxID.indexOf('TN') != 0)
+            return;
+         var spanElem = this._$elem.parent()[0].querySelector('div.media-content-type span');
+         if(spanElem !== null && spanElem.textContent.indexOf('eBook') == 0) {
+            spanElem.removeAttribute('translate');
+            spanElem.removeAttribute('ng-if');
+            spanElem.textContent = spanElem.textContent.replace('eBook','Book');
+         }
+      }
+   }
    app.component('prmBriefResultContainerAfter', {
       bindings: {parentCtrl: '<'}, /*bind to parentCtrl to read PNX*/
-      controller: function() {
-         console.log(this.parentCtrl.item.pnx);
-      },
+      controller: 'genericBriefResultController',
       templateUrl: ''
-   });
+   }).controller('genericBriefResultController',GenericBriefResultController);   
+   /* ====== */
    
-
    /* ====== Load Alerts ===== */
    app.component('prmTopBarBefore', {
       controller: function(angularLoad) {
@@ -199,5 +224,74 @@ var app = angular.module('viewCustom', ['angularLoad']);
         };
       }
    });
+   /* ====== */
+   
+   /* ====== Add help ====== */
+   class GenericTopbarAfterController {
+      constructor($scope, $element) {
+         this._$scope = $scope;
+         this._$elem = $element;
+      } 
+      
+      $onInit() {
+         this._$scope.toggleHelpModal = function() {
+            var modal = document.getElementById('help-modal');
+            var $modal = angular.element(modal);
+            if($modal.hasClass('open')) {
+               this.closeHelpModal();
+
+            }
+            else {
+               this.openHelpModal();
+            }
+            
+         };
+         this._$scope.openHelpModal = function() {
+               var button = document.getElementById('local-help-widget');
+               var $button = angular.element(button);
+               var modal = document.getElementById('help-modal');
+               var $modal = angular.element(modal);
+               /* make the modal div a block and size it to allow animation */
+               $modal.addClass('open');
+               angular.element(document.getElementById('help-modal-overlay')).addClass('open');
+               modal.getBoundingClientRect();
+               /* move the help modal and button to the left */
+               $button.toggleClass('moveLeft');               
+               $modal.toggleClass('moveLeft');      
+               /* update the aria-expanded attribute */
+               $button.attr('aria-expanded', 'true');
+               
+               /* set focus on first item in modal */
+               document.getElementById('help-modal-close').focus();
+               /* set other stuff to aria-hidden */
+               document.getElementsByTagName('primo-explore')[0].setAttribute('aria-hidden', true);
+               document.getElementById('beaconPlaceHolder').setAttribute('aria-hidden', true);
+         };
+         
+         this._$scope.closeHelpModal = function() {
+               var button = document.getElementById('local-help-widget');
+               var $button = angular.element(button);
+               var modal = document.getElementById('help-modal');
+               var $modal = angular.element(modal);            
+               $modal.toggleClass('moveLeft');      
+               $button.toggleClass('moveLeft');
+               angular.element(document.getElementById('help-modal-overlay')).removeClass('open');               
+               setTimeout(function() { $modal.removeClass('open'); }, 305);      
+               /* set other stuff to aria-hidden */
+               document.getElementsByTagName('primo-explore')[0].setAttribute('aria-hidden', false);
+               document.getElementById('beaconPlaceHolder').setAttribute('aria-hidden', false);               
+         }
+         
+      }
+      
+      $postLink() {
+         document.body.append(document.getElementById('help-modal'));
+         document.body.append(document.getElementById('help-modal-overlay'));
+      }
+   }
+   app.component('prmTopbarAfter', {
+      controller: 'genericTopbarAfterController',
+      templateUrl: '/primo-explore/custom/UW_NEW/html/topbarAfter.html'
+   }).controller('genericTopbarAfterController',GenericTopbarAfterController);   
    /* ====== */
 })();
