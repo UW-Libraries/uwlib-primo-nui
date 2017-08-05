@@ -359,7 +359,7 @@ div#libAlerts {
 }
 div#libAlerts:before {
    content: '';
-   background-image: url('/primo-explore/custom/UW_NEW/img/alert.png');
+   background-image: url('/primo-explore/custom/UW_NEW/img/_alert.png');
    background-size: cover;
    display: block;
    width: 70px;
@@ -406,7 +406,7 @@ div#uwalert-alert-message + div#libAlerts-outer {
    transition: right 300ms;
 }
 #local-help-widget.moveLeft {
-   right: calc(-141px + 300px - 1px);
+   right: calc(-141px + 400px - 1px);
 }
 
 #local-help-widget button {
@@ -422,7 +422,6 @@ div#uwalert-alert-message + div#libAlerts-outer {
    padding-bottom: 0.5em;
    border: solid 1px black;
    border-radius: 0 0 15px 15px;
-   /* box-shadow: 0px 0px 5px #000;    */
 }
 #local-help-widget button::-moz-focus-inner {
    border-style: none;
@@ -458,39 +457,13 @@ div#uwalert-alert-message + div#libAlerts-outer {
    transition: right 300ms;
    position: fixed;
    top: 18%;
-   right: -300px;
-   padding: 1em;
-   border: 1px solid black;
-   background-color: white;
-   opacity: 1;
-   font-size: 1.1em;
-   text-align: center;
+   right: -400px;
+   padding: 0;
+   border: 1px solid #000;
+   background-color: #fff;
    z-index: 900002;
-   width: 300px;
+   width: 400px;
    min-height: 240px;
-   /* box-shadow: 0px 0px 5px #000; */
-}
-
-#help-modal #help-modal-heading {
-   font-family: 'Old English Text MT', 'Schwabacher', cursive;
-   font-size: 2em;
-   font-weight: bold;
-   margin: 0.25em 0 1em;
-   line-height: 1em;
-}
-#help-modal button {
-   margin-top: 1em;
-   font-size: 1.1em;
-   border-radius: 5px;
-}
-button#help-modal-close {
-   position: absolute;
-   top: 0;
-   right: 0;
-   margin-top: 0;
-}
-button#help-modal-close:focus {
-   background-color: lime;
 }
 
 #help-modal.open {
@@ -500,4 +473,66 @@ button#help-modal-close:focus {
    right: -1px;
 }
 
+h1#help-modal-header {
+   color: #fff;
+   background-color: #4B2E83;
+   text-align: left;
+   padding: 10px;
+   font-size: 1.25rem;
+   font-weight: bold;   
+   margin-bottom: 0;
+}
+
+button#help-modal-close {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   padding: 0;
+   border-style: none;
+   color: #fff;
+   background-color: transparent;
+}
+button#help-modal-close:focus,
+button#help-modal-close:hover {
+   color: #d7a900;   
+}
+button#help-modal-close:focus {
+   outline: dotted 1px #fff;
+}
+
+
+#help-modal div.modal-content {
+   padding: 10px;
+}
+#help-modal div.modal-content div.modal-row + div.modal-row {
+   margin-top: 0.875em;
+}
+#help-modal div.modal-content div.modal-row > a {
+   display: flex;   
+   font-weight: bold;
+   align-items: center;
+   font-size: 1.1rem;
+   margin-bottom: 3px;
+}
+#help-modal div.modal-content div.modal-row > a:focus,
+#help-modal div.modal-content div.modal-row > a:hover {
+   box-shadow: none;
+   color: #85754D;
+   background-color: transparent;
+}
+#help-modal div.modal-content div.modal-row > a:focus {
+   outline: dotted 1px #888;
+   outline-offset: 2px;
+}
+
+#help-modal div.modal-content div.modal-row > a span {
+   padding-left: 0.375em;
+}
+#help-modal div.modal-content div.modal-row > a img {
+   width: 30px;
+   height: 30px;
+}
+#help-modal div.modal-content div.modal-row p {
+   margin: 0;
+}
 

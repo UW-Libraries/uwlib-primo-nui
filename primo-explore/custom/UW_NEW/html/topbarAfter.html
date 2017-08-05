@@ -1,16 +1,46 @@
 <div id="local-help-widget">
    <button id="local-help-button" ng-click="toggleHelpModal()">
-      <span>HELP + CHAT</span>
+      <span>ASK US!</span>
    </button>
 </div>
 
-<div id="help-modal" role="alertdialog" aria-labelledby="help-header">
+<div id="help-modal" role="alertdialog" aria-labelledby="help-header" ng-keyup="onKeyUp($event)" tabindex="0">
+   <h1 id="help-modal-header">Ask Us!</h1>
    <button  ng-click="closeHelpModal()" type="button" id="help-modal-close" aria-label="Close dialog">
       <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="close"></prm-icon>
-   </button>
-   <h1 id="help-modal-header">Need Help?</h1>
+   </button>   
    <div class="modal-content">
-      Something something somethind
+      <div class="modal-row">
+         <a href="http://www.lib.washington.edu/chat.html" 
+            id="help-modal-chat"
+            ng-click="openChatWindow($event)"
+            title="Open a live chat (new window)">
+            <img src="custom/UW_NEW/img/_chat.png" aria-hidden="true" />
+            <span>Chat with a Librarian</span>
+         </a>
+         <p>Connect to our 24/7 real-time, online question service.</p>
+      </div>
+      <div class="modal-row">
+         <a href="http://guides.lib.uw.edu/research/UWLibrariesSearch" 
+            target="_blank"
+            id="help-modal-search-help"
+            title="Get help using UW Libaries Search (new window)">
+            <img src="custom/UW_NEW/img/_search_help.png" aria-hidden="true" />
+            <span>Search Help</span>
+         </a>
+         <p>Tips and instructions to help with your searching.</p>
+      </div>
+      <div class="modal-row">
+         <a href="http://www.lib.washington.edu/about/contact/" 
+            target="_blank"
+            id="help-modal-contact"            
+            title="Contact information for UW Libraries (new window)"
+            ng-keydown="trapFocus($event)">
+            <img src="custom/UW_NEW/img/_people.png" aria-hidden="true" />
+            <span>Contact Us</span>
+         </a>
+         <p>Options for contacting UW Libraries staff.</p>
+      </div>      
    </div>
 </div>
-<div id="help-modal-overlay"></div>
+<div id="help-modal-overlay" ng-click="closeHelpModal()"></div>

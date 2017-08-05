@@ -247,41 +247,71 @@ var app = angular.module('viewCustom', ['angularLoad']);
             
          };
          this._$scope.openHelpModal = function() {
-               var button = document.getElementById('local-help-widget');
-               var $button = angular.element(button);
-               var modal = document.getElementById('help-modal');
-               var $modal = angular.element(modal);
-               /* make the modal div a block and size it to allow animation */
-               $modal.addClass('open');
-               angular.element(document.getElementById('help-modal-overlay')).addClass('open');
-               modal.getBoundingClientRect();
-               /* move the help modal and button to the left */
-               $button.toggleClass('moveLeft');               
-               $modal.toggleClass('moveLeft');      
-               /* update the aria-expanded attribute */
-               $button.attr('aria-expanded', 'true');
-               
-               /* set focus on first item in modal */
-               document.getElementById('help-modal-close').focus();
-               /* set other stuff to aria-hidden */
-               document.getElementsByTagName('primo-explore')[0].setAttribute('aria-hidden', true);
-               document.getElementById('beaconPlaceHolder').setAttribute('aria-hidden', true);
+            var button = document.getElementById('local-help-widget');
+            var $button = angular.element(button);
+            var modal = document.getElementById('help-modal');
+            var $modal = angular.element(modal);
+            /* make the modal div a block and size it to allow animation */
+            $modal.addClass('open');
+            angular.element(document.getElementById('help-modal-overlay')).addClass('open');
+            modal.getBoundingClientRect();
+            /* move the help modal and button to the left */
+            $button.toggleClass('moveLeft');               
+            $modal.toggleClass('moveLeft');      
+            /* update the aria-expanded attribute */
+            $button.attr('aria-expanded', 'true');
+            
+            /* set focus on first item in modal */
+            document.getElementById('help-modal-close').focus();
+            /* set other stuff to aria-hidden */
+            document.getElementsByTagName('primo-explore')[0].setAttribute('aria-hidden', true);
+            document.getElementById('beaconPlaceHolder').setAttribute('aria-hidden', true);
          };
          
          this._$scope.closeHelpModal = function() {
-               var button = document.getElementById('local-help-widget');
-               var $button = angular.element(button);
-               var modal = document.getElementById('help-modal');
-               var $modal = angular.element(modal);            
-               $modal.toggleClass('moveLeft');      
-               $button.toggleClass('moveLeft');
-               angular.element(document.getElementById('help-modal-overlay')).removeClass('open');               
-               setTimeout(function() { $modal.removeClass('open'); }, 305);      
-               /* set other stuff to aria-hidden */
-               document.getElementsByTagName('primo-explore')[0].setAttribute('aria-hidden', false);
-               document.getElementById('beaconPlaceHolder').setAttribute('aria-hidden', false);               
+            console.log('CLOSE');
+            var button = document.getElementById('local-help-widget');
+            var $button = angular.element(button);
+            var modal = document.getElementById('help-modal');
+            var $modal = angular.element(modal);    
+            /* move the modal and button back by removing the class */
+            $modal.removeClass('moveLeft');      
+            $button.removeClass('moveLeft');
+            /* set the overlay to not be displayed */
+            angular.element(document.getElementById('help-modal-overlay')).removeClass('open');               
+            /* we have to use a timeout to set the modal to display none so the animation works
+               delay is animation_time (see CSS) plus 5ms lag
+            */
+            setTimeout(function() { $modal.removeClass('open'); }, 305);      
+            /* set other stuff to aria-hidden false */
+            document.getElementsByTagName('primo-explore')[0].setAttribute('aria-hidden', false);
+            document.getElementById('beaconPlaceHolder').setAttribute('aria-hidden', false);  
+            /* set focus back to the modal trigger button */
+            document.getElementById('local-help-button').focus();
          }
          
+         this._$scope.openChatWindow = function($event) {
+            $event.preventDefault();
+            
+            var link = document.getElementById('help-modal-chat');
+            var new_href = link.getAttribute('href');
+            window.open(new_href,'',"width=316,height=300");             
+            return false;            
+         }
+         
+         this._$scope.onKeyUp = function($event) {
+            /* close modal on escape */
+            if($event.keyCode === 27) { /* escape */
+               this.closeHelpModal();
+            }            
+         }
+         this._$scope.trapFocus = function($event) {
+            /* force focus to go bacl to the close button */
+            if($event.keyCode === 9) { /* tab */
+               $event.preventDefault();
+               document.getElementById('help-modal-close').focus();
+            }
+         }
       }
       
       $postLink() {
