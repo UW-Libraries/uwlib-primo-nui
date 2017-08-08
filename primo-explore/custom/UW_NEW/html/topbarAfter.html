@@ -4,7 +4,7 @@
    </button>
 </div>
 
-<div id="help-modal" role="alertdialog" aria-labelledby="help-header" ng-keyup="onKeyUp($event)" tabindex="0">
+<div id="help-modal" role="dialog" aria-labelledby="help-header" ng-keyup="handleEscape($event)" ng-keydown="trapFocus($event)" tabindex="0">
    <h1 id="help-modal-header">Ask Us!</h1>
    <button  ng-click="closeHelpModal()" type="button" id="help-modal-close" aria-label="Close dialog">
       <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="close"></prm-icon>
@@ -35,7 +35,7 @@
             target="_blank"
             id="help-modal-contact"            
             title="Contact information for UW Libraries (new window)"
-            ng-keydown="trapFocus($event)">
+            class="last-modal-link">
             <img src="custom/UW_NEW/img/_people.png" aria-hidden="true" />
             <span>Contact Us</span>
          </a>

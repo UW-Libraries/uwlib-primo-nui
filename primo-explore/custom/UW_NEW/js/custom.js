@@ -299,17 +299,42 @@ var app = angular.module('viewCustom', ['angularLoad']);
             return false;            
          }
          
-         this._$scope.onKeyUp = function($event) {
+         this._$scope.handleEscape = function($event) {
             /* close modal on escape */
             if($event.keyCode === 27) { /* escape */
                this.closeHelpModal();
             }            
          }
          this._$scope.trapFocus = function($event) {
-            /* force focus to go bacl to the close button */
-            if($event.keyCode === 9) { /* tab */
-               $event.preventDefault();
-               document.getElementById('help-modal-close').focus();
+            /* focus has to be trapped in one of three situations:
+               - focus is on the help modal because someone clicked inside of it 
+                 Goes to close button or last link depending on tab or shift-tab
+               - shift tab on the close button needs to wrap to last element
+               - tab on the last link needs to wrap to the close element 
+            */
+            var modal = document.getElementById('help-modal');
+            var close_button = document.getElementById('help-modal-close');
+            var last_link = modal.querySelector('a.last-modal-link');
+            if(document.activeElement === modal) {
+               if($event.keyCode === 9) { // tab
+                  $event.preventDefault();
+                  if($event.shiftKey) // shift-tab
+                     last_link.focus();
+                  else 
+                     close_button.focus();
+               }
+            }
+            else if(document.activeElement === close_button) {
+               if($event.shiftKey && $event.keyCode === 9) { // shift-tab
+                  $event.preventDefault();
+                  last_link.focus();
+               }
+            }
+            else if(document.activeElement === last_link) {
+               if(!$event.shiftKey && $event.keyCode === 9) { /* just tab */
+                  $event.preventDefault();
+                  close_button.focus();
+               }
             }
          }
       }
@@ -323,5 +348,18 @@ var app = angular.module('viewCustom', ['angularLoad']);
       controller: 'genericTopbarAfterController',
       templateUrl: '/primo-explore/custom/UW_NEW/html/topbarAfter.html'
    }).controller('genericTopbarAfterController',GenericTopbarAfterController);   
+   /* ====== */
+
+
+   /* ====== Add Update Personal Information to Personal Details Page ====== */
+   app.component('prmPersonalInfoAfter', {
+      controller: 'personalInfoController',
+      templateUrl: '/primo-explore/custom/UW_NEW/html/personalDetails.html'
+   })
+   .controller('personalInfoController', ['$scope', function($scope) {
+      this.$onInit = function() {
+         angular.element(document.getElementById('personalDetails').querySelector('md-card-content')).append(document.getElementById('local-personal-info-change'));
+      };
+   }]);   
    /* ====== */
 })();

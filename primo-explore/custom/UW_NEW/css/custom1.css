@@ -980,7 +980,6 @@ h1#help-modal-header {
    font-weight: bold;   
    margin-bottom: 0;
 }
-
 button#help-modal-close {
    position: absolute;
    top: 10px;
@@ -997,8 +996,6 @@ button#help-modal-close:hover {
 button#help-modal-close:focus {
    outline: dotted 1px #fff;
 }
-
-
 #help-modal div.modal-content {
    padding: 10px;
 }
@@ -1034,3 +1031,54 @@ button#help-modal-close:focus {
    margin: 0;
 }
 
+
+/* Hide the edit button on personal details */
+md-card#personalDetails md-card-header { 
+   display: none; 
+}
+md-card#personalDetails md-divder {
+   margin: 0.5em 2px 1em;
+}
+
+/* hide the email controls */
+md-card#personalDetails div.card-content-section:nth-child(5) {
+   display: none;
+}
+/* hide the language area */
+md-card#personalDetails + md-card {
+   display: none;
+}
+
+md-card#personalDetails input[type="text"][disabled] {
+   color: #000; 
+   border: none;
+   padding: 0;
+   line-height: initial;
+   height: auto;   
+}
+md-card#personalDetails md-input-container label {
+     position:absolute;
+     left:-10000px;
+     top:auto;
+     width:1px;
+     height:1px;
+     overflow:hidden;
+     clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+     clip: rect(1px, 1px, 1px, 1px);
+     clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
+}
+
+md-card#personalDetails  md-card-content  > div > h4 {
+   width: auto;
+   height: auto;
+   overflow: auto;
+   left: 20px;
+   min-height: 0;
+   position: absolute;
+}
+md-card#personalDetails > md-card-content > div > div > div > md-input-container:nth-child(1) {
+   margin-top: 14px;
+}
+#local-personal-info-change-list {
+   padding-top: 8px;
+} 
