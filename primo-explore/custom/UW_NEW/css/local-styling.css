@@ -70,6 +70,14 @@ prm-main-menu[menu-type="menu"] .md-button {
     box-shadow: none !important;
 }  
 
+/* hide the default browse link in both main menus */
+prm-main-menu .top-nav-bar-links > a:last-of-type {
+  display: none;
+}
+prm-main-menu[menu-type="full"] div.custom-links-container > md-card:last-of-type {
+   display: none;
+}
+
 /* text-space on the home page */
 md-card.default-card {
     background-color: #fff;
@@ -159,10 +167,6 @@ prm-full-view#fullView div#services-index button[aria-label="brief.results.tabs.
 /* fullview overall */
 .full-view-inner-container {
     background-color: white;
-}
-
-prm-alma-mashup {
-    border: solid 1px #444;
 }
 
 /* Item Title */

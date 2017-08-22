@@ -71,25 +71,7 @@ var app = angular.module('viewCustom', ['angularLoad']);
       $postLink() {    
          var $localScope = this._$scope;
          var $localElem = this._$elem;
-         
-         // IFrame Fixing
-         this._$scope.$watch(
-            function() { 
-               return $localElem.parent()[0].querySelector('iframe'); 
-            },
-            function(iframe, nullVal) {
-               if(iframe !== null) {
-                  var OLD_SKIN = 'uw_sandbox_skin';
-                  var NEW_SKIN = 'uw_new_sandbox_skin';
-                  var src = iframe.getAttributeNode('src').value;        
-                  if( src.indexOf('req.skin='+OLD_SKIN) != -1 ) {               
-                     src = src.replace('req.skin='+OLD_SKIN, 'req.skin='+NEW_SKIN);
-                     iframe.getAttributeNode('src').value = src;
-                  }  
-               }
-            }
-         );
-         
+
          // Local Notes Handling 
          var $localOrder = this.localNoteOrder;
          var $localStatus = this.localNoteStatus;      
