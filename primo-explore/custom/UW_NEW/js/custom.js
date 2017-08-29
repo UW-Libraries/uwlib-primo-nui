@@ -1,3 +1,36 @@
+/* Adds a polyfill for matches and closest DOM functions */
+(function (ElementProto) {
+   if (typeof ElementProto.matches !== 'function') {
+      ElementProto.matches = ElementProto.msMatchesSelector || ElementProto.mozMatchesSelector || ElementProto.webkitMatchesSelector || function matches(selector) {
+         var element = this;
+         var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
+         var index = 0;
+
+         while (elements[index] && elements[index] !== element) {
+            ++index;
+         }
+
+         return Boolean(elements[index]);
+      };
+   }
+
+   if (typeof ElementProto.closest !== 'function') {
+      ElementProto.closest = function closest(selector) {
+         var element = this;
+
+         while (element && element.nodeType === 1) {
+            if (element.matches(selector)) {
+               return element;
+            }
+
+            element = element.parentNode;
+         }
+
+         return null;
+      };
+   }
+})(window.Element.prototype);
+
 (function(){
 "use strict";
 'use strict';
@@ -357,12 +390,25 @@ var app = angular.module('viewCustom', ['angularLoad']);
    ]);
    /* ====== */
    
+   var MainMenuAfterController = function MainMenuAfterController($scope, $element) {
+      $scope.$element = $element;
+      
+      this.parentCtrl.showCount = function() { 
+         var mainMenu = $scope.$element[0].closest('prm-main-menu');
+         if(mainMenu === null)
+            return 10; 
+         else if(mainMenu.getAttribute('local-menu-type') == 'more')
+            return 1;
+         else if(mainMenu.getAttribute('local-menu-type') == 'menu')
+            return 10;
+         else
+            return 10;
+      }
+   };
    app.component('prmMainMenuAfter', {
       bindings: {parentCtrl: '<'},
-      controller: 'mainMenuAfterController'
+      controller: 'MainMenuAfterController'
    })
-   .controller('mainMenuAfterController', ['$scope', function($scope) {
-      this.parentCtrl.showCount = function() { return 10; }
-   }]);
+   .controller('MainMenuAfterController', MainMenuAfterController);
    
 })();

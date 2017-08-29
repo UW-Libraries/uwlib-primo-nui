@@ -1,0 +1,17 @@
+<div id="local-top-menu">
+   <div class="local-top-menu-row" id="local-logo-user-row">
+      <div id="local-skips-logo">
+         <prm-skip-to></prm-skip-to>
+         <prm-logo></prm-logo>
+      </div>
+      <div id="local-user-menu">
+         <prm-search-bookmark-filter></prm-search-bookmark-filter>
+         <prm-library-card-menu ng-if="$ctrl.isLoggedIn()" ></prm-library-card-menu>
+         <prm-authentication [is-logged-in]="$ctrl.userName().length > 0"></prm-authentication>
+         <prm-main-menu id="local-main-menu-responsive" menu-type="menu" role="navigation" local-menu-type="more" ></prm-main-menu>
+      </div>
+   </div>
+   <div class="local-top-menu-row" id="local-main-menu-row">
+      <prm-main-menu menu-type="menu" role="navigation" local-menu-type="menu" ></prm-main-menu>
+   </div>
+</div>

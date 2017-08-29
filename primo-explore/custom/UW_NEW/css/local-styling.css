@@ -14,8 +14,8 @@ prm-topbar {
 }
 
 #local-top-menu #local-logo-user-row {
-   height: 60px;
-   max-height: 60px;
+   height: 70px;
+   max-height: 70px;
 }
 #local-top-menu #local-user-menu {
    display: flex;
@@ -25,6 +25,74 @@ prm-topbar {
    align-content: stretch;
    align-items: center;   
 }
+#local-top-menu #local-logo-user-row #local-skips-logo {
+   height: 100%;
+   display: flex;
+  align-items: stretch;
+  justify-content: center;   
+  min-height: 100%;
+}
+
+#local-top-menu  prm-skip-to {
+   position: relative;
+   height: 100%;
+   min-height: 100%;
+}  
+#local-top-menu  prm-skip-to a {
+   display: flex;
+   height: 100%;
+   min-height: 100%;   
+}
+#local-top-menu  prm-skip-to a:hover {
+   text-decoration: underline;
+}
+#local-top-menu  prm-skip-to a:focus {
+   background-color: #165788;
+   color: #fff;
+   font-weight: bold;
+   z-index: 20;
+   height: 100%;
+   min-height: 100%;
+   outline: dotted 1px #aaa !important;  
+}
+
+#local-top-menu prm-logo div#banner{
+   padding: 0 0.85em;
+}
+#local-top-menu prm-logo div#banner a {
+   padding-bottom: 0;
+   display: flex;
+   min-height: 100%;
+   align-items: center;
+}
+
+
+
+
+#local-top-menu prm-logo div#banner a:hover,
+#local-top-menu prm-logo div#banner a:focus {
+   color: transparent;
+   background-color: transparent;
+   box-shadow: none;
+}
+#local-top-menu prm-logo div#banner a:focus {
+   outline: dotted 1px #aaa !important;
+}
+   
+   
+#local-top-menu prm-logo div#banner a img {
+   max-height: none;
+   height: auto;
+   min-width: 350px;
+}
+
+
+
+prm-main-menu[menu-type="full"] prm-library-card-menu + md-divider,
+prm-main-menu[menu-type="full"] prm-library-card-menu + md-divider + div {
+   display: none;
+}
+
 
 #local-top-menu prm-search-bookmark-filter  {
     display: flex;
@@ -46,7 +114,7 @@ prm-topbar {
    border-radius: 5px;
 }
 #local-top-menu prm-authentication button[ng-click*="handleLogin"] {
-  background-color: #4A7C01;
+   background-color: #4A7C01;
 }
 #local-top-menu prm-authentication button[ng-click*="handleLogin"]:hover:not([disabled]),
 #local-top-menu prm-authentication button[ng-click*="handleLogin"]:focus:not([disabled]) {
@@ -61,14 +129,13 @@ prm-topbar {
 }
 #local-top-menu prm-search-bookmark-filter a.md-button.md-icon-button:hover:not([disabled]),
 #local-top-menu prm-search-bookmark-filter a.md-button.md-icon-button:focus:not([disabled]) {
-   background-color: #D7A900;
-   color: #000;
+   color: #D7A900;
+
 }
 
 #local-top-menu prm-search-bookmark-filter #favorites-button md-icon {
    transition-duration: 0.4s;
    transition-delay: 0s;
-   
 }
 
 #local-top-menu prm-search-bookmark-filter #favorites-button prm-icon svg {
@@ -77,15 +144,68 @@ prm-topbar {
 
 #local-top-menu prm-main-menu[menu-type="menu"] {
    padding: 6px 0.75em 0;
-   height: 60px;
+   height: 50px;
    box-shadow: none !important;   
 }
 
 #local-top-menu prm-main-menu[menu-type="menu"]  .md-button {
    color: #fff;
    font-size: 90%;
+   white-space: nowrap;
+   box-shadow: none;
 }
-   
+#local-top-menu prm-main-menu[menu-type="menu"]  .md-button:hover,
+#local-top-menu prm-main-menu[menu-type="menu"]  .md-button:focus {
+   color: #D7A900;
+}
+#local-top-menu prm-main-menu[menu-type="menu"]  .md-button:focus {
+   outline: dotted 1px #aaa !important;
+   z-index: 100;
+}
+
+/* hide the responsive button for main menu by default */
+#local-top-menu #local-main-menu-responsive {
+   display: none;
+   padding: 0;
+   height: 100%;
+   margin-right: 4px;
+}
+#local-top-menu #local-main-menu-responsive button.md-button {
+   min-width: 0;
+   padding: 2px 0.5em;
+}
+
+@media screen and (max-width: 700px) {
+   #local-top-menu prm-authentication span.responsiveText {
+      display: none;
+   }
+   #local-top-menu prm-main-menu[menu-type="menu"]  .md-button span.responsiveText {
+      display: none;
+   }
+   #local-top-menu prm-logo div#banner a img {
+      min-width: 275px
+   }
+}
+@media screen and (max-width: 600px) {  
+   #local-top-menu #local-main-menu-responsive {
+      display: block;
+   }
+   #local-top-menu #local-main-menu-row {
+      display: none;
+   }
+   #local-top-menu prm-authentication {
+      display: none;
+   }
+      
+}
+@media screen and (max-width: 450px) {
+   #local-top-menu prm-logo div#banner a img {
+      min-width: 150px
+   }
+}
+
+
+
 prm-top-bar-before + div.layout-row { display: none; }
 
 /* TEMPORARY */
