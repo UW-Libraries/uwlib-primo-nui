@@ -9,23 +9,18 @@
          while (elements[index] && elements[index] !== element) {
             ++index;
          }
-
          return Boolean(elements[index]);
       };
    }
-
    if (typeof ElementProto.closest !== 'function') {
       ElementProto.closest = function closest(selector) {
          var element = this;
-
          while (element && element.nodeType === 1) {
             if (element.matches(selector)) {
                return element;
             }
-
             element = element.parentNode;
          }
-
          return null;
       };
    }
@@ -53,7 +48,6 @@ var app = angular.module('viewCustom', ['angularLoad']);
          $scope.tabs.attr('id','summitLinks');
          $scope.tabs.addClass('hide');
          $scope.button.parent().after($scope.tabs);
-         
          
          $scope.toggleLibs = function() {
             $scope.showLibs = !$scope.showLibs;
@@ -340,6 +334,7 @@ var app = angular.module('viewCustom', ['angularLoad']);
          }
          
          this.userName = function() {
+            return "Kate";
             try {
                var rootScope = $scope.$root;
                var uSMS = rootScope.$$childHead.$ctrl.userSessionManagerService;
