@@ -355,9 +355,21 @@ prm-search-result-list md-list-item {
 }
 
 
-
-#virtualBrowse,
-prm-full-view#fullView div#services-index button[aria-label="brief.results.tabs.browseshelf"] {
+/* Hide Features on Virtual Browse
+   The actual sections on the page have IDs we can hide. The problem is the menu
+   on the left of the Full Display. The only means to specifically target them
+   right now is to use aria-label.
+   
+   Recommendation: 
+   Add 'DO_NOT_USE' to the appropriate brief.results.tabs.* code table entry 
+   
+   Currently hidden features:
+   - Tags
+   - Virtual Browse
+ */
+prm-full-view#fullView #virtualBrowse,
+prm-full-view#fullView #tags,
+prm-full-view#fullView div#services-index button[aria-label^="DO_NOT_USE"] {
    display: none;
 }
 
@@ -849,6 +861,10 @@ prm-facet .section-content .md-chips .md-chip .facet-title + span.text-in-bracke
    color: #C61029;
    background: #E8E3D3;
 }
+
+
+
+
 
 /* checkboxes */
 .multiselect-facet-group .md-chip .md-chip-content md-checkbox {
