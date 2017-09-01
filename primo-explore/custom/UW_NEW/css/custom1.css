@@ -1286,6 +1286,7 @@ prm-main-menu[menu-type="full"] prm-library-card-menu + md-divider + div {
    font-size: 1rem;
    white-space: nowrap;
    box-shadow: none;
+   border-radius: 5px;
 }
 #local-top-menu prm-main-menu[menu-type="menu"]  .md-button:hover,
 #local-top-menu prm-main-menu[menu-type="menu"]  .md-button:focus {
@@ -1295,6 +1296,8 @@ prm-main-menu[menu-type="full"] prm-library-card-menu + md-divider + div {
    outline: dotted 1px #aaa !important;
    z-index: 100;
 }
+
+
 
 /* hide the responsive button for main menu by default */
 #local-top-menu #local-main-menu-responsive {
@@ -1915,39 +1918,55 @@ prm-facet-group .section-content .md-chips .md-chip strong.facet-title {
    color: #001add;
    line-height: inherit;
    border-radius: 5px;
-   margin-left: 0.1em;
-   padding-right: 0.25em;
-   padding-left: 0.375em;
-
+   margin-left: 2px;
+   padding-right: 4px;
+   padding-left: 5px;
+   z-index: 0;
 }
+prm-facet-group .section-content .md-chips .md-chip strong.facet-title:focus:not([disabled]),
+prm-facet-group .section-content .md-chips .md-chip strong.facet-title:focus:not([disabled]):before {
+   background-color: #E8E3D3;
+   color: #001add;
+}
+.section-content .md-chips .md-chip .facet-title:hover:not([disabled]) {
+   color: #001add;
+   background-color: #E8E3D3;
+}
+
 prm-facet-group .section-content .md-chips .md-chip strong.facet-title:before {
    display: inline-block;
    content: "";
    position: absolute;
-   width: 100%;
+   left: 31px; 
+   right: 0;
    z-index: -1;
    background-color: transparent;
    height: 100%;
 }
-prm-facet-group .section-content .md-chips .md-chip strong.facet-title:after {
-   display: inline-block;
-   content: "";
-   width: 100%;
-   height: 100%;
-   background-color: transparent;
-   position: absolute;
-   z-index: 5;
-}
-prm-facet-group .section-content .md-chips .md-chip strong.facet-title:hover:before{
+
+prm-facet-group .section-content .md-chips .md-chip strong.facet-title:hover:before,
+prm-facet-group .section-content .md-chips .md-chip strong.facet-title:focus:before {
    background-color: #E8E3D3;
 }
 prm-facet .section-content .md-chips .md-chip .facet-title + span.text-in-brackets {
    color: #000;
    font-style: normal;
-
+   z-index: 2;
 }
 
+/* exclude button */
+.available-facets .section-content .md-chips .md-chip .button-include:focus:not([disabled]),
+.available-facets .section-content .md-chips .md-chip .button-include:focus:not([disabled]) {
+   color: #4A7C01;
+   background: #E8E3D3;
+}
+.available-facets .section-content .md-chips .md-chip .button-exclude:hover:not([disabled]),
+.available-facets .section-content .md-chips .md-chip .button-exclude:focus:not([disabled]) {
+   color: #C61029;
+   background: #E8E3D3;
+}
 
+/* checkboxes */
 .multiselect-facet-group .md-chip .md-chip-content md-checkbox {
    left: 0;
 }
@@ -1960,14 +1979,12 @@ prm-facet .section-content .md-chips .md-chip .facet-title + span.text-in-bracke
 .multiselect-facet-group.multiselect-active .md-chip {
    transform: none;
 }
-
 .section-content .md-chips .md-chip .md-chip-content {
    padding-left: 8px;
    border-radius: 5px;
 }
-
 .section-content .md-chips .md-chip .md-chip-remove-container .md-button {
-   color: #0001ad;
+   color: #001add;
    opacity: 1;
    border: 0;
    border-radius: 5px;
@@ -1977,24 +1994,155 @@ prm-facet .section-content .md-chips .md-chip .facet-title + span.text-in-bracke
    min-width: 0px;
    width: auto;
 }
-
 .available-facets .section-content .md-chips .md-chip + .md-chip {
    margin-top: 0.125em;
 }
 .available-facets .section-content .md-chips .md-chip:hover .md-button {
    transform: none;
 }
-.section-content .md-chips .md-chip .facet-title:hover:not([disabled]) {
-   color: #0001ad;
+
+
+
+.available-facets md-checkbox ._md-icon, 
+.available-facets md-checkbox .md-icon {
+   opacity: 1;
+   border-color: #888;
+}
+.available-facets md-checkbox:hover ._md-icon, 
+.available-facets md-checkbox:hover .md-icon,
+.available-facets md-checkbox:focus ._md-icon, 
+.available-facets md-checkbox:focus .md-icon  {
+   border-color: #000;
    background-color: #E8E3D3;
 }
-
-.available-facets .section-content .md-chips .md-chip .button-exclude:hover:not([disabled]) {
-   color: #C61029;
-   background: #E8E3D3;
+.available-facets md-checkbox.md-checked ._md-icon,
+.available-facets md-checkbox.md-checked .md-icon {
+   color: #fff;
+   background-color: #4A7C01;
+}
+.available-facets md-checkbox.md-checked:hover ._md-icon,
+.available-facets md-checkbox.md-checked:hover .md-icon,
+.available-facets md-checkbox.md-checked:focus ._md-icon,
+.available-facets md-checkbox.md-checked:focus .md-icon {
+   background-color:  #D7A900;
+   color: #000;
+   
+}
+md-checkbox.md-focused:not([disabled]):not(.md-checked) ._md-container:before  {
+   background-color: transparent;
 }
 
-md-checkbox ._md-icon, md-checkbox .md-icon {
+.multiselect-facet-group .md-chip.facet-excluded .md-chip-content md-checkbox ._md-icon:before {
+   transform: rotate(-45deg) ;
+   opacity: 0;
+   content: '';
+   position: absolute;
+   height: 2px;
+   width: 16px;
+   top: 9px;
+   left: auto;
+   right: 2px;
+   margin-top: 0;
+   background-color: #fff;
+   border: none;
+}
+.multiselect-facet-group .md-chip.facet-excluded .md-chip-content md-checkbox ._md-icon:after {
+   transform: rotate(45deg);
+   opacity: 0;
+   content: '';
+   position: absolute;
+   height: 2px;
+   width: 16px;
+   top: 9px;
+   left: 2px;
+   margin-top: 0;
+   background-color: #fff;
+   border: none;
+}
+.multiselect-facet-group .md-chip.facet-excluded .md-chip-content md-checkbox.md-checked ._md-icon:before,
+.multiselect-facet-group .md-chip.facet-excluded .md-chip-content md-checkbox.md-checked ._md-icon:after {
    opacity: 1;
-   border-color: #444;
+}
+
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:hover ._md-icon,
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:focus ._md-icon {
+   background-color: #D7A900;
+}
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:hover ._md-icon:before,
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:hover ._md-icon:after,
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:focus ._md-icon:before,
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:focus ._md-icon:after { 
+   background-color: #000;
+}
+
+
+
+prm-facet .sidebar-inner-wrapper {
+   padding-left: 0;
+}
+
+md-content.main.padded-container {
+   padding: 1em;
+}
+
+
+
+.multiselect-facet-group .md-chip .md-range-content {
+   left: 0;
+   padding-left: 8px;
+   padding-top: 14px;
+   justify-content: space-between;
+}
+
+.md-range-content md-input-container {
+   margin: 0;
+}
+.md-range-content  md-input-container.md-input-has-value label:not(.md-no-float) {
+   color: #000;
+   opacity: 1;
+   transform: scale(1) translate3d(0,3px,0);
+}
+.md-range-content  md-input-container + button > span {
+   font-weight: bold;
+}
+
+md-input-container label[translate="facets.date.slider.from"] + input,
+md-input-container label[translate="facets.date.slider.to"] + input  {
+   border-bottom-width: 1px;
+   border-bottom-color: #aaa;
+   max-width: 4em;
+   padding-right: 0;
+}
+.md-range-content md-input-container:after {
+
+   background-color: #C75B12;
+}
+
+/* multiselect apply panel */
+div.multiselect-submit {
+  margin-left: 0.5rem;
+}
+div.multiselect-submit div.multiselect-submit-inner {
+   background-color: #E8E3D3;
+   border-color: #000;
+   border-width: 1px 1px 0;
+   border-style: solid;
+   border-top-left-radius: 15px;
+   border-top-right-radius: 15px;   
+   padding: 15px 15px;
+}
+div.multiselect-submit div.multiselect-submit-inner button.md-button {
+   font-size: 0.9375rem;
+   border-radius: 5px;
+   margin: 0 3px;
+   line-height: 1;
+}
+div.multiselect-submit div.multiselect-submit-inner button:hover,
+div.multiselect-submit div.multiselect-submit-inner button:focus {
+   background-color: #D7A900 !important;
+   color: #000 !important;
+}
+div.multiselect-submit div.multiselect-submit-inner button:focus {
+   outline: dotted 1px #000 !important;
+   outline-offset: 1px;
 }
