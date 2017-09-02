@@ -1862,14 +1862,23 @@ md-card#personalDetails > md-card-content > div > div > div > md-input-container
 }
 
 /* facets */
+
+div.sidebar-section.available-facets {
+   margin-bottom: 0.75em;
+}
+
+prm-facet-group > div:first-child {
+   border: solid 1px #444;
+}
+
 prm-facet-group button.md-button.section-title {
    line-height: 1;
    border-radius: 0;
    color: #fff;
    background-color: #4B2E83;
-   border: solid 1px #444;
    padding: 0.375em 0.375em;
    margin-bottom: 0;
+   margin-top: 0;
 }
 prm-facet-group button.md-button.section-title:hover:not([disabled]),
 prm-facet-group button.md-button.section-title:focus:not([disabled]) {
@@ -1896,10 +1905,9 @@ prm-facet-group div.expand-section-button {
 prm-facet-group div.section-content {
    background-color: #fff;
    color: #001add;
-   border: solid 1px #444;
-   border-top-width: 0;
    padding: 0.125em;
 }
+
 prm-facet-group div.expand-section-button {
    text-align: right;
 } 
@@ -2161,4 +2169,102 @@ div.multiselect-submit div.multiselect-submit-inner button:focus {
 div.multiselect-submit div.multiselect-submit-inner button:focus {
    outline: dotted 1px #000 !important;
    outline-offset: 1px;
+}
+
+/* external search */
+prm-facet-exact-after #externalSearch {
+   padding-bottom: 4px;
+   background-color: #fff;
+
+}
+prm-facet-exact-after #externalSearch div.md-chip-content {
+   padding-left: 3px; /* 8 - 5px due to padding */
+}
+prm-facet-exact-after #externalSearch div.md-chip-content strong {
+   line-height: 1;
+}
+prm-facet-exact-after #externalSearch a {
+   border-radius: 5px;
+   padding: 3px 5px;
+   min-height: 28px;
+   display: inline-flex;
+   align-items: center;
+}
+prm-facet-exact-after #externalSearch a:hover,
+prm-facet-exact-after #externalSearch a:focus {
+   background-color: #E8E3D3;
+   color: #001add;
+   text-decoration: none;
+   box-shadow: none;
+}
+prm-facet-exact-after #externalSearch a prm-icon {
+   color: #001add;
+   margin-left: 2px;
+}
+prm-facet-exact-after #externalSearch a > img {
+   width: 22px;
+   max-width: 22px;
+   height: 22px;
+   max-height: 22px;
+   display: block;
+   margin-right: 4px;
+}
+
+
+
+
+/* browse search */
+/* browse by dropdown */
+prm-browse-search-bar .classic-input .search-scope {
+   background-color: #E8E3D3;
+   border-color: #E8E3D3;
+}
+prm-browse-search-bar md-select:before {
+   content: '';
+   background-color: transparent;
+   height: 3px;
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 6px;
+}
+prm-browse-search-bar md-select:hover:before,
+prm-browse-search-bar md-select:focus:before {
+   background-color: #85754D;
+}
+
+/* H3 on browse list page */
+prm-browse-search md-list.prm-list.prm-linkable-list-items.prm-dense-list md-list-item .item-title {
+   color: #001add;
+}
+/* .__gt-xs prm-browse-search prm-page-nav-menu { */
+   /* left: auto ; */
+   /* right: 1.5em; */
+/* } */
+
+
+/* e-journals */
+/* journal search bar label */
+prm-journals-search-bar .classic-input .search-scope {
+   background-color: #E8E3D3;
+   border-color: #E8E3D3;
+}
+prm-journals-search-bar > div.layout-row > div.layout-column {
+   max-width: 90%;
+}
+prm-alphabet-toolbar .md-button {
+   font-weight: bold;
+}
+prm-alphabet-toolbar .md-button.active {
+   background: #85754D;
+   color: #fff;
+}
+prm-alphabet-toolbar .md-button:hover:not([disabled]),
+prm-alphabet-toolbar .md-button:focus:not([disabled]) {
+   color: #D7A900;
+   box-shadow: none;
+   background-color: rgba(0,0,0,.1);
+}
+prm-alphabet-toolbar .md-button:focus:not([disabled]) {
+   outline: dotted 1px #aaa !important;
 }

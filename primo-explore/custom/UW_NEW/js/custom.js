@@ -1,3 +1,5 @@
+var LOCAL_VID = "UW_NEW";
+
 /* Adds a polyfill for matches and closest DOM functions */
 (function (ElementProto) {
    if (typeof ElementProto.matches !== 'function') {
@@ -26,19 +28,102 @@
    }
 })(window.Element.prototype);
 
+function isBrowseSearch() {
+   return window.location.href.indexOf('query=browse_') != -1;
+}
+function isEJournalsSearch() {
+   return window.location.href.indexOf('primo-explore/jsearch?') != -1;
+}
+
+
 (function(){
 "use strict";
 'use strict';
 
+angular
+   .module('externalSearch', [])
+   .value('searchTargets', [
+      {
+          "name": "UW WorldCat",
+          "url": "https://uwashington.on.worldcat.org/search?databaseList=&queryString=",
+          "img": "./custom/" + LOCAL_VID + "/img/worldcat_logo.png",
+          mapping: function(search) {
+            if(Array.isArray(search)) {
+               var ret = '';
+               for(var i=0; i<search.length; i++) {
+                  var terms = search[i].split(','); 
+                  ret += ' ' + (terms[2] || '');
+               }
+               return ret;
+            }
+            else {
+               var terms = search.split(',');
+               return terms[2] || "";
+            }
+          }
+      },   
+      {
+         "name": "Google Scholar",
+         "url": "https://scholar.google.com/scholar?q=",
+         "img": "./custom/" + LOCAL_VID + "/img/google_logo.png",
+         mapping: function(search) {
+            if(Array.isArray(search)) {
+               var ret = '';
+               for(var i=0; i<search.length; i++) {
+                  var terms = search[i].split(','); 
+                  ret += ' ' + (terms[2] || '');
+               }
+               return ret;
+            }
+            else {
+               var terms = search.split(',');
+               return terms[2] || "";
+            }
+         }
+      }  
+   ])
+   .component('prmFacetAfter', {
+      bindings: { parentCtrl: '<' },
+      controller: function () {
+         console.log('BROWSE ' + isBrowseSearch());
+         console.log('JOURNALS ' + isEJournalsSearch());
+         if(!isBrowseSearch() && !isEJournalsSearch()) {
+            
+            this.parentCtrl.facetService.results.unshift({
+               name: 'External Search',
+               displayedType: 'exact',
+               limitCount: 0,
+               facetGroupCollapsed: false,
+               values: undefined
+            })
+         }
+      }
+   })
+   .component('prmFacetExactAfter', {
+      bindings: { parentCtrl: '<' },
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/externalSearchFacet.html',
+      controller: ['$scope', '$location', 'searchTargets', function ($scope, $location, searchTargets) {
+         $scope.name = this.parentCtrl.facetGroup.name
+         $scope.search = $location.search().query
+         $scope.targets = searchTargets;
+         this.isRelevantSearch = function () {
+            console.log('RELEVANT ' + !isBrowseSearch() && !isEJournalsSearch());
+            return (!isBrowseSearch() && !isEJournalsSearch());
+         }
+      }]
+});
+
+
+
 /************************************* BEGIN Bootstrap Script ************************************/
 /* We are a local package, so use the below line to bootstrap the module */
-var app = angular.module('viewCustom', ['angularLoad']);
+var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
 /************************************* END Bootstrap Script ************************************/
 
 /* ======  Hide/Show Summit Holdings ====== */
    app.component('prmAlmaMoreInstAfter', {
       controller: 'institutionToggleController',
-      templateUrl: '/primo-explore/custom/UW_NEW/html/hideShowSummit.html'
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/hideShowSummit.html'
    })
    .controller('institutionToggleController', ['$scope', function($scope) {
       this.$onInit = function() {
@@ -76,7 +161,7 @@ var app = angular.module('viewCustom', ['angularLoad']);
    app.component('prmFullViewServiceContainerAfter', {
       bindings: {parentCtrl: '<'}, /*bind to parentCtrl to read PNX*/
       controller: 'genericSFDEController',
-      templateUrl: '/primo-explore/custom/UW_NEW/html/fullPageOptionalNotes.html'
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/fullPageOptionalNotes.html'
    }).controller('genericSFDEController',GenericSFDEController);
    /* ====== */
    
@@ -307,7 +392,7 @@ var app = angular.module('viewCustom', ['angularLoad']);
    };
    app.component('prmTopbarAfter', {
       controller: 'genericTopbarAfterController',
-      templateUrl: '/primo-explore/custom/UW_NEW/html/topbarAfter.html'
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/topbarAfter.html'
    }).controller('genericTopbarAfterController',GenericTopbarAfterController);   
    /* ====== */
 
@@ -315,7 +400,7 @@ var app = angular.module('viewCustom', ['angularLoad']);
    /* ====== Add Update Personal Information to Personal Details Page ====== */
    app.component('prmPersonalInfoAfter', {
       controller: 'personalInfoController',
-      templateUrl: '/primo-explore/custom/UW_NEW/html/personalDetails.html'
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/personalDetails.html'
    })
    .controller('personalInfoController', ['$scope', function($scope) {
       this.$onInit = function() {
@@ -326,7 +411,7 @@ var app = angular.module('viewCustom', ['angularLoad']);
    
     /* ====== Load Alerts ===== */
    app.component('prmTopBarBefore', {
-      templateUrl: '/primo-explore/custom/UW_NEW/html/local-menu.html',
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/localTopMatter.html',
       controller: 'localMenuAlertsController',
    }).controller('localMenuAlertsController', ['$scope', 'angularLoad', function($scope,angularLoad) {
          this.isLoggedIn = function() {
@@ -334,7 +419,6 @@ var app = angular.module('viewCustom', ['angularLoad']);
          }
          
          this.userName = function() {
-            return "Kate";
             try {
                var rootScope = $scope.$root;
                var uSMS = rootScope.$$childHead.$ctrl.userSessionManagerService;
@@ -385,17 +469,21 @@ var app = angular.module('viewCustom', ['angularLoad']);
    ]);
    /* ====== */
    
+   /* ====== HEADER/ MAIN MENU ===== */
    var MainMenuAfterController = function MainMenuAfterController($scope, $element) {
       $scope.$element = $element;
       
+      /* overrides the prm-main-menu's directive that controls how many items
+         show up based on unknown magicks 
+       */
       this.parentCtrl.showCount = function() { 
          var mainMenu = $scope.$element[0].closest('prm-main-menu');
          if(mainMenu === null)
             return 10; 
          else if(mainMenu.getAttribute('local-menu-type') == 'more')
-            return 1;
+            return 1; /* forces the responsive show more button to show */
          else if(mainMenu.getAttribute('local-menu-type') == 'menu')
-            return 10;
+            return 10; /* forces all items to show. value is greater than the number of items we have */
          else
             return 10;
       }
@@ -405,5 +493,7 @@ var app = angular.module('viewCustom', ['angularLoad']);
       controller: 'MainMenuAfterController'
    })
    .controller('MainMenuAfterController', MainMenuAfterController);
+   /* ====== */
    
+
 })();
