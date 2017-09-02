@@ -495,5 +495,17 @@ var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
    .controller('MainMenuAfterController', MainMenuAfterController);
    /* ====== */
    
+   /* ====== Tabs and Scopes always Present ====== */
+   app.component('prmSearchBarAfter', {
+      controller: 'showScopesController',
+      bindings: {parentCtrl: '<'}
+   }).controller('showScopesController', [function () {
+      var vm = this;
+      vm.$onInit = function() {
+        this.parentCtrl.showTabsAndScopes = true;
+        this.parentCtrl.scopesDialerConfiguration.display = true;
+      };
+   }]);
+   /* ====== */
 
 })();
