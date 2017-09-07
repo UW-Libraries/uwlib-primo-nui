@@ -1600,7 +1600,9 @@ div#services-index .md-button{
 prm-full-view-after #localOptionalStatements {
    display: none;
 }
-
+prm-full-view {
+   color: #000;
+}
 prm-full-view .localNote {
    padding: 0.75em 1em;
    font-size: 0.9rem;
@@ -1608,9 +1610,19 @@ prm-full-view .localNote {
    color: #fff;
    background-color: #165788;
 }
+.full-view-section md-divider {
+   opacity: 1;
+   border-bottom: solid 2px #85754D;
+}
 prm-full-view .localNote p {
    margin: 0;
 }
+prm-full-view .section-title.light-text {
+   font-weight: normal;
+   color: #000;
+   padding-right: 0.5em;
+}
+
 parm-full-view .localNote p + p {
    margin-top: 0.5em;
 }
@@ -1644,6 +1656,10 @@ prm-full-view .localNote.localNoteOADOI a:link,
 prm-full-view .localNote.localNoteOADOI a:visited,
 prm-full-view .localNote.localNoteOADOI a svg {
    color: #001add;
+}
+
+prm-alma-mashup.margin-bottom-large {
+   margin-bottom: 0;
 }
 
 
