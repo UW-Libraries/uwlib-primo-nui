@@ -85,8 +85,6 @@ angular
    .component('prmFacetAfter', {
       bindings: { parentCtrl: '<' },
       controller: function () {
-         console.log('BROWSE ' + isBrowseSearch());
-         console.log('JOURNALS ' + isEJournalsSearch());
          if(!isBrowseSearch() && !isEJournalsSearch()) {
             
             this.parentCtrl.facetService.results.unshift({
@@ -107,7 +105,6 @@ angular
          $scope.search = $location.search().query
          $scope.targets = searchTargets;
          this.isRelevantSearch = function () {
-            console.log('RELEVANT ' + !isBrowseSearch() && !isEJournalsSearch());
             return (!isBrowseSearch() && !isEJournalsSearch());
          }
       }]
@@ -118,6 +115,7 @@ angular
 /************************************* BEGIN Bootstrap Script ************************************/
 /* We are a local package, so use the below line to bootstrap the module */
 var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
+
 /************************************* END Bootstrap Script ************************************/
 
 /* ======  Hide/Show Summit Holdings ====== */
@@ -132,11 +130,24 @@ var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
          $scope.tabs = angular.element(document.querySelector('prm-alma-more-inst md-tabs'));
          $scope.tabs.attr('id','summitLinks');
          $scope.tabs.addClass('hide');
+         $scope.tabs.attr('data-never-opened','true');
          $scope.button.parent().after($scope.tabs);
          
          $scope.toggleLibs = function() {
             $scope.showLibs = !$scope.showLibs;
             if ($scope.tabs.hasClass('hide')) {
+               if($scope.tabs.attr('data-never-opened') == 'true') {
+                  /* On the first load of this table, move the content out of the
+                     buttons to disable the linking to other institutions
+                   */
+                  var buttons = $scope.tabs[0].querySelectorAll('md-list-item button'); 
+                  for(var i=0; i<buttons.length; i++) {
+                     var $button = angular.element(buttons[i]);
+                     $button.after($button.children().detach());
+                     $button.detach();
+                  }
+                  $scope.tabs.attr('data-never-opened','false');
+               }
                $scope.tabs.removeClass('hide');
                $scope.button.attr("aria-expanded","true");
             }
@@ -158,26 +169,29 @@ var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
    */
 
 
-   app.component('prmFullViewServiceContainerAfter', {
-      bindings: {parentCtrl: '<'}, /*bind to parentCtrl to read PNX*/
-      controller: 'genericSFDEController',
-      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/fullPageOptionalNotes.html'
-   }).controller('genericSFDEController',GenericSFDEController);
-   /* ====== */
+
    
-   var GenericSFDEController = function GenericSFDEController($scope, $element) {
+   var GenericSFDEController = function GenericSFDEController($scope, $http, $element, oadoiService, oadoiOptions) {
       this._$scope = $scope;
       this._$elem = $element;
+      this._$http = $http;
+      this.oadoiService = oadoiService;
+      this.oadoiOptions = oadoiOptions;
+      $scope.LOCAL_VID = LOCAL_VID;
          
       // Local Notes Handling 
-      this.localNoteOrder = ['HBR']; // place in order you want them to appear ultimately
+      this.localNoteOrder = ['HBR','OADOI']; // place in order you want them to appear ultimately
       this.localNoteStatus = []; // associative boolean array of notes to add
       this.localNotesPresent = false;
       // End Local Notes Handling
    };
    GenericSFDEController.prototype.$onInit = function $onInit () {
+      var $localScope = this._$scope;
+      var $localElem = this._$elem
+      
       // Local Notes Handling 
       this.localNoteStatus['HBR'] = this.addHarvardBusinessReviewNote();
+      this.localNoteStatus['OADOI'] = this.addOADOINote();
       // OR the localNoteStatus together
       var $localStatus = this.localNoteStatus;
       this.localNotesPresent = Object.keys(this.localNoteStatus).reduce( 
@@ -219,6 +233,42 @@ var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
       // End Local Notes Handling
    };
       
+   GenericSFDEController.prototype.addOADOINote = function addOADOINote () {
+      var $localScope = this._$scope;
+      var $localElem = this._$elem;      
+      var email = this.oadoiOptions.email;
+      var section = $localScope.$parent.$ctrl.service.scrollId;
+      /* only put on the first getit link section */
+      if(section != 'getit_link1_0')
+         return false;
+      /* check for presence of doi */
+      var obj = $localScope.$ctrl.parentCtrl.item.pnx.addata;      
+      if(!obj.hasOwnProperty('doi'))
+         return false;
+      var doi = obj.doi[0];
+      if(doi) {
+         $localScope.oadoilink = null;     
+         $localScope.oadoilinktext = '';
+         var url = 'https://api.oadoi.org/v2/' + doi + '?email=' + email;
+         var response = this.oadoiService.getOaiData(url).then(function(response) {
+            var oalink = null;
+            try {
+               oalink = response.data.best_oa_location.url;
+            }
+            catch(e) { }
+            if(oalink != null) {
+               /* we got an OA hit, so update the link and make the note visible */
+               $localScope.oadoilink = oalink;
+               $localScope.oadoilinktext = oalink.split('/', 3).join('/'); /* just get protocol/domain */
+               var oadoiNote = $localElem.parent()[0].querySelector('.localNoteOADOI');               
+               if(oadoiNote)
+                  angular.element(oadoiNote).removeClass('donotdisplay');
+            }
+         });      
+         return true; /* service might respond until later but we might as well prep the note */
+      }
+      return false;
+   };
    GenericSFDEController.prototype.addHarvardBusinessReviewNote = function addHarvardBusinessReviewNote () {
       if(this.parentCtrl.index != 1) // is not the view it online tab
          { return false; }
@@ -238,6 +288,31 @@ var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
       }
       return false;
    };
+   app.component('prmFullViewServiceContainerAfter', {
+      bindings: {parentCtrl: '<'}, /*bind to parentCtrl to read PNX*/
+      controller: 'genericSFDEController',
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/fullPageOptionalNotes.html'
+   })
+   .controller('genericSFDEController',GenericSFDEController)
+   .constant('oadoiOptions', {
+      'email': 'libsys@uw.edu'
+   })
+   .factory('oadoiService', ['$http', function($http) {
+      return {
+         getOaiData: function (url) {
+            return $http({
+               method: 'GET',
+               url: url,
+               cache: true
+            })
+         }
+      }
+   }]).run(
+      ($http) => {
+         // Necessary for requests to succeed...not sure why
+         $http.defaults.headers.common = { 'X-From-ExL-API-Gateway': undefined }
+   });
+   /* ====== */
    
    /* ====== Code for making edits to individual brief results ====== */
    /* Includes:
@@ -495,7 +570,7 @@ var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
    .controller('MainMenuAfterController', MainMenuAfterController);
    /* ====== */
    
-   /* ====== Tabs and Scopes always Present ====== */
+   /* ====== TABS AND SCOPES ALWAYS PRESENT ====== */
    app.component('prmSearchBarAfter', {
       controller: 'showScopesController',
       bindings: {parentCtrl: '<'}

@@ -1114,7 +1114,17 @@ md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > .button-con
     background-color: #7d1538; }
 
 /* primary color hook end*/
+/* Text selection color */
+::selection {
+   background: #FFE816;
+}
+::-moz-selection { 
+   background: #FFE816;
+}
 
+.donotdisplay {
+   display: none !important;
+}
 
 prm-topbar {
    height: auto;
@@ -1439,12 +1449,14 @@ md-card.default-card {
 /* login alerts */
 .prm-alert-border, .bar.alert-bar {
    background-color: #4A7C01;
-   border-color: #444;
+   border: none;
    color: #fff;
    border-radius: 0;
+   font-weight: bold;
 }
 .bar prm-authentication .md-button {
    color: #fff;
+   font-weight: bold;
 }
 .bar prm-authentication .md-button:hover:not([disabled]),
 .bar prm-authentication .md-button:focus:not([disabled]) {
@@ -1515,7 +1527,7 @@ prm-full-view prm-brief-result .item-title a:focus  {
 }
 
 prm-login-alma-mashup > .bar.alert-bar {
-   border-bottom: none;
+   /* border-bottom: none; */
 }
 
 
@@ -1592,6 +1604,7 @@ prm-full-view-after #localOptionalStatements {
 prm-full-view .localNote {
    padding: 0.75em 1em;
    font-size: 0.9rem;
+   font-weight: bold;
    color: #fff;
    background-color: #165788;
 }
@@ -1608,12 +1621,64 @@ prm-full-view .localNote a:visited {
 prm-full-view .localNote a:hover,
 prm-full-view .localNote a:focus {
    text-decoration: underline;
+   background-color: transparent;
+   color: #FFE816;
+   box-shadow: none;
 }
 prm-full-view .localNote a svg {
    color: #FFE816;
-   margin-left: 1px;
+   margin-left: 1px;   
+}
+prm-full-view .localNote.localNoteOADOI {
+   background-color: #E9E9E9;
+   color: #000;
+   display: flex;
+   align-items: center;
+}
+prm-full-view .localNote.localNoteOADOI img {
+   width: 25px;
+   height: 25px;
+   margin-right: 0.5em;
+}
+prm-full-view .localNote.localNoteOADOI a:link,
+prm-full-view .localNote.localNoteOADOI a:visited,
+prm-full-view .localNote.localNoteOADOI a svg {
+   color: #001add;
 }
 
+
+/* Show/Hide Summit Holdings */
+#summitButton {
+   background-color: #4B2E83;
+   color: #fff;
+   font-weight: bold;
+   padding: 0 8px;
+   margin-left: 0;
+}
+#summitButton:hover,
+#summitButton:focus {
+   color: #D7A900;
+}
+#summitButton:focus {
+   outline: dotted 1px #444 !important;
+   outline-offset: 1px;
+}
+#summitLinks {
+   border: solid 1px #444;
+   padding: 0.5em 0.75em;
+}
+#summitLinks md-list-item.md-2-line {
+   min-height: 0;
+}
+#summitLinks md-list-item + md-list-item {
+   margin-top: 0.75em;
+}
+#summitLinks  md-list-item span.availability-status {
+   font-weight: bold;
+}
+#summitLinks  md-list-item prm-icon {
+   display: none;
+}
 
 /* Alerts - UW Library */
 div#libAlerts-outer {
@@ -2268,3 +2333,4 @@ prm-alphabet-toolbar .md-button:focus:not([disabled]) {
 prm-alphabet-toolbar .md-button:focus:not([disabled]) {
    outline: dotted 1px #aaa !important;
 }
+
