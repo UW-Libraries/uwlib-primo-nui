@@ -2254,15 +2254,16 @@ div.multiselect-submit div.multiselect-submit-inner button:focus {
 
 /* external search */
 prm-facet-exact-after #externalSearch {
-   padding-bottom: 4px;
    background-color: #fff;
-
 }
 prm-facet-exact-after #externalSearch div.md-chip-content {
    padding-left: 3px; /* 8 - 5px due to padding */
 }
 prm-facet-exact-after #externalSearch div.md-chip-content strong {
    line-height: 1;
+}
+prm-facet-exact-after #externalSearch div.md-chips {
+   margin-bottom: 4px;
 }
 prm-facet-exact-after #externalSearch a {
    border-radius: 5px;
