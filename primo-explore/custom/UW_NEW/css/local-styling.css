@@ -1235,3 +1235,48 @@ prm-alphabet-toolbar .md-button:focus:not([disabled]) {
    outline: dotted 1px #aaa !important;
 }
 
+md-content > div.local-homepage {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+md-card.homepage-campus {
+   flex-grow: 0;
+   box-shadow: 0 1px 0 0 rgba(0,0,0,.1),0 5px 5px -3px rgba(0,0,0,.2);
+}
+md-card.homepage-campus  md-card-title:not(#featuredResultTitle) {
+   padding: 0.5em 0.5em;
+   min-width: 25em;
+}
+
+.homepage-campus h2 {
+   margin: 0;
+   font-size: 1.25rem;
+   font-weight: bold;
+   color: #000;
+
+}
+md-card.homepage-campus  md-card-title:not(#featuredResultTitle)  + md-card-content.homepage-campus-links {
+   padding: 0;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: space-between;
+   align-content: stretch;
+   align-items: center;
+
+}
+md-card-content.homepage-campus-links > a {
+   padding: 0.5em;
+ text-transform: uppercase;   
+}
+md-card-content.homepage-campus-links > a:hover,
+md-card-content.homepage-campus-links > a:focus {
+   color: #fff;
+   text-decoration: none;
+   background: #4B2E83;
+  
+}

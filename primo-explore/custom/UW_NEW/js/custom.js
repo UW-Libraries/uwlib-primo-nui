@@ -117,6 +117,18 @@ angular
 var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
 
 /************************************* END Bootstrap Script ************************************/
+/* ====== Add a global variable controller ====== */
+/* This allows us to access the LOCAL_VID in HTML files. What you need to do is
+   write an html element like <span ng-controller="GlobalVariables"> and then 
+   you can use {{LOCAL_VID}} to refer to the View ID defined in the global
+   constant at the top of this file.
+   
+   This is very useful for image paths.
+ */
+app.controller('GlobalVariables', ['$scope', function($scope) {
+   $scope.LOCAL_VID = LOCAL_VID;
+}]);
+/* ====== */
 
 /* ======  Hide/Show Summit Holdings ====== */
    app.component('prmAlmaMoreInstAfter', {
