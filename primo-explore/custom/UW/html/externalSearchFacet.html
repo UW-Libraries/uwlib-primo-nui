@@ -1,0 +1,18 @@
+<div ng-if="$ctrl.isRelevantSearch() && name === 'External Search' && $ctrl.isRelevantSearch()" id="externalSearch" >
+   <div ng-hide="$ctrl.parentCtrl.facetGroup.facetGroupCollapsed">
+      <div class="section-content animate-max-height-variable">
+         <div class="md-chips md-chips-wrap">
+            <div ng-repeat="target in targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">
+               <div class="md-chip-content layout-row" role="button" tabindex="0">
+                  <strong dir="auto" title="{{ target.name }}">
+                     <a ng-href="{{ target.url + target.mapping(search) }}" target="_blank">
+                        <img ng-src="{{ target.img }}" aria-hidden="true" > 
+                           {{ target.name }}<prm-icon external-link svg-icon-set="primo-ui" icon-definition="open-in-new"></prm-icon>
+                     </a>
+                  </strong>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,165 +1,598 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
+var LOCAL_VID = "UW";
 
-Object.defineProperty(exports, "__esModule", {
-   value: true
-});
-var app = angular.module('hideShowSummit', []);
-exports.default = app;
+/* Adds a polyfill for matches and closest DOM functions */
+(function (ElementProto) {
+   if (typeof ElementProto.matches !== 'function') {
+      ElementProto.matches = ElementProto.msMatchesSelector || ElementProto.mozMatchesSelector || ElementProto.webkitMatchesSelector || function matches(selector) {
+         var element = this;
+         var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
+         var index = 0;
 
-/* Hide/Show Other Institutions Button */
-
-app.component('prmAlmaMoreInstAfter', {
-   controller: 'institutionToggleController',
-   template: '<md-button class="md-raised" ng-click="toggleLibs()" id="summitButton"\n               aria-controls="summitLinks" aria-expanded="false"\n               aria-label="Show/Hide Summit Libraries">\n               {{ showLibs ? \'Hide Libraries\' : \'Show Libraries\' }}\n               <span aria-hidden="true">{{showLibs ? \'&laquo;\' : \'&raquo;\' }}</span>\n              </md-button>'
-}).controller('institutionToggleController', ['$scope', function ($scope) {
-   this.$onInit = function () {
-      $scope.showLibs = false;
-      $scope.button = angular.element(document.querySelector('prm-alma-more-inst-after button'));
-      $scope.tabs = angular.element(document.querySelector('prm-alma-more-inst md-tabs'));
-      $scope.tabs.attr('id', 'summitLinks');
-      $scope.tabs.addClass('hide');
-      $scope.button.parent().after($scope.tabs);
-
-      $scope.toggleLibs = function () {
-         $scope.showLibs = !$scope.showLibs;
-         if ($scope.tabs.hasClass('hide')) {
-            $scope.tabs.removeClass('hide');
-            $scope.button.attr("aria-expanded", "true");
-         } else {
-            $scope.tabs.addClass('hide');
-            $scope.button.attr("aria-expanded", "false");
+         while (elements[index] && elements[index] !== element) {
+            ++index;
          }
+         return Boolean(elements[index]);
       };
-   };
-}]);
+   }
+   if (typeof ElementProto.closest !== 'function') {
+      ElementProto.closest = function closest(selector) {
+         var element = this;
+         while (element && element.nodeType === 1) {
+            if (element.matches(selector)) {
+               return element;
+            }
+            element = element.parentNode;
+         }
+         return null;
+      };
+   }
+})(window.Element.prototype);
 
-},{}],2:[function(require,module,exports){
+function isBrowseSearch() {
+   return window.location.href.indexOf('query=browse_') != -1;
+}
+function isEJournalsSearch() {
+   return window.location.href.indexOf('primo-explore/jsearch?') != -1;
+}
+
+
+(function(){
+"use strict";
 'use strict';
 
-var _hideShowSummit = require('./hideShowSummit');
-
-var _hideShowSummit2 = _interopRequireDefault(_hideShowSummit);
-
-var _singleFullDisplayEdits = require('./singleFullDisplayEdits');
-
-var _singleFullDisplayEdits2 = _interopRequireDefault(_singleFullDisplayEdits);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = angular.module('viewCustom', ['angularLoad', _hideShowSummit2.default.name, _singleFullDisplayEdits2.default.name]);
-
-},{"./hideShowSummit":1,"./singleFullDisplayEdits":3}],3:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-   value: true
+angular
+   .module('externalSearch', [])
+   .value('searchTargets', [
+      {
+          "name": "UW WorldCat",
+          "url": "https://uwashington.on.worldcat.org/search?databaseList=&queryString=",
+          "img": "./custom/" + LOCAL_VID + "/img/worldcat_logo.png",
+          mapping: function(search) {
+            if(Array.isArray(search)) {
+               var ret = '';
+               for(var i=0; i<search.length; i++) {
+                  var terms = search[i].split(','); 
+                  ret += ' ' + (terms[2] || '');
+               }
+               return ret;
+            }
+            else {
+               var terms = search.split(',');
+               return terms[2] || "";
+            }
+          }
+      },   
+      {
+         "name": "Google Scholar",
+         "url": "https://scholar.google.com/scholar?q=",
+         "img": "./custom/" + LOCAL_VID + "/img/google_logo.png",
+         mapping: function(search) {
+            if(Array.isArray(search)) {
+               var ret = '';
+               for(var i=0; i<search.length; i++) {
+                  var terms = search[i].split(','); 
+                  ret += ' ' + (terms[2] || '');
+               }
+               return ret;
+            }
+            else {
+               var terms = search.split(',');
+               return terms[2] || "";
+            }
+         }
+      }  
+   ])
+   .component('prmFacetAfter', {
+      bindings: { parentCtrl: '<' },
+      controller: function () {
+         if(!isBrowseSearch() && !isEJournalsSearch()) {
+            
+            this.parentCtrl.facetService.results.unshift({
+               name: 'External Search',
+               displayedType: 'exact',
+               limitCount: 0,
+               facetGroupCollapsed: false,
+               values: undefined
+            })
+         }
+      }
+   })
+   .component('prmFacetExactAfter', {
+      bindings: { parentCtrl: '<' },
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/externalSearchFacet.html',
+      controller: ['$scope', '$location', 'searchTargets', function ($scope, $location, searchTargets) {
+         $scope.name = this.parentCtrl.facetGroup.name
+         $scope.search = $location.search().query
+         $scope.targets = searchTargets;
+         this.isRelevantSearch = function () {
+            return (!isBrowseSearch() && !isEJournalsSearch());
+         }
+      }]
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var app = angular.module('singleFullDisplayEdits', []);
-exports.default = app;
+/************************************* BEGIN Bootstrap Script ************************************/
+/* We are a local package, so use the below line to bootstrap the module */
+var app = angular.module('viewCustom', ['angularLoad', 'externalSearch']);
 
-var GenericSFDEController = function () {
-   function GenericSFDEController($scope, $element) {
-      _classCallCheck(this, GenericSFDEController);
+/************************************* END Bootstrap Script ************************************/
+/* ====== Add a global variable controller ====== */
+/* This allows us to access the LOCAL_VID in HTML files. What you need to do is
+   write an html element like <span ng-controller="GlobalVariables"> and then 
+   you can use {{LOCAL_VID}} to refer to the View ID defined in the global
+   constant at the top of this file.
+   
+   This is very useful for image paths.
+ */
+app.controller('GlobalVariables', ['$scope', function($scope) {
+   $scope.LOCAL_VID = LOCAL_VID;
+}]);
+/* ====== */
 
+/* ======  Hide/Show Summit Holdings ====== */
+   app.component('prmAlmaMoreInstAfter', {
+      controller: 'institutionToggleController',
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/hideShowSummit.html'
+   })
+   .controller('institutionToggleController', ['$scope', function($scope) {
+      this.$onInit = function() {
+         $scope.showLibs = false;
+         $scope.button = angular.element(document.querySelector('prm-alma-more-inst-after button'));
+         $scope.tabs = angular.element(document.querySelector('prm-alma-more-inst md-tabs'));
+         $scope.tabs.attr('id','summitLinks');
+         $scope.tabs.addClass('hide');
+         $scope.tabs.attr('data-never-opened','true');
+         $scope.button.parent().after($scope.tabs);
+         
+         $scope.toggleLibs = function() {
+            $scope.showLibs = !$scope.showLibs;
+            if ($scope.tabs.hasClass('hide')) {
+               if($scope.tabs.attr('data-never-opened') == 'true') {
+                  /* On the first load of this table, move the content out of the
+                     buttons to disable the linking to other institutions
+                   */
+                  var buttons = $scope.tabs[0].querySelectorAll('md-list-item button'); 
+                  for(var i=0; i<buttons.length; i++) {
+                     var $button = angular.element(buttons[i]);
+                     $button.after($button.children().detach());
+                     $button.detach();
+                  }
+                  $scope.tabs.attr('data-never-opened','false');
+               }
+               $scope.tabs.removeClass('hide');
+               $scope.button.attr("aria-expanded","true");
+            }
+            else {
+               $scope.tabs.addClass('hide');
+               $scope.button.attr("aria-expanded","false");
+            }
+         };
+      };
+   }]);
+
+   /* ====== */
+
+   /* ====== Code for making edits to the full view ====== */
+   /* Includes:
+      - Alma skin fix
+      - Adding local notes to any parts of the full view
+        - Harvard Business Review notes
+   */
+
+
+
+   
+   var GenericSFDEController = function GenericSFDEController($scope, $http, $element, oadoiService, oadoiOptions) {
       this._$scope = $scope;
       this._$elem = $element;
-
+      this._$http = $http;
+      this.oadoiService = oadoiService;
+      this.oadoiOptions = oadoiOptions;
+      $scope.LOCAL_VID = LOCAL_VID;
+         
       // Local Notes Handling 
-      this.localNoteOrder = ['HBR']; // place in order you want them to appear ultimately
+      this.localNoteOrder = ['HBR','OADOI']; // place in order you want them to appear ultimately
       this.localNoteStatus = []; // associative boolean array of notes to add
       this.localNotesPresent = false;
       // End Local Notes Handling
-   }
+   };
+   GenericSFDEController.prototype.$onInit = function $onInit () {
+      var $localScope = this._$scope;
+      var $localElem = this._$elem
+      
+      // Local Notes Handling 
+      this.localNoteStatus['HBR'] = this.addHarvardBusinessReviewNote();
+      this.localNoteStatus['OADOI'] = this.addOADOINote();
+      // OR the localNoteStatus together
+      var $localStatus = this.localNoteStatus;
+      this.localNotesPresent = Object.keys(this.localNoteStatus).reduce( 
+         function(run,k) { 
+            return (run || $localStatus[k]);
+         },
+         false
+      );
+      // End Local Notes Handling 
+   };
+   GenericSFDEController.prototype.$postLink = function $postLink () {    
+      var $localScope = this._$scope;
+      var $localElem = this._$elem;
 
-   _createClass(GenericSFDEController, [{
-      key: '$onInit',
-      value: function $onInit() {
-         // Local Notes Handling 
-         this.localNoteStatus['HBR'] = this.addHarvardBusinessReviewNote();
-         // OR the localNoteStatus together
-         var $localStatus = this.localNoteStatus;
-         this.localNotesPresent = Object.keys(this.localNoteStatus).reduce(function (run, k) {
-            return run || $localStatus[k];
-         }, false);
-         // End Local Notes Handling 
-      }
-   }, {
-      key: '$postLink',
-      value: function $postLink() {
-         var $localScope = this._$scope;
-         var $localElem = this._$elem;
-
-         // IFrame Fixing
-         this._$scope.$watch(function () {
-            return $localElem.parent()[0].querySelector('iframe');
-         }, function (iframe, nullVal) {
-            if (iframe !== null) {
-               var OLD_SKIN = 'uw_production_summit3_skin';
-               var NEW_SKIN = 'uw_new_production_skin';
-               var src = iframe.getAttributeNode('src').value;
-               if (src.indexOf('req.skin=' + OLD_SKIN) != -1) {
-                  src = src.replace('req.skin=' + OLD_SKIN, 'req.skin=' + NEW_SKIN);
-                  iframe.getAttributeNode('src').value = src;
-               }
-            }
-         });
-
-         // Local Notes Handling 
-         var $localOrder = this.localNoteOrder;
-         var $localStatus = this.localNoteStatus;
-         // Determine if we need to move some local notes before the Alma iframes
-         if (this.localNotesPresent) {
-            this._$scope.$watch(function () {
-               return $localElem.parent()[0].querySelector('prm-alma-mashup');
-            }, function (mashupElem, nullVal) {
-               if (mashupElem !== null) {
+      // Local Notes Handling 
+      var $localOrder = this.localNoteOrder;
+      var $localStatus = this.localNoteStatus;      
+      // Determine if we need to move some local notes before the Alma iframes
+      if(this.localNotesPresent) {
+         this._$scope.$watch(
+            function() { 
+               return $localElem.parent()[0].querySelector('prm-alma-mashup'); 
+            },
+            function(mashupElem, nullVal) {
+               if(mashupElem !== null) {
                   // we can move the notes
-                  $localOrder.reverse().forEach(function (note) {
-                     if ($localStatus[note]) {
-                        var noteClass = '.localNote' + note;
-                        angular.element(mashupElem).prepend($localElem[0].querySelector(noteClass));
+                  $localOrder.reverse().forEach(
+                     function(note) {
+                        if($localStatus[note]) {
+                           var noteClass = '.localNote' + note;
+                           angular.element(mashupElem).prepend($localElem[0].querySelector(noteClass));
+                        }
                      }
-                  });
+                  );
                }
-            });
-         }
-         // End Local Notes Handling
+            } 
+         );
       }
-   }, {
-      key: 'addHarvardBusinessReviewNote',
-      value: function addHarvardBusinessReviewNote() {
-         if (this.parentCtrl.index != 1) // is not the view it online tab
-            return false;
-         var issn = this.parentCtrl.item.pnx.search.issn;
-         if (issn === undefined) return false;
-         var hbr_regex = /^0017-?8012$/g;
-         if (Object.prototype.toString.call(issn) === '[object Array]') {
-            for (var i = 0; i < issn.length; i++) {
-               if (hbr_regex.test(String(issn[i]))) return true;
-            }
-            return false;
-         }
-         if (typeof issn === 'string') {
-            return hbr_regex.test(issn);
-         }
+      // End Local Notes Handling
+   };
+      
+   GenericSFDEController.prototype.addOADOINote = function addOADOINote () {
+      var $localScope = this._$scope;
+      var $localElem = this._$elem;      
+      var email = this.oadoiOptions.email;
+      var section = $localScope.$parent.$ctrl.service.scrollId;
+      /* only put on the first getit link section */
+      if(section != 'getit_link1_0')
          return false;
+      /* check for presence of doi */
+      var obj = $localScope.$ctrl.parentCtrl.item.pnx.addata;      
+      if(!obj.hasOwnProperty('doi'))
+         return false;
+      var doi = obj.doi[0];
+      if(doi) {
+         $localScope.oadoilink = null;     
+         $localScope.oadoilinktext = '';
+         var url = 'https://api.oadoi.org/v2/' + doi + '?email=' + email;
+         var response = this.oadoiService.getOaiData(url).then(function(response) {
+            var oalink = null;
+            try {
+               oalink = response.data.best_oa_location.url;
+            }
+            catch(e) { }
+            if(oalink != null) {
+               /* we got an OA hit, so update the link and make the note visible */
+               $localScope.oadoilink = oalink;
+               $localScope.oadoilinktext = oalink.split('/', 3).join('/'); /* just get protocol/domain */
+               var oadoiNote = $localElem.parent()[0].querySelector('.localNoteOADOI');               
+               if(oadoiNote)
+                  angular.element(oadoiNote).removeClass('donotdisplay');
+            }
+         });      
+         return true; /* service might respond until later but we might as well prep the note */
       }
+      return false;
+   };
+   GenericSFDEController.prototype.addHarvardBusinessReviewNote = function addHarvardBusinessReviewNote () {
+      if(this.parentCtrl.index != 1) // is not the view it online tab
+         { return false; }
+      var issn = this.parentCtrl.item.pnx.search.issn;
+      if(issn === undefined)
+         { return false; }
+      var hbr_regex = /^0017-?8012$/g;    
+      if( Object.prototype.toString.call( issn ) === '[object Array]' ) {
+         for(var i=0; i<issn.length; i++) {
+            if( hbr_regex.test(String(issn[i])) )
+               { return true; }
+            }
+         return false;    
+      }
+      if( typeof issn === 'string') {
+         return hbr_regex.test(issn);
+      }
+      return false;
+   };
+   app.component('prmFullViewServiceContainerAfter', {
+      bindings: {parentCtrl: '<'}, /*bind to parentCtrl to read PNX*/
+      controller: 'genericSFDEController',
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/fullPageOptionalNotes.html'
+   })
+   .controller('genericSFDEController',GenericSFDEController)
+   .constant('oadoiOptions', {
+      'email': 'libsys@uw.edu'
+   })
+   .factory('oadoiService', ['$http', function($http) {
+      return {
+         getOaiData: function (url) {
+            return $http({
+               method: 'GET',
+               url: url,
+               cache: true
+            })
+         }
+      }
+   }]).run(
+      ($http) => {
+         // Necessary for requests to succeed...not sure why
+         $http.defaults.headers.common = { 'X-From-ExL-API-Gateway': undefined }
+   });
+   /* ====== */
+   
+   /* ====== Code for making edits to individual brief results ====== */
+   /* Includes:
+         - Changes PCI Ebook and Ebook chapters to display a media type of 
+           Book or Book Chapter. (appears to fix this for full display too)
+   */
+   var GenericBriefResultController = function GenericBriefResultController($scope, $element) {
+      this._$scope = $scope;
+      this._$elem = $element;
+   };
+   GenericBriefResultController.prototype.$doCheck = function $doCheck () {
+      /* run check to fix PCI ebookx */
+      this.fixPCIeBookContent();
+   };
+   GenericBriefResultController.prototype.fixPCIeBookContent = function fixPCIeBookContent () {
+      /* only run the fixes if it's PCI content (pnxID begins with TN) and
+         if the content type is eBook or eBook chapter.
+         To make the change permanent, we have to turn off the two attributes
+         angular uses to update the value: ng-if and translate.
+      */
+      var pnxID = this.parentCtrl.item.pnx.control.recordid[0];
+      if(pnxID.indexOf('TN') != 0)
+         { return; }
+      var spanElem = this._$elem.parent()[0].querySelector('div.media-content-type span');
+      if(spanElem !== null && spanElem.textContent.indexOf('eBook') == 0) {
+         spanElem.removeAttribute('translate');
+         spanElem.removeAttribute('ng-if');
+         spanElem.textContent = spanElem.textContent.replace('eBook','Book');
+      }
+   };
+   app.component('prmBriefResultContainerAfter', {
+      bindings: {parentCtrl: '<'}, /*bind to parentCtrl to read PNX*/
+      controller: 'genericBriefResultController',
+      templateUrl: ''
+   }).controller('genericBriefResultController',GenericBriefResultController);   
+   /* ====== */
+   
+  
+   
+   /* ====== Add help ====== */
+   var GenericTopbarAfterController = function GenericTopbarAfterController($scope, $element) {
+      this._$scope = $scope;
+      this._$elem = $element;
+   }; 
+      
+   GenericTopbarAfterController.prototype.$onInit = function $onInit () {
+      this._$scope.toggleHelpModal = function() {
+         var modal = document.getElementById('help-modal');
+         var $modal = angular.element(modal);
+         if($modal.hasClass('open')) {
+            this.closeHelpModal();
+         }
+         else {
+            this.openHelpModal();
+         }
+      };
+      this._$scope.openHelpModal = function() {
+         var button = document.getElementById('local-help-widget');
+         var $button = angular.element(button);
+         var modal = document.getElementById('help-modal');
+         var $modal = angular.element(modal);
+         /* make the modal div a block and size it to allow animation */
+         $modal.addClass('open');
+         angular.element(document.getElementById('help-modal-overlay')).addClass('open');
+         modal.getBoundingClientRect();
+         /* move the help modal and button to the left */
+         $button.toggleClass('moveLeft');               
+         $modal.toggleClass('moveLeft');      
+         /* update the aria-expanded attribute */
+         $button.attr('aria-expanded', 'true');
+            
+         /* set focus on first item in modal */
+         document.getElementById('help-modal-close').focus();
+         /* set other stuff to aria-hidden */
+         document.getElementsByTagName('primo-explore')[0].setAttribute('aria-hidden', true);
+         document.getElementById('beaconPlaceHolder').setAttribute('aria-hidden', true);
+      };
+         
+      this._$scope.closeHelpModal = function() {
+         var button = document.getElementById('local-help-widget');
+         var $button = angular.element(button);
+         var modal = document.getElementById('help-modal');
+         var $modal = angular.element(modal);    
+         /* move the modal and button back by removing the class */
+         $modal.removeClass('moveLeft');      
+         $button.removeClass('moveLeft');
+         /* set the overlay to not be displayed */
+         angular.element(document.getElementById('help-modal-overlay')).removeClass('open');               
+         /* we have to use a timeout to set the modal to display none so the animation works
+            delay is animation_time (see CSS) plus 5ms lag
+         */
+         setTimeout(function() { $modal.removeClass('open'); }, 305);      
+         /* set other stuff to aria-hidden false */
+         document.getElementsByTagName('primo-explore')[0].setAttribute('aria-hidden', false);
+         document.getElementById('beaconPlaceHolder').setAttribute('aria-hidden', false);  
+         /* set focus back to the modal trigger button */
+         document.getElementById('local-help-button').focus();
+      }
+         
+      this._$scope.openChatWindow = function($event) {
+         $event.preventDefault();
+            
+         var link = document.getElementById('help-modal-chat');
+         var new_href = link.getAttribute('href');
+         window.open(new_href,'',"width=316,height=300");             
+         return false;            
+      }
+         
+      this._$scope.handleEscape = function($event) {
+         /* close modal on escape */
+         if($event.keyCode === 27) { /* escape */
+            this.closeHelpModal();
+         }            
+      }
+      this._$scope.trapFocus = function($event) {
+         /* focus has to be trapped in one of three situations:
+            - focus is on the help modal because someone clicked inside of it 
+              Goes to close button or last link depending on tab or shift-tab
+            - shift tab on the close button needs to wrap to last element
+            - tab on the last link needs to wrap to the close element 
+         */
+         var modal = document.getElementById('help-modal');
+         var close_button = document.getElementById('help-modal-close');
+         var last_link = modal.querySelector('a.last-modal-link');
+         if(document.activeElement === modal) {
+            if($event.keyCode === 9) { // tab
+               $event.preventDefault();
+               if($event.shiftKey) // shift-tab
+                  { last_link.focus(); }
+               else 
+                  { close_button.focus(); }
+            }
+         }
+         else if(document.activeElement === close_button) {
+            if($event.shiftKey && $event.keyCode === 9) { // shift-tab
+               $event.preventDefault();
+               last_link.focus();
+            }
+         }
+         else if(document.activeElement === last_link) {
+            if(!$event.shiftKey && $event.keyCode === 9) { /* just tab */
+               $event.preventDefault();
+               close_button.focus();
+            }
+         }
+      }
+   };
+      
+   GenericTopbarAfterController.prototype.$postLink = function $postLink () {
+      document.body.append(document.getElementById('help-modal'));
+      document.body.append(document.getElementById('help-modal-overlay'));
+   };
+   app.component('prmTopbarAfter', {
+      controller: 'genericTopbarAfterController',
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/topbarAfter.html'
+   }).controller('genericTopbarAfterController',GenericTopbarAfterController);   
+   /* ====== */
+
+
+   /* ====== Add Update Personal Information to Personal Details Page ====== */
+   app.component('prmPersonalInfoAfter', {
+      controller: 'personalInfoController',
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/personalDetails.html'
+   })
+   .controller('personalInfoController', ['$scope', function($scope) {
+      this.$onInit = function() {
+         angular.element(document.getElementById('personalDetails').querySelector('md-card-content')).append(document.getElementById('local-personal-info-change'));
+      };
+   }]);  
+   /* ====== */
+   
+    /* ====== Load Alerts ===== */
+   app.component('prmTopBarBefore', {
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/localTopMatter.html',
+      controller: 'localMenuAlertsController',
+   }).controller('localMenuAlertsController', ['$scope', 'angularLoad', function($scope,angularLoad) {
+         this.isLoggedIn = function() {
+            return (this.userName() !== null && this.userName().length > 0);
+         }
+         
+         this.userName = function() {
+            try {
+               var rootScope = $scope.$root;
+               var uSMS = rootScope.$$childHead.$ctrl.userSessionManagerService;
+               var jwtData = uSMS.jwtUtilService.getDecodedToken();
+               return jwtData.userName;
+            }
+            catch(e) {
+               return null;
+            }
+         }
+         
+         this.$postLink = function() {
+            /* we use an if to only do it once. Otherwise, alert repetition can occur */
+            if(!document.getElementById('libAlerts-outer')) {
+               /* first create a space within primo-explore for the UW Library alerts to live */
+               angular.element(document.getElementsByTagName('primo-explore')[0]).prepend('<div id="libAlerts-outer" class="hide"><div id="libAlerts"></div></div>');
+               /* load the general UW library alerts JS. Once loaded (then) display the alerts if any */
+               angularLoad.loadScript('https://www.lib.washington.edu/scripts/libalert.js').then(function() {
+                  displayLibAlert();
+                  if(document.querySelector('#libAlerts .alert') != null)
+                     angular.element(document.getElementById('libAlerts-outer')).removeClass('hide');                  
+               });
+               /* load the general Primo library alerts JS. Once loaded (then) display the alerts if any */
+               angularLoad.loadScript('https://www.lib.washington.edu/static/public/primo/primo-alerts.js').then(function() {
+                  displayPrimoLibAlert(); 
+                  if(document.querySelector('#libAlerts .alert') != null)
+                     angular.element(document.getElementById('libAlerts-outer')).removeClass('hide');                      
+               });;            
+            }
+            /* we do UW-wide alerts after so that they appear on top */
+            if(!document.getElementById('uwalert-alert-message')) {
+               /* load the UW alerts script and then some magick to make sure it doesn't mess with 
+                  Primo's modal placement calculations */
+               angularLoad.loadScript('https://www.washington.edu/static/alert.js').then(function() {
+                  /* once the script is loaded, try to move the alert's div */
+                  angular.element(document.getElementsByTagName('primo-explore')[0]).prepend(document.getElementById('uwalert-alert-message'));
+                  /* just in case, we proxy the UW alert's addElement function to always place the UW alert at the 
+                     start of primo-explore */
+                  var org_addElement = window.addElement;
+                  window.addElement = function() {
+                     org_addElement.apply(this,arguments);
+                     angular.element(document.getElementsByTagName('primo-explore')[0]).prepend(document.getElementById('uwalert-alert-message'));
+                  };
+               });
+            }
+        };
+      }
+   ]);
+   /* ====== */
+   
+   /* ====== HEADER/ MAIN MENU ===== */
+   var MainMenuAfterController = function MainMenuAfterController($scope, $element) {
+      $scope.$element = $element;
+      
+      /* overrides the prm-main-menu's directive that controls how many items
+         show up based on unknown magicks 
+       */
+      this.parentCtrl.showCount = function() { 
+         var mainMenu = $scope.$element[0].closest('prm-main-menu');
+         if(mainMenu === null)
+            return 10; 
+         else if(mainMenu.getAttribute('local-menu-type') == 'more')
+            return 1; /* forces the responsive show more button to show */
+         else if(mainMenu.getAttribute('local-menu-type') == 'menu')
+            return 10; /* forces all items to show. value is greater than the number of items we have */
+         else
+            return 10;
+      }
+   };
+   app.component('prmMainMenuAfter', {
+      bindings: {parentCtrl: '<'},
+      controller: 'MainMenuAfterController'
+   })
+   .controller('MainMenuAfterController', MainMenuAfterController);
+   /* ====== */
+   
+   /* ====== TABS AND SCOPES ALWAYS PRESENT ====== */
+   app.component('prmSearchBarAfter', {
+      controller: 'showScopesController',
+      bindings: {parentCtrl: '<'}
+   }).controller('showScopesController', [function () {
+      var vm = this;
+      vm.$onInit = function() {
+        this.parentCtrl.showTabsAndScopes = true;
+        this.parentCtrl.scopesDialerConfiguration.display = true;
+      };
    }]);
+   /* ====== */
 
-   return GenericSFDEController;
-}();
-
-app.component('prmFullViewServiceContainerAfter', {
-   bindings: { parentCtrl: '<' }, /*bind to parentCtrl to read PNX*/
-   controller: 'genericSFDEController',
-   templateUrl: '/primo-explore/custom/UW/html/fullPageOptionalNotes.html'
-}).controller('genericSFDEController', GenericSFDEController);
-
-},{}]},{},[2])
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5vZGVfbW9kdWxlcy9icm93c2VyLXBhY2svX3ByZWx1ZGUuanMiLCJwcmltby1leHBsb3JlXFxjdXN0b21cXFVXXFxqc1xcaGlkZVNob3dTdW1taXQuanMiLCJwcmltby1leHBsb3JlXFxjdXN0b21cXFVXXFxqc1xcbWFpbi5qcyIsInByaW1vLWV4cGxvcmVcXGN1c3RvbVxcVVdcXGpzXFxzaW5nbGVGdWxsRGlzcGxheUVkaXRzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7QUNBQSxJQUFJLE1BQU0sUUFBUSxNQUFSLENBQWUsZ0JBQWYsRUFBZ0MsRUFBaEMsQ0FBVjtrQkFDZSxHOztBQUVmOztBQUNBLElBQUksU0FBSixDQUFjLHNCQUFkLEVBQXNDO0FBQ25DLGVBQVksNkJBRHVCO0FBRW5DO0FBRm1DLENBQXRDLEVBU0MsVUFURCxDQVNZLDZCQVRaLEVBUzJDLENBQUMsUUFBRCxFQUFXLFVBQVMsTUFBVCxFQUFpQjtBQUNwRSxRQUFLLE9BQUwsR0FBZSxZQUFXO0FBQ3ZCLGFBQU8sUUFBUCxHQUFrQixLQUFsQjtBQUNBLGFBQU8sTUFBUCxHQUFnQixRQUFRLE9BQVIsQ0FBZ0IsU0FBUyxhQUFULENBQXVCLGlDQUF2QixDQUFoQixDQUFoQjtBQUNBLGFBQU8sSUFBUCxHQUFjLFFBQVEsT0FBUixDQUFnQixTQUFTLGFBQVQsQ0FBdUIsNEJBQXZCLENBQWhCLENBQWQ7QUFDQSxhQUFPLElBQVAsQ0FBWSxJQUFaLENBQWlCLElBQWpCLEVBQXNCLGFBQXRCO0FBQ0EsYUFBTyxJQUFQLENBQVksUUFBWixDQUFxQixNQUFyQjtBQUNBLGFBQU8sTUFBUCxDQUFjLE1BQWQsR0FBdUIsS0FBdkIsQ0FBNkIsT0FBTyxJQUFwQzs7QUFHQSxhQUFPLFVBQVAsR0FBb0IsWUFBVztBQUM1QixnQkFBTyxRQUFQLEdBQWtCLENBQUMsT0FBTyxRQUExQjtBQUNBLGFBQUksT0FBTyxJQUFQLENBQVksUUFBWixDQUFxQixNQUFyQixDQUFKLEVBQWtDO0FB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IjpbIihmdW5jdGlvbiBlKHQsbixyKXtmdW5jdGlvbiBzKG8sdSl7aWYoIW5bb10pe2lmKCF0W29dKXt2YXIgYT10eXBlb2YgcmVxdWlyZT09XCJmdW5jdGlvblwiJiZyZXF1aXJlO2lmKCF1JiZhKXJldHVybiBhKG8sITApO2lmKGkpcmV0dXJuIGkobywhMCk7dmFyIGY9bmV3IEVycm9yKFwiQ2Fubm90IGZpbmQgbW9kdWxlICdcIitvK1wiJ1wiKTt0aHJvdyBmLmNvZGU9XCJNT0RVTEVfTk9UX0ZPVU5EXCIsZn12YXIgbD1uW29dPXtleHBvcnRzOnt9fTt0W29dWzBdLmNhbGwobC5leHBvcnRzLGZ1bmN0aW9uKGUpe3ZhciBuPXRbb11bMV1bZV07cmV0dXJuIHMobj9uOmUpfSxsLGwuZXhwb3J0cyxlLHQsbixyKX1yZXR1cm4gbltvXS5leHBvcnRzfXZhciBpPXR5cGVvZiByZXF1aXJlPT1cImZ1bmN0aW9uXCImJnJlcXVpcmU7Zm9yKHZhciBvPTA7bzxyLmxlbmd0aDtvKyspcyhyW29dKTtyZXR1cm4gc30pIiwibGV0IGFwcCA9IGFuZ3VsYXIubW9kdWxlKCdoaWRlU2hvd1N1bW1pdCcsW10pO1xuZXhwb3J0IGRlZmF1bHQgYXBwO1xuXG4vKiBIaWRlL1Nob3cgT3RoZXIgSW5zdGl0dXRpb25zIEJ1dHRvbiAqL1xuYXBwLmNvbXBvbmVudCgncHJtQWxtYU1vcmVJbnN0QWZ0ZXInLCB7XG4gICBjb250cm9sbGVyOiAnaW5zdGl0dXRpb25Ub2dnbGVDb250cm9sbGVyJyxcbiAgIHRlbXBsYXRlOiBgPG1kLWJ1dHRvbiBjbGFzcz1cIm1kLXJhaXNlZFwiIG5nLWNsaWNrPVwidG9nZ2xlTGlicygpXCIgaWQ9XCJzdW1taXRCdXR0b25cIlxuICAgICAgICAgICAgICAgYXJpYS1jb250cm9scz1cInN1bW1pdExpbmtzXCIgYXJpYS1leHBhbmRlZD1cImZhbHNlXCJcbiAgICAgICAgICAgICAgIGFyaWEtbGFiZWw9XCJTaG93L0hpZGUgU3VtbWl0IExpYnJhcmllc1wiPlxuICAgICAgICAgICAgICAge3sgc2hvd0xpYnMgPyAnSGlkZSBMaWJyYXJpZXMnIDogJ1Nob3cgTGlicmFyaWVzJyB9fVxuICAgICAgICAgICAgICAgPHNwYW4gYXJpYS1oaWRkZW49XCJ0cnVlXCI+e3tzaG93TGlicyA/ICcmbGFxdW87JyA6ICcmcmFxdW87JyB9fTwvc3Bhbj5cbiAgICAgICAgICAgICAgPC9tZC1idXR0b24+YFxufSlcbi5jb250cm9sbGVyKCdpbnN0aXR1dGlvblRvZ2dsZUNvbnRyb2xsZXInLCBbJyRzY29wZScsIGZ1bmN0aW9uKCRzY29wZSkge1xuICAgdGhpcy4kb25Jbml0ID0gZnVuY3Rpb24oKSB7XG4gICAgICAkc2NvcGUuc2hvd0xpYnMgPSBmYWxzZTtcbiAgICAgICRzY29wZS5idXR0b24gPSBhbmd1bGFyLmVsZW1lbnQoZG9jdW1lbnQucXVlcnlTZWxlY3RvcigncHJtLWFsbWEtbW9yZS1pbnN0LWFmdGVyIGJ1dHRvbicpKTtcbiAgICAgICRzY29wZS50YWJzID0gYW5ndWxhci5lbGVtZW50KGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ3BybS1hbG1hLW1vcmUtaW5zdCBtZC10YWJzJykpO1xuICAgICAgJHNjb3BlLnRhYnMuYXR0cignaWQnLCdzdW1taXRMaW5rcycpO1xuICAgICAgJHNjb3BlLnRhYnMuYWRkQ2xhc3MoJ2hpZGUnKTtcbiAgICAgICRzY29wZS5idXR0b24ucGFyZW50KCkuYWZ0ZXIoJHNjb3BlLnRhYnMpO1xuICAgICAgXG4gICAgICBcbiAgICAgICRzY29wZS50b2dnbGVMaWJzID0gZnVuY3Rpb24oKSB7XG4gICAgICAgICAkc2NvcGUuc2hvd0xpYnMgPSAhJHNjb3BlLnNob3dMaWJzO1xuICAgICAgICAgaWYgKCRzY29wZS50YWJzLmhhc0NsYXNzKCdoaWRlJykpIHtcbiAgICAgICAgICAgICRzY29wZS50YWJzLnJlbW92ZUNsYXNzKCdoaWRlJyk7XG4gICAgICAgICAgICAkc2NvcGUuYnV0dG9uLmF0dHIoXCJhcmlhLWV4cGFuZGVkXCIsXCJ0cnVlXCIpO1xuICAgICAgICAgfVxuICAgICAgICAgZWxzZSB7XG4gICAgICAgICAgICAkc2NvcGUudGFicy5hZGRDbGFzcygnaGlkZScpO1xuICAgICAgICAgICAgJHNjb3BlLmJ1dHRvbi5hdHRyKFwiYXJpYS1leHBhbmRlZFwiLFwiZmFsc2VcIik7XG4gICAgICAgICB9XG4gICAgICB9O1xuICAgfTtcbn1dKTsiLCJpbXBvcnQgc3VtbWl0VGFicyBmcm9tICcuL2hpZGVTaG93U3VtbWl0JztcclxuaW1wb3J0IHNGREUgZnJvbSAnLi9zaW5nbGVGdWxsRGlzcGxheUVkaXRzJztcclxuXHJcbmxldCBhcHAgPSBhbmd1bGFyLm1vZHVsZSgndmlld0N1c3RvbScsWydhbmd1bGFyTG9hZCcsIHN1bW1pdFRhYnMubmFtZSwgc0ZERS5uYW1lXSk7XHJcblxyXG5cclxuIiwibGV0IGFwcCA9IGFuZ3VsYXIubW9kdWxlKCdzaW5nbGVGdWxsRGlzcGxheUVkaXRzJyxbXSk7XG5leHBvcnQgZGVmYXVsdCBhcHA7XG5cbmNsYXNzIEdlbmVyaWNTRkRFQ29udHJvbGxlciB7XG4gICBjb25zdHJ1Y3Rvcigkc2NvcGUsICRlbGVtZW50KSB7XG4gICAgICB0aGlzLl8kc2NvcGUgPSAkc2NvcGU7XG4gICAgICB0aGlzLl8kZWxlbSA9ICRlbGVtZW50O1xuICAgICAgXG4gICAgICAvLyBMb2NhbCBOb3RlcyBIYW5kbGluZyBcbiAgICAgIHRoaXMubG9jYWxOb3RlT3JkZXIgPSBbJ0hCUiddOyAvLyBwbGFjZSBpbiBvcmRlciB5b3Ugd2FudCB0aGVtIHRvIGFwcGVhciB1bHRpbWF0ZWx5XG4gICAgICB0aGlzLmxvY2FsTm90ZVN0YXR1cyA9IFtdOyAvLyBhc3NvY2lhdGl2ZSBib29sZWFuIGFycmF5IG9mIG5vdGVzIHRvIGFkZFxuICAgICAgdGhpcy5sb2NhbE5vdGVzUHJlc2VudCA9IGZhbHNlO1xuICAgICAgLy8gRW5kIExvY2FsIE5vdGVzIEhhbmRsaW5nXG4gICB9XG4gICAkb25Jbml0KCkge1xuICAgICAgLy8gTG9jYWwgTm90ZXMgSGFuZGxpbmcgXG4gICAgICB0aGlzLmxvY2FsTm90ZVN0YXR1c1snSEJSJ10gPSB0aGlzLmFkZEhhcnZhcmRCdXNpbmVzc1Jldmlld05vdGUoKTtcbiAgICAgIC8vIE9SIHRoZSBsb2NhbE5vdGVTdGF0dXMgdG9nZXRoZXJcbiAgICAgIHZhciAkbG9jYWxTdGF0dXMgPSB0aGlzLmxvY2FsTm90ZVN0YXR1cztcbiAgICAgIHRoaXMubG9jYWxOb3Rlc1ByZXNlbnQgPSBPYmplY3Qua2V5cyh0aGlzLmxvY2FsTm90ZVN0YXR1cykucmVkdWNlKCBcbiAgICAgICAgIGZ1bmN0aW9uKHJ1bixrKSB7IFxuICAgICAgICAgICAgcmV0dXJuIChydW4gfHwgJGxvY2FsU3RhdHVzW2tdKTtcbiAgICAgICAgIH0sXG4gICAgICAgICBmYWxzZVxuICAgICAgKTtcbiAgICAgIC8vIEVuZCBMb2NhbCBOb3RlcyBIYW5kbGluZyBcbiAgIH1cbiAgICRwb3N0TGluaygpIHsgICAgXG4gICAgICB2YXIgJGxvY2FsU2NvcGUgPSB0aGlzLl8kc2NvcGU7XG4gICAgICB2YXIgJGxvY2FsRWxlbSA9IHRoaXMuXyRlbGVtO1xuICAgICAgXG4gICAgICAvLyBJRnJhbWUgRml4aW5nXG4gICAgICB0aGlzLl8kc2NvcGUuJHdhdGNoKFxuICAgICAgICAgZnVuY3Rpb24oKSB7IFxuICAgICAgICAgICAgcmV0dXJuICRsb2NhbEVsZW0ucGFyZW50KClbMF0ucXVlcnlTZWxlY3RvcignaWZyYW1lJyk7IFxuICAgICAgICAgfSxcbiAgICAgICAgIGZ1bmN0aW9uKGlmcmFtZSwgbnVsbFZhbCkge1xuICAgICAgICAgICAgaWYoaWZyYW1lICE9PSBudWxsKSB7XG4gICAgICAgICAgICAgICB2YXIgT0xEX1NLSU4gPSAndXdfcHJvZHVjdGlvbl9zdW1taXQzX3NraW4nO1xuICAgICAgICAgICAgICAgdmFyIE5FV19TS0lOID0gJ3V3X25ld19wcm9kdWN0aW9uX3NraW4nO1xuICAgICAgICAgICAgICAgdmFyIHNyYyA9IGlmcmFtZS5nZXRBdHRyaWJ1dGVOb2RlKCdzcmMnKS52YWx1ZTsgICAgICAgIFxuICAgICAgICAgICAgICAgaWYoIHNyYy5pbmRleE9mKCdyZXEuc2tpbj0nK09MRF9TS0lOKSAhPSAtMSApIHsgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgIHNyYyA9IHNyYy5yZXBsYWNlKCdyZXEuc2tpbj0nK09MRF9TS0lOLCAncmVxLnNraW49JytORVdfU0tJTik7XG4gICAgICAgICAgICAgICAgICBpZnJhbWUuZ2V0QXR0cmlidXRlTm9kZSgnc3JjJykudmFsdWUgPSBzcmM7XG4gICAgICAgICAgICAgICB9ICBcbiAgICAgICAgICAgIH1cbiAgICAgICAgIH1cbiAgICAgICk7XG4gICAgICBcbiAgICAgIC8vIExvY2FsIE5vdGVzIEhhbmRsaW5nIFxuICAgICAgdmFyICRsb2NhbE9yZGVyID0gdGhpcy5sb2NhbE5vdGVPcmRlcjtcbiAgICAgIHZhciAkbG9jYWxTdGF0dXMgPSB0aGlzLmxvY2FsTm90ZVN0YXR1czsgICAgICBcbiAgICAgIC8vIERldGVybWluZSBpZiB3ZSBuZWVkIHRvIG1vdmUgc29tZSBsb2NhbCBub3RlcyBiZWZvcmUgdGhlIEFsbWEgaWZyYW1lc1xuICAgICAgaWYodGhpcy5sb2NhbE5vdGVzUHJlc2VudCkge1xuICAgICAgICAgdGhpcy5fJHNjb3BlLiR3YXRjaChcbiAgICAgICAgICAgIGZ1bmN0aW9uKCkgeyBcbiAgICAgICAgICAgICAgIHJldHVybiAkbG9jYWxFbGVtLnBhcmVudCgpWzBdLnF1ZXJ5U2VsZWN0b3IoJ3BybS1hbG1hLW1hc2h1cCcpOyBcbiAgICAgICAgICAgIH0sXG4gICAgICAgICAgICBmdW5jdGlvbihtYXNodXBFbGVtLCBudWxsVmFsKSB7XG4gICAgICAgICAgICAgICBpZihtYXNodXBFbGVtICE9PSBudWxsKSB7XG4gICAgICAgICAgICAgICAgICAvLyB3ZSBjYW4gbW92ZSB0aGUgbm90ZXNcbiAgICAgICAgICAgICAgICAgICRsb2NhbE9yZGVyLnJldmVyc2UoKS5mb3JFYWNoKFxuICAgICAgICAgICAgICAgICAgICAgZnVuY3Rpb24obm90ZSkge1xuICAgICAgICAgICAgICAgICAgICAgICAgaWYoJGxvY2FsU3RhdHVzW25vdGVdKSB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICB2YXIgbm90ZUNsYXNzID0gJy5sb2NhbE5vdGUnICsgbm90ZTtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIGFuZ3VsYXIuZWxlbWVudChtYXNodXBFbGVtKS5wcmVwZW5kKCRsb2NhbEVsZW1bMF0ucXVlcnlTZWxlY3Rvcihub3RlQ2xhc3MpKTtcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICk7XG4gICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9IFxuICAgICAgICAgKTtcbiAgICAgIH1cbiAgICAgIC8vIEVuZCBMb2NhbCBOb3RlcyBIYW5kbGluZ1xuICAgfVxuICAgXG4gICBhZGRIYXJ2YXJkQnVzaW5lc3NSZXZpZXdOb3RlKCkge1xuICAgICAgaWYodGhpcy5wYXJlbnRDdHJsLmluZGV4ICE9IDEpIC8vIGlzIG5vdCB0aGUgdmlldyBpdCBvbmxpbmUgdGFiXG4gICAgICAgICByZXR1cm4gZmFsc2U7XG4gICAgICB2YXIgaXNzbiA9IHRoaXMucGFyZW50Q3RybC5pdGVtLnBueC5zZWFyY2guaXNzbjtcbiAgICAgIGlmKGlzc24gPT09IHVuZGVmaW5lZClcbiAgICAgICAgIHJldHVybiBmYWxzZTtcbiAgICAgIHZhciBoYnJfcmVnZXggPSAvXjAwMTctPzgwMTIkL2c7ICAgIFxuICAgICAgaWYoIE9iamVjdC5wcm90b3R5cGUudG9TdHJpbmcuY2FsbCggaXNzbiApID09PSAnW29iamVjdCBBcnJheV0nICkge1xuICAgICAgICAgZm9yKHZhciBpPTA7IGk8aXNzbi5sZW5ndGg7IGkrKykge1xuICAgICAgICAgICAgaWYoIGhicl9yZWdleC50ZXN0KFN0cmluZyhpc3NuW2ldKSkgKVxuICAgICAgICAgICAgICAgcmV0dXJuIHRydWU7XG4gICAgICAgICAgICB9XG4gICAgICAgICByZXR1cm4gZmFsc2U7ICAgIFxuICAgICAgfVxuICAgICAgaWYoIHR5cGVvZiBpc3NuID09PSAnc3RyaW5nJykge1xuICAgICAgICAgcmV0dXJuIGhicl9yZWdleC50ZXN0KGlzc24pO1xuICAgICAgfVxuICAgICAgcmV0dXJuIGZhbHNlO1xuICAgfTsgIFxufVxuXG5hcHAuY29tcG9uZW50KCdwcm1GdWxsVmlld1NlcnZpY2VDb250YWluZXJBZnRlcicsIHtcbiAgICBiaW5kaW5nczoge3BhcmVudEN0cmw6ICc8J30sIC8qYmluZCB0byBwYXJlbnRDdHJsIHRvIHJlYWQgUE5YKi9cbiAgICBjb250cm9sbGVyOiAnZ2VuZXJpY1NGREVDb250cm9sbGVyJyxcbiAgICB0ZW1wbGF0ZVVybDogJy9wcmltby1leHBsb3JlL2N1c3RvbS9VVy9odG1sL2Z1bGxQYWdlT3B0aW9uYWxOb3Rlcy5odG1sJ1xufSkuY29udHJvbGxlcignZ2VuZXJpY1NGREVDb250cm9sbGVyJyxHZW5lcmljU0ZERUNvbnRyb2xsZXIpXG5cbiJdfQ==
+})();

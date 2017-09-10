@@ -496,7 +496,893 @@ md-toolbar.default-toolbar:not(.md-menu-toolbar) {
   color: #C75B12; }
 
 /* primary color hook end*/
-/* UW Branding Font */
+/* primary color hook */
+/* commenttttt*/
+.md-button {
+  color: #3a3a3a; }
+  .md-button:hover:not([disabled]), .md-button:focus:not([disabled]), .md-button.hovered:not([disabled]), .md-button.md-focused:not([disabled]), .md-button._md-focused:not([disabled]) {
+    color: #080606;
+    background-color: rgba(58, 58, 58, 0.1); }
+  .light-on-dark-dialog .md-button {
+    color: white; }
+    .light-on-dark-dialog .md-button:hover:not([disabled]), .light-on-dark-dialog .md-button:focus:not([disabled]), .light-on-dark-dialog .md-button.hovered:not([disabled]), .light-on-dark-dialog .md-button.md-focused:not([disabled]), .light-on-dark-dialog .md-button._md-focused:not([disabled]) {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.08); }
+  .md-button.md-primary {
+    color: #001add; }
+    .md-button.md-primary:hover:not([disabled]), .md-button.md-primary:focus:not([disabled]), .md-button.md-primary.hovered:not([disabled]), .md-button.md-primary.md-focused:not([disabled]), .md-button.md-primary._md-focused:not([disabled]) {
+      color: #000e77;
+      background-color: rgba(0, 26, 221, 0.1); }
+  .md-button.md-secondary {
+    color: #B7A57A; }
+    .md-button.md-secondary:hover:not([disabled]), .md-button.md-secondary:focus:not([disabled]), .md-button.md-secondary.hovered:not([disabled]), .md-button.md-secondary.md-focused:not([disabled]), .md-button.md-secondary._md-focused:not([disabled]) {
+      color: #937838;
+      background-color: rgba(183, 165, 122, 0.1); }
+  .md-button.button-confirm, .service-form-static-panel button.button-confirm prm-icon + span, .service-form-static-panel button.button-confirm prm-icon svg path {
+    color: #4A7C01; }
+    .md-button.button-confirm:hover:not([disabled]), .service-form-static-panel button.button-confirm prm-icon + span:hover:not([disabled]), .service-form-static-panel button.button-confirm prm-icon svg path:hover:not([disabled]), .md-button.button-confirm:focus:not([disabled]), .service-form-static-panel button.button-confirm prm-icon + span:focus:not([disabled]), .service-form-static-panel button.button-confirm prm-icon svg path:focus:not([disabled]), .md-button.button-confirm.hovered:not([disabled]), .service-form-static-panel button.button-confirm prm-icon + span.hovered:not([disabled]), .service-form-static-panel button.button-confirm prm-icon svg path.hovered:not([disabled]), .md-button.button-confirm.md-focused:not([disabled]), .service-form-static-panel button.button-confirm prm-icon + span.md-focused:not([disabled]), .service-form-static-panel button.button-confirm prm-icon svg path.md-focused:not([disabled]), .md-button.button-confirm._md-focused:not([disabled]), .service-form-static-panel button.button-confirm prm-icon + span._md-focused:not([disabled]), .service-form-static-panel button.button-confirm prm-icon svg path._md-focused:not([disabled]) {
+      color: #0e1700;
+      background-color: rgba(74, 124, 1, 0.1); }
+    .light-on-dark-dialog .md-button.button-confirm, .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon + span, .service-form-static-panel button.button-confirm .light-on-dark-dialog prm-icon + span, .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon svg path, .service-form-static-panel button.button-confirm prm-icon svg .light-on-dark-dialog path {
+      color: #73E9FF; }
+      .light-on-dark-dialog .md-button.button-confirm:hover:not([disabled]), .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon + span:hover:not([disabled]), .service-form-static-panel button.button-confirm .light-on-dark-dialog prm-icon + span:hover:not([disabled]), .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon svg path:hover:not([disabled]), .service-form-static-panel button.button-confirm prm-icon svg .light-on-dark-dialog path:hover:not([disabled]), .light-on-dark-dialog .md-button.button-confirm:focus:not([disabled]), .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon + span:focus:not([disabled]), .service-form-static-panel button.button-confirm .light-on-dark-dialog prm-icon + span:focus:not([disabled]), .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon svg path:focus:not([disabled]), .service-form-static-panel button.button-confirm prm-icon svg .light-on-dark-dialog path:focus:not([disabled]), .light-on-dark-dialog .md-button.button-confirm.hovered:not([disabled]), .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon + span.hovered:not([disabled]), .service-form-static-panel button.button-confirm .light-on-dark-dialog prm-icon + span.hovered:not([disabled]), .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon svg path.hovered:not([disabled]), .service-form-static-panel button.button-confirm prm-icon svg .light-on-dark-dialog path.hovered:not([disabled]), .light-on-dark-dialog .md-button.button-confirm.md-focused:not([disabled]), .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon + span.md-focused:not([disabled]), .service-form-static-panel button.button-confirm .light-on-dark-dialog prm-icon + span.md-focused:not([disabled]), .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon svg path.md-focused:not([disabled]), .service-form-static-panel button.button-confirm prm-icon svg .light-on-dark-dialog path.md-focused:not([disabled]), .light-on-dark-dialog .md-button.button-confirm._md-focused:not([disabled]), .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon + span._md-focused:not([disabled]), .service-form-static-panel button.button-confirm .light-on-dark-dialog prm-icon + span._md-focused:not([disabled]), .light-on-dark-dialog .service-form-static-panel button.button-confirm prm-icon svg path._md-focused:not([disabled]), .service-form-static-panel button.button-confirm prm-icon svg .light-on-dark-dialog path._md-focused:not([disabled]) {
+        color: #0dd9ff;
+        background-color: rgba(115, 233, 255, 0.1); }
+  .md-button.button-notice {
+    color: #C75B12; }
+    .md-button.button-notice:hover:not([disabled]), .md-button.button-notice:focus:not([disabled]), .md-button.button-notice.hovered:not([disabled]), .md-button.button-notice.md-focused:not([disabled]), .md-button.button-notice._md-focused:not([disabled]) {
+      color: #722f01;
+      background-color: rgba(199, 91, 18, 0.1); }
+  .md-button.button-prompt {
+    color: #FFFCC4; }
+    .md-button.button-prompt:hover:not([disabled]), .md-button.button-prompt:focus:not([disabled]), .md-button.button-prompt.hovered:not([disabled]), .md-button.button-prompt.md-focused:not([disabled]), .md-button.button-prompt._md-focused:not([disabled]) {
+      color: #fff75e;
+      background-color: rgba(255, 252, 196, 0.1); }
+  .md-button.button-warn {
+    color: #C61029; }
+    .md-button.button-warn:hover:not([disabled]), .md-button.button-warn:focus:not([disabled]), .md-button.button-warn.hovered:not([disabled]), .md-button.button-warn.md-focused:not([disabled]), .md-button.button-warn._md-focused:not([disabled]) {
+      color: #70000f;
+      background-color: rgba(198, 16, 41, 0.1); }
+  .md-button.button-link, md-grid-tile .tile-content > .md-button,
+  .tiles-grid-tile .tile-content > .md-button {
+    color: #001add;
+    box-shadow: none; }
+    .md-button.button-link:hover:not([disabled]), md-grid-tile .tile-content > .md-button:hover:not([disabled]),
+    .tiles-grid-tile .tile-content > .md-button:hover:not([disabled]), .md-button.button-link:focus:not([disabled]), md-grid-tile .tile-content > .md-button:focus:not([disabled]),
+    .tiles-grid-tile .tile-content > .md-button:focus:not([disabled]), .md-button.button-link.hovered:not([disabled]), md-grid-tile .tile-content > .md-button.hovered:not([disabled]),
+    .tiles-grid-tile .tile-content > .md-button.hovered:not([disabled]), .md-button.button-link.md-focused:not([disabled]), md-grid-tile .tile-content > .md-button.md-focused:not([disabled]),
+    .tiles-grid-tile .tile-content > .md-button.md-focused:not([disabled]), .md-button.button-link._md-focused:not([disabled]), md-grid-tile .tile-content > .md-button._md-focused:not([disabled]),
+    .tiles-grid-tile .tile-content > .md-button._md-focused:not([disabled]) {
+      color: #000e77;
+      background-color: rgba(0, 26, 221, 0.1); }
+    .md-button.button-link.link-alt-color, .section-title prm-icon.md-button.button-link, .section-title md-grid-tile .tile-content > prm-icon.md-button, md-grid-tile .section-title .tile-content > prm-icon.md-button, .section-title
+    .tiles-grid-tile .tile-content > prm-icon.md-button,
+    .tiles-grid-tile .section-title .tile-content > prm-icon.md-button, md-grid-tile .tile-content > .md-button.link-alt-color,
+    .tiles-grid-tile .tile-content > .md-button.link-alt-color {
+      color: #775c34; }
+      .md-button.button-link.link-alt-color:hover:not([disabled]), .section-title prm-icon.md-button.button-link:hover:not([disabled]), .section-title md-grid-tile .tile-content > prm-icon.md-button:hover:not([disabled]), md-grid-tile .section-title .tile-content > prm-icon.md-button:hover:not([disabled]), .section-title
+      .tiles-grid-tile .tile-content > prm-icon.md-button:hover:not([disabled]),
+      .tiles-grid-tile .section-title .tile-content > prm-icon.md-button:hover:not([disabled]), md-grid-tile .tile-content > .md-button.link-alt-color:hover:not([disabled]),
+      .tiles-grid-tile .tile-content > .md-button.link-alt-color:hover:not([disabled]), .md-button.button-link.link-alt-color:focus:not([disabled]), .section-title prm-icon.md-button.button-link:focus:not([disabled]), .section-title md-grid-tile .tile-content > prm-icon.md-button:focus:not([disabled]), md-grid-tile .section-title .tile-content > prm-icon.md-button:focus:not([disabled]), .section-title
+      .tiles-grid-tile .tile-content > prm-icon.md-button:focus:not([disabled]),
+      .tiles-grid-tile .section-title .tile-content > prm-icon.md-button:focus:not([disabled]), md-grid-tile .tile-content > .md-button.link-alt-color:focus:not([disabled]),
+      .tiles-grid-tile .tile-content > .md-button.link-alt-color:focus:not([disabled]), .md-button.button-link.link-alt-color.hovered:not([disabled]), .section-title prm-icon.md-button.button-link.hovered:not([disabled]), .section-title md-grid-tile .tile-content > prm-icon.md-button.hovered:not([disabled]), md-grid-tile .section-title .tile-content > prm-icon.md-button.hovered:not([disabled]), .section-title
+      .tiles-grid-tile .tile-content > prm-icon.md-button.hovered:not([disabled]),
+      .tiles-grid-tile .section-title .tile-content > prm-icon.md-button.hovered:not([disabled]), md-grid-tile .tile-content > .md-button.link-alt-color.hovered:not([disabled]),
+      .tiles-grid-tile .tile-content > .md-button.link-alt-color.hovered:not([disabled]), .md-button.button-link.link-alt-color.md-focused:not([disabled]), .section-title prm-icon.md-button.button-link.md-focused:not([disabled]), .section-title md-grid-tile .tile-content > prm-icon.md-button.md-focused:not([disabled]), md-grid-tile .section-title .tile-content > prm-icon.md-button.md-focused:not([disabled]), .section-title
+      .tiles-grid-tile .tile-content > prm-icon.md-button.md-focused:not([disabled]),
+      .tiles-grid-tile .section-title .tile-content > prm-icon.md-button.md-focused:not([disabled]), md-grid-tile .tile-content > .md-button.link-alt-color.md-focused:not([disabled]),
+      .tiles-grid-tile .tile-content > .md-button.link-alt-color.md-focused:not([disabled]), .md-button.button-link.link-alt-color._md-focused:not([disabled]), .section-title prm-icon.md-button.button-link._md-focused:not([disabled]), .section-title md-grid-tile .tile-content > prm-icon.md-button._md-focused:not([disabled]), md-grid-tile .section-title .tile-content > prm-icon.md-button._md-focused:not([disabled]), .section-title
+      .tiles-grid-tile .tile-content > prm-icon.md-button._md-focused:not([disabled]),
+      .tiles-grid-tile .section-title .tile-content > prm-icon.md-button._md-focused:not([disabled]), md-grid-tile .tile-content > .md-button.link-alt-color._md-focused:not([disabled]),
+      .tiles-grid-tile .tile-content > .md-button.link-alt-color._md-focused:not([disabled]) {
+        color: #352610;
+        background-color: rgba(119, 92, 52, 0.1); }
+  .md-button.button-large {
+    font-size: 1.2em;
+    padding: .25em .75em; }
+    .md-button.button-large.button-with-icon {
+      padding-left: .5em; }
+      .md-button.button-large.button-with-icon > prm-icon + span {
+        padding-right: 0; }
+  .md-button.button-zero-radius {
+    border-radius: 0; }
+  .md-button.button-no-hover:hover {
+    background-color: transparent; }
+  .md-button.md-icon-button.square-button {
+    border-radius: 0; }
+  .md-button.md-icon-button.icon-button-large {
+    height: 50px;
+    width: 50px;
+    min-height: 50px;
+    min-width: 50px; }
+    .md-button.md-icon-button.icon-button-large md-icon {
+      height: 40px;
+      width: 40px;
+      min-height: 40px;
+      min-width: 40px; }
+    .md-button.md-icon-button.icon-button-large prm-icon {
+      position: relative;
+      left: -4px;
+      top: -3px; }
+  .md-button.button-with-icon > prm-icon {
+    display: inline-block; }
+    .md-button.button-with-icon > prm-icon md-icon {
+      position: relative;
+      top: -2px; }
+    .md-button.button-with-icon > prm-icon + span {
+      display: inline-block;
+      margin-left: 3px;
+      padding-right: 0.5em; }
+      [dir=rtl] .md-button.button-with-icon > prm-icon + span {
+        padding-right: 0;
+        padding-left: 0.5em; }
+      .md-button.button-large .md-button.button-with-icon > prm-icon + span {
+        padding-right: 0; }
+  .md-button.button-with-icon > span + prm-icon {
+    margin-right: 0; }
+    .md-button.button-with-icon > span + prm-icon md-icon {
+      margin-left: 5px;
+      margin-right: 0; }
+  .md-button.icon-button-with-text, prm-action-list > md-nav-bar .md-nav-item .md-button, .saved-query-list > md-nav-bar .md-nav-item .md-button {
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em; }
+  .md-button.outline-button {
+    border: 1px solid; }
+  .md-button.md-raised:not([disabled]) {
+    box-shadow: 0 2px 8px -4px rgba(0, 0, 0, 0.26); }
+  .md-button[disabled="disabled"] {
+    color: #ccc !important;
+    cursor: not-allowed; }
+  .md-button.button-as-link, .bar prm-authentication .md-button {
+    text-transform: none;
+    font-size: 1em;
+    min-width: 0;
+    padding: .3em .35em;
+    line-height: 1em;
+    min-height: 0;
+    margin: 0 .25em;
+    overflow: visible;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    letter-spacing: 0;
+    color: #001add; }
+    .md-button.button-as-link:hover:not([disabled]), .bar prm-authentication .md-button:hover:not([disabled]), .md-button.button-as-link:focus:not([disabled]), .bar prm-authentication .md-button:focus:not([disabled]), .md-button.button-as-link.hovered:not([disabled]), .bar prm-authentication .md-button.hovered:not([disabled]), .md-button.button-as-link.md-focused:not([disabled]), .bar prm-authentication .md-button.md-focused:not([disabled]), .md-button.button-as-link._md-focused:not([disabled]), .bar prm-authentication .md-button._md-focused:not([disabled]) {
+      color: #000e77;
+      background-color: rgba(0, 26, 221, 0.1); }
+    .md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link {
+      color: #775c34; }
+      .md-button.button-as-link.link-alt-color:hover:not([disabled]), .bar prm-authentication .md-button.link-alt-color:hover:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button:hover:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button:hover:not([disabled]), .section-title prm-icon.md-button.button-as-link:hover:not([disabled]), .md-button.button-as-link.link-alt-color:focus:not([disabled]), .bar prm-authentication .md-button.link-alt-color:focus:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button:focus:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button:focus:not([disabled]), .section-title prm-icon.md-button.button-as-link:focus:not([disabled]), .md-button.button-as-link.link-alt-color.hovered:not([disabled]), .bar prm-authentication .md-button.link-alt-color.hovered:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button.hovered:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button.hovered:not([disabled]), .section-title prm-icon.md-button.button-as-link.hovered:not([disabled]), .md-button.button-as-link.link-alt-color.md-focused:not([disabled]), .bar prm-authentication .md-button.link-alt-color.md-focused:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button.md-focused:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button.md-focused:not([disabled]), .section-title prm-icon.md-button.button-as-link.md-focused:not([disabled]), .md-button.button-as-link.link-alt-color._md-focused:not([disabled]), .bar prm-authentication .md-button.link-alt-color._md-focused:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button._md-focused:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button._md-focused:not([disabled]), .section-title prm-icon.md-button.button-as-link._md-focused:not([disabled]) {
+        color: #352610;
+        background-color: rgba(119, 92, 52, 0.1); }
+    .md-button.button-as-link.button-external-link span, .bar prm-authentication .md-button.button-external-link span {
+      position: relative;
+      top: 1px; }
+    .light-on-dark-dialog .md-button.button-as-link, .light-on-dark-dialog .bar prm-authentication .md-button, .bar prm-authentication .light-on-dark-dialog .md-button {
+      color: #73E9FF; }
+      .light-on-dark-dialog .md-button.button-as-link:hover:not([disabled]), .light-on-dark-dialog .bar prm-authentication .md-button:hover:not([disabled]), .bar prm-authentication .light-on-dark-dialog .md-button:hover:not([disabled]), .light-on-dark-dialog .md-button.button-as-link:focus:not([disabled]), .light-on-dark-dialog .bar prm-authentication .md-button:focus:not([disabled]), .bar prm-authentication .light-on-dark-dialog .md-button:focus:not([disabled]), .light-on-dark-dialog .md-button.button-as-link.hovered:not([disabled]), .light-on-dark-dialog .bar prm-authentication .md-button.hovered:not([disabled]), .bar prm-authentication .light-on-dark-dialog .md-button.hovered:not([disabled]), .light-on-dark-dialog .md-button.button-as-link.md-focused:not([disabled]), .light-on-dark-dialog .bar prm-authentication .md-button.md-focused:not([disabled]), .bar prm-authentication .light-on-dark-dialog .md-button.md-focused:not([disabled]), .light-on-dark-dialog .md-button.button-as-link._md-focused:not([disabled]), .light-on-dark-dialog .bar prm-authentication .md-button._md-focused:not([disabled]), .bar prm-authentication .light-on-dark-dialog .md-button._md-focused:not([disabled]) {
+        color: #0dd9ff;
+        background-color: rgba(115, 233, 255, 0.1); }
+  .md-button.flex-button {
+    display: -ms-flexbox;
+    display: flex; }
+  .md-button.inline-button {
+    display: inline; }
+    .md-button.inline-button.flex-button {
+      display: -ms-inline-flexbox;
+      display: inline-flex; }
+  .md-button.md-mini {
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px; }
+  .md-button.multi-line-button, .__sm prm-search-bar .search-switch-buttons .md-button, .__sm prm-journals-search-bar .search-switch-buttons .md-button, .__sm prm-browse-search-bar .search-switch-buttons .md-button, .__sm prm-tags-search-bar .search-switch-buttons .md-button {
+    white-space: normal;
+    line-height: 1.2em;
+    padding: .5em; }
+  .md-button.button-full-height {
+    height: 100%; }
+  .md-button.neutralized-button {
+    max-width: none;
+    max-height: none;
+    text-transform: none;
+    padding: 0;
+    margin: 0;
+    line-height: inherit;
+    min-height: 0;
+    min-width: 0;
+    white-space: normal;
+    text-align: inherit;
+    overflow: visible;
+    font-size: 1em;
+    border-radius: 0; }
+    .md-button.neutralized-button:hover {
+      background-color: transparent; }
+  .md-button.arrow-link-button .button-content {
+    line-height: 1.4em; }
+  .md-button.arrow-link-button:hover, .md-button.arrow-link-button:focus {
+    background: transparent; }
+  .md-button.arrow-link-button [link-arrow] {
+    position: static; }
+  .buttons-group .md-button {
+    box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.1); }
+    .buttons-group .md-button:first-child {
+      box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.1), -1px 0 0 0 rgba(0, 0, 0, 0.1); }
+      [dir="rtl"] .buttons-group .md-button:first-child {
+        box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.1); }
+    [dir="rtl"] .buttons-group .md-button:last-child {
+      box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.1), -1px 0 0 0 rgba(0, 0, 0, 0.1); }
+  .md-button .md-ripple-container + .md-ripple-container {
+    display: none; }
+
+.prm-primary-color, .request-form md-input-container label,
+.request-form md-input-container label:not(.md-no-float):not(._md-container-ignore),
+.request-form md-input-container md-select .md-select-value.md-select-placeholder,
+.request-form md-input-container .md-input-container-dummy > .md-select-dummy .md-select-value.md-select-placeholder,
+.request-form md-input-container md-select ._md-select-value._md-select-placeholder,
+.request-form md-input-container .md-input-container-dummy > .md-select-dummy ._md-select-value._md-select-placeholder, .result-item-actions .md-icon-button, .result-item-actions .more-options-button, prm-add-query-to-saved-searches .custom-button, .md-autocomplete-suggestions .suggestion-scope, md-tabs md-tabs-wrapper md-tabs-canvas md-pagination-wrapper md-tab-item.md-active:not([disabled]), md-tabs md-tabs-wrapper md-tabs-canvas md-pagination-wrapper md-tab-item.md-focused:not([disabled]), md-tab-content .tab-content-header md-input-container md-select-value .md-text {
+  color: #4B2E83; }
+
+.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar, prm-journals-search-bar, prm-browse-search-bar, prm-tags-search-bar {
+  color: white;
+  background-color: #4B2E83; }
+  .prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar, prm-search-bar.prm-hue1, prm-journals-search-bar.prm-hue1, prm-browse-search-bar.prm-hue1, prm-tags-search-bar.prm-hue1 {
+    background-color: #452a78; }
+  .prm-primary-bg.prm-hue2, prm-spinner.prm-hue2.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue2, prm-journals-search-bar.prm-hue2, prm-browse-search-bar.prm-hue2, prm-tags-search-bar.prm-hue2, md-backdrop.md-opaque {
+    background-color: #402770; }
+  .prm-primary-bg.prm-hue3, prm-spinner.prm-hue3.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue3, prm-journals-search-bar.prm-hue3, prm-browse-search-bar.prm-hue3, prm-tags-search-bar.prm-hue3 {
+    background-color: #3c2569; }
+    .prm-primary-bg.prm-hue3-important, prm-spinner.prm-hue3-important.overlay-cover.light-on-dark:after, prm-user-area md-fab-toolbar.md-is-open md-fab-trigger .md-fab-toolbar-background, prm-user-area md-fab-toolbar.md-is-open md-fab-trigger ._md-fab-toolbar-background, prm-search-bar.prm-hue3-important, prm-journals-search-bar.prm-hue3-important, prm-browse-search-bar.prm-hue3-important, prm-tags-search-bar.prm-hue3-important {
+      background-color: #3c2569 !important; }
+  .prm-primary-bg.prm-hue4, prm-spinner.prm-hue4.overlay-cover.light-on-dark:after, prm-search-bar.prm-hue4, prm-journals-search-bar.prm-hue4, prm-browse-search-bar.prm-hue4, prm-tags-search-bar.prm-hue4 {
+    background-color: #35215d; }
+
+.prm-primary-border {
+  border-color: #4B2E83; }
+  .prm-primary-border.prm-hue1 {
+    border-color: #4B2E83; }
+  .prm-primary-border.prm-hue2 {
+    border-color: #4B2E83; }
+
+.prm-secondary-color, prm-search-bookmark-filter .md-button, prm-topbar .top-nav-bar {
+  color: #B7A57A; }
+  .prm-secondary-color.prm-hue1, .link-alt-color, .section-title prm-icon, .result-item-actions .pin-button, prm-add-query-to-saved-searches .custom-button.pin-button, prm-search-bookmark-filter .prm-hue1.md-button, prm-topbar .prm-hue1.top-nav-bar, prm-recomendation-item .media-on-hover .pin-button {
+    color: #775c34; }
+  .prm-secondary-color.prm-hue2, prm-search-bookmark-filter .prm-hue2.md-button, prm-topbar .prm-hue2.top-nav-bar {
+    color: #847247; }
+
+.prm-secondary-bg, md-progress-linear[md-mode=indeterminate].header-progress-bar .md-bar {
+  background-color: #B7A57A; }
+  .prm-secondary-bg.prm-hue1, .new-result-item .list-item-count, md-progress-linear[md-mode=indeterminate].header-progress-bar .prm-hue1.md-bar, md-tabs md-ink-bar, md-input-container:after, prm-tags-list .md-chips .md-chip-input-container:after, prm-tags-list .md-chips ._md-chip-input-container:after, prm-tags-list md-chips .md-chip-input-container:after, prm-tags-list md-chips ._md-chip-input-container:after, .md-input-color-underline, md-input-container.empty-select-on-init:not(.md-input-focused) md-select md-select-value:after, md-input-container.empty-select-on-init:not(.md-input-focused) .md-input-container-dummy > .md-select-dummy md-select-value:after, md-radio-button.md-checked .md-on, md-radio-button.md-checked ._md-on {
+    background-color: #775c34; }
+  .prm-secondary-bg.prm-hue2, md-progress-linear[md-mode=indeterminate].header-progress-bar .prm-hue2.md-bar, md-checkbox.md-checked .md-icon,
+  md-checkbox.md-checked ._md-icon {
+    background-color: #847247; }
+
+.prm-secondary-border {
+  border-color: #B7A57A; }
+  .prm-secondary-border.prm-hue1, md-select:focus .md-select-value, .md-input-container-dummy > .md-select-dummy:focus .md-select-value,
+  .md-input-focused md-select .md-select-value,
+  .md-input-focused .md-input-container-dummy > .md-select-dummy .md-select-value,
+  md-select:not([disabled]):focus .md-select-value,
+  .md-input-focused
+  md-select:not([disabled]) .md-select-value, md-radio-button.md-checked .md-off, md-radio-button.md-checked ._md-off {
+    border-color: #775c34; }
+
+.prm-background, html, body, prm-search .ui-blocker, prm-featured-results .horizontal-content-container .horizontal-content-control, prm-search-bar .simple-search-wrapper .search-options:after, prm-journals-search-bar .simple-search-wrapper .search-options:after, prm-browse-search-bar .simple-search-wrapper .search-options:after, prm-tags-search-bar .simple-search-wrapper .search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider, prm-journals-search-bar .simple-search-wrapper .search-options md-divider, prm-browse-search-bar .simple-search-wrapper .search-options md-divider, prm-tags-search-bar .simple-search-wrapper .search-options md-divider, .prm-view-overlay-inner, .__xs prm-facet,
+.__sm prm-facet, .__sm .sidebar,
+.__xs .sidebar, .multiselect-submit .multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .pin-button, prm-full-view-cont .recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider, md-dialog md-toolbar:not(.md-menu-toolbar), md-card .card-content-block {
+  background-color: #e9e9e9;
+  border-color: #e1e1e1; }
+  .prm-background.prm-hue1, html.prm-hue1, body.prm-hue1, .prm-horizontal-content .horizontal-content-control, .prm-horizontal-content .horizontal-content-control:hover, prm-search .prm-hue1.ui-blocker, prm-featured-results .horizontal-content-container .prm-hue1.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue1.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue1.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue1.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue1.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue1, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue1, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue1, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue1, .prm-hue1.prm-view-overlay-inner, .full-view-inner-container + .full-view-aside:before, .__xs prm-facet.prm-hue1,
+  .__sm prm-facet.prm-hue1, .__sm .prm-hue1.sidebar,
+  .__xs .prm-hue1.sidebar, .multiselect-submit .prm-hue1.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue1.pin-button, prm-full-view-cont .prm-hue1.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue1, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue1, md-dialog md-toolbar.prm-hue1:not(.md-menu-toolbar), .default-tabs[md-border-bottom] > md-tabs-wrapper, md-card .prm-hue1.card-content-block, md-card .card-divider, md-toolbar.default-toolbar,
+  md-toolbar.md-primoExplore-theme.default-toolbar,
+  md-toolbar.default-toolbar:not(.md-menu-toolbar) {
+    background-color: #f7f7f7;
+    border-color: #d5d5d5;
+    background-color: gainsboro; }
+  .prm-background.prm-hue2, html.prm-hue2, body.prm-hue2, .line-clamp-1:after, .line-clamp-2:after, .line-clamp-3:after, .line-clamp-4:after, .line-clamp-5:after, .prm-horizontal-content .horizontal-content-item md-card > .md-button, prm-search-result-list .results-header,
+  prm-search-result-list .results-footer, prm-search .prm-hue2.ui-blocker, prm-featured-result-item md-card md-card-title, prm-featured-results .horizontal-content-container .prm-hue2.horizontal-content-control, .list-item-wrapper, prm-search-bar .simple-search-wrapper .prm-hue2.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue2.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue2.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue2.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue2, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue2, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue2, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue2, prm-search-bar .advanced-search-tabs, prm-journals-search-bar .advanced-search-tabs, prm-browse-search-bar .advanced-search-tabs, prm-tags-search-bar .advanced-search-tabs, prm-search-bar .advanced-search-output md-card, prm-journals-search-bar .advanced-search-output md-card, prm-browse-search-bar .advanced-search-output md-card, prm-tags-search-bar .advanced-search-output md-card, .prm-hue2.prm-view-overlay-inner, .prm-full-view-dialog, .full-view-inner-container, .__xs prm-facet.prm-hue2,
+  .__sm prm-facet.prm-hue2, .__sm .prm-hue2.sidebar,
+  .__xs .prm-hue2.sidebar, .multiselect-submit .prm-hue2.multiselect-submit-inner, .__xs prm-full-view-cont .recommendations-wrapper,
+  .__sm prm-full-view-cont .recommendations-wrapper, prm-recomendation-item .media-on-hover .pin-button, prm-recomendation-item .media-on-hover .pin-button:hover, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue2.pin-button, .recommendations-title:after, prm-full-view-cont .prm-hue2.recommendations-title:after, .__xs prm-full-view-cont .recommendations-title:after,
+  .__sm prm-full-view-cont .recommendations-title:after, .recommendations-title prm-icon, prm-full-view-cont .recommendations-title prm-icon.prm-hue2, .__xs prm-full-view-cont .recommendations-title prm-icon,
+  .__sm prm-full-view-cont .recommendations-title prm-icon, prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item ._md-list-item-inner, prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item ._md-list-item-inner, prm-resource-recommender md-card, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue2, md-dialog md-toolbar.prm-hue2:not(.md-menu-toolbar), md-grid-tile,
+  .tiles-grid-tile, md-grid-tile md-list prm-spinner.overlay-cover:after,
+  md-grid-tile .tile-content prm-spinner.overlay-cover:after,
+  .tiles-grid-tile md-list prm-spinner.overlay-cover:after,
+  .tiles-grid-tile .tile-content prm-spinner.overlay-cover:after, md-card.default-card, prm-featured-result-item md-card, md-card .prm-hue2.card-content-block, md-list.prm-list.prm-linkable-list-items md-list-item ._md-list-item-inner {
+    background-color: #f3f3f3; }
+  .prm-background.prm-hue3, html.prm-hue3, body.prm-hue3, prm-search .prm-hue3.ui-blocker, prm-featured-results .horizontal-content-container .prm-hue3.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue3.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue3.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue3.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue3.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue3, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue3, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue3, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue3, .prm-hue3.prm-view-overlay-inner, .__xs prm-facet.prm-hue3,
+  .__sm prm-facet.prm-hue3, .__sm .prm-hue3.sidebar,
+  .__xs .prm-hue3.sidebar, .multiselect-submit .prm-hue3.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue3.pin-button, prm-full-view-cont .prm-hue3.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue3, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue3, md-dialog md-toolbar.prm-hue3:not(.md-menu-toolbar), md-card .prm-hue3.card-content-block {
+    background-color: white; }
+  .prm-background.prm-hue4, html.prm-hue4, body.prm-hue4, prm-search .prm-hue4.ui-blocker, prm-featured-result-item.dummy-item md-card, prm-featured-results .horizontal-content-container .prm-hue4.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue4.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue4.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue4.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue4.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue4, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue4, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue4, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue4, .prm-hue4.prm-view-overlay-inner, .__xs prm-facet.prm-hue4,
+  .__sm prm-facet.prm-hue4, .__sm .prm-hue4.sidebar,
+  .__xs .prm-hue4.sidebar, .multiselect-submit .prm-hue4.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue4.pin-button, prm-full-view-cont .prm-hue4.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue4, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue4, md-dialog md-toolbar.prm-hue4:not(.md-menu-toolbar), md-card .prm-hue4.card-content-block {
+    background-color: #f1f1f1; }
+  .prm-background.prm-hue5, html.prm-hue5, body.prm-hue5, .login-dialog .loader-wrapper, prm-search .prm-hue5.ui-blocker, prm-featured-results .horizontal-content-container .prm-hue5.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue5.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue5.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue5.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue5.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue5, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue5, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue5, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue5, .prm-hue5.prm-view-overlay-inner, .__xs prm-facet.prm-hue5,
+  .__sm prm-facet.prm-hue5, .__sm .prm-hue5.sidebar,
+  .__xs .prm-hue5.sidebar, .multiselect-submit .prm-hue5.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue5.pin-button, prm-full-view-cont .prm-hue5.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue5, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue5, md-dialog md-toolbar.prm-hue5:not(.md-menu-toolbar), md-card .prm-hue5.card-content-block {
+    background-color: rgba(233, 233, 233, 0.5); }
+  .prm-background.prm-hue6, html.prm-hue6, body.prm-hue6, .bar.filter-bar, prm-search .prm-hue6.ui-blocker, prm-featured-results .horizontal-content-container .prm-hue6.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue6.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue6.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue6.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue6.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue6, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue6, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue6, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue6, .prm-hue6.prm-view-overlay-inner, .__xs prm-facet.prm-hue6,
+  .__sm prm-facet.prm-hue6, .__sm .prm-hue6.sidebar,
+  .__xs .prm-hue6.sidebar, .multiselect-submit .prm-hue6.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue6.pin-button, prm-full-view-cont .prm-hue6.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue6, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue6, md-dialog md-toolbar.prm-hue6:not(.md-menu-toolbar), md-card .prm-hue6.card-content-block {
+    background-color: #e6e6e6; }
+  .prm-background.prm-hue7, html.prm-hue7, body.prm-hue7, .links-block .separated-block-item:after, prm-search .prm-hue7.ui-blocker, prm-featured-results .horizontal-content-container .prm-hue7.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue7.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue7.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue7.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue7.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue7, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue7, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue7, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue7, .prm-hue7.prm-view-overlay-inner, .__xs prm-facet.prm-hue7,
+  .__sm prm-facet.prm-hue7, .__sm .prm-hue7.sidebar,
+  .__xs .prm-hue7.sidebar, .multiselect-submit .prm-hue7.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue7.pin-button, prm-full-view-cont .prm-hue7.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue7, prm-search-result-list prm-personalize-results-button .md-button md-switch .md-bar, prm-search-result-list prm-personalize-results-button .md-button md-switch ._md-bar, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue7, md-dialog md-toolbar.prm-hue7:not(.md-menu-toolbar), md-card .prm-hue7.card-content-block, md-switch .md-bar {
+    background-color: #cfcfcf; }
+  .prm-background.prm-hue8, html.prm-hue8, body.prm-hue8, .service-form-static-panel, prm-search .prm-hue8.ui-blocker, prm-featured-results .horizontal-content-container .prm-hue8.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue8.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue8.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue8.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue8.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue8, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue8, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue8, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue8, .prm-hue8.prm-view-overlay-inner, .__xs prm-facet.prm-hue8,
+  .__sm prm-facet.prm-hue8, .__sm .prm-hue8.sidebar,
+  .__xs .prm-hue8.sidebar, .multiselect-submit .prm-hue8.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue8.pin-button, prm-full-view-cont .prm-hue8.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue8, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue8, md-dialog md-toolbar.prm-hue8:not(.md-menu-toolbar), md-card .prm-hue8.card-content-block {
+    background-color: #f8f8f8; }
+  .prm-background.prm-hue9, html.prm-hue9, body.prm-hue9, prm-search .prm-hue9.ui-blocker, prm-featured-results .horizontal-content-container .prm-hue9.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue9.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue9.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue9.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue9.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue9, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue9, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue9, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue9, .prm-hue9.prm-view-overlay-inner, .__xs prm-facet.prm-hue9,
+  .__sm prm-facet.prm-hue9, .__sm .prm-hue9.sidebar,
+  .__xs .prm-hue9.sidebar, .multiselect-submit .prm-hue9.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue9.pin-button, prm-full-view-cont .prm-hue9.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue9, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue9, md-dialog md-toolbar.prm-hue9:not(.md-menu-toolbar), md-tabs md-tabs-wrapper md-tabs-canvas md-pagination-wrapper md-tab-item.md-focused:not([disabled]), md-card .prm-hue9.card-content-block {
+    background-color: gainsboro; }
+  .prm-background.prm-hue10, html.prm-hue10, body.prm-hue10, prm-search .prm-hue10.ui-blocker, prm-featured-results .horizontal-content-container .prm-hue10.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue10.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue10.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue10.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue10.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue10, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue10, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue10, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue10, .prm-hue10.prm-view-overlay-inner, .__xs prm-facet.prm-hue10,
+  .__sm prm-facet.prm-hue10, .__sm .prm-hue10.sidebar,
+  .__xs .prm-hue10.sidebar, .multiselect-submit .prm-hue10.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue10.pin-button, prm-full-view-cont .prm-hue10.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue10, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue10, md-dialog md-toolbar.prm-hue10:not(.md-menu-toolbar), md-card .prm-hue10.card-content-block, md-toolbar .toolbar-divider,
+  md-toolbar.md-primoExplore-theme .toolbar-divider,
+  md-toolbar:not(.md-menu-toolbar) .toolbar-divider {
+    background-color: #cacaca; }
+  .prm-background.prm-hue11, html.prm-hue11, body.prm-hue11, prm-search .prm-hue11.ui-blocker, prm-featured-results .horizontal-content-container .prm-hue11.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue11.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue11.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue11.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue11.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue11, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue11, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue11, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue11, .prm-hue11.prm-view-overlay-inner, .__xs prm-facet.prm-hue11,
+  .__sm prm-facet.prm-hue11, .__sm .prm-hue11.sidebar,
+  .__xs .prm-hue11.sidebar, .multiselect-submit .prm-hue11.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue11.pin-button, prm-full-view-cont .prm-hue11.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue11, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue11, md-dialog md-toolbar.prm-hue11:not(.md-menu-toolbar), md-card .prm-hue11.card-content-block, md-toolbar.citations-toolbar .toolbar-section,
+  md-toolbar.md-primoExplore-theme.citations-toolbar .toolbar-section,
+  md-toolbar:not(.md-menu-toolbar).citations-toolbar .toolbar-section {
+    background-color: #e4e4e4; }
+  .prm-background.prm-hue13, html.prm-hue13, body.prm-hue13, prm-search .prm-hue13.ui-blocker, prm-featured-results .horizontal-content-container .prm-hue13.horizontal-content-control, prm-search-bar .simple-search-wrapper .prm-hue13.search-options:after, prm-journals-search-bar .simple-search-wrapper .prm-hue13.search-options:after, prm-browse-search-bar .simple-search-wrapper .prm-hue13.search-options:after, prm-tags-search-bar .simple-search-wrapper .prm-hue13.search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider.prm-hue13, prm-journals-search-bar .simple-search-wrapper .search-options md-divider.prm-hue13, prm-browse-search-bar .simple-search-wrapper .search-options md-divider.prm-hue13, prm-tags-search-bar .simple-search-wrapper .search-options md-divider.prm-hue13, .prm-hue13.prm-view-overlay-inner, .__xs prm-facet.prm-hue13,
+  .__sm prm-facet.prm-hue13, .__sm .prm-hue13.sidebar,
+  .__xs .prm-hue13.sidebar, .multiselect-submit .prm-hue13.multiselect-submit-inner, prm-full-view-cont prm-recomendation-item .media-on-hover .prm-hue13.pin-button, prm-full-view-cont .prm-hue13.recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon.prm-hue13, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider.prm-hue13, md-dialog md-toolbar.prm-hue13:not(.md-menu-toolbar), md-card .prm-hue13.card-content-block {
+    background-color: #eeeeee; }
+  .prm-background-color, md-grid-tile .message-with-icon md-icon,
+  .tiles-grid-tile .message-with-icon md-icon {
+    color: #e9e9e9; }
+    .prm-background-color.prm-hue4, .service-form-static-panel, md-grid-tile .message-with-icon md-icon.prm-hue4,
+    .tiles-grid-tile .message-with-icon md-icon.prm-hue4 {
+      color: #f1f1f1; }
+  .prm-background-border, prm-search-result-list .results-header, .list-item-wrapper, .action-list-content md-divider, prm-search-bar .advanced-search-tabs, prm-journals-search-bar .advanced-search-tabs, prm-browse-search-bar .advanced-search-tabs, prm-tags-search-bar .advanced-search-tabs, prm-search-bar .advanced-search-output md-card, prm-journals-search-bar .advanced-search-output md-card, prm-browse-search-bar .advanced-search-output md-card, prm-tags-search-bar .advanced-search-output md-card, md-grid-tile md-list md-list-item,
+  md-grid-tile .tile-content md-list-item,
+  .tiles-grid-tile md-list md-list-item,
+  .tiles-grid-tile .tile-content md-list-item, md-grid-tile md-list md-divider,
+  md-grid-tile .tile-content md-divider,
+  .tiles-grid-tile md-list md-divider,
+  .tiles-grid-tile .tile-content md-divider {
+    border-color: #e9e9e9;
+    border-color: #e1e1e1 !important; }
+    .prm-background-border.prm-hue1, prm-search-result-list .prm-hue1.results-header, .prm-hue1.list-item-wrapper, .action-list-content md-divider.prm-hue1, prm-search-bar .prm-hue1.advanced-search-tabs, prm-journals-search-bar .prm-hue1.advanced-search-tabs, prm-browse-search-bar .prm-hue1.advanced-search-tabs, prm-tags-search-bar .prm-hue1.advanced-search-tabs, prm-search-bar .advanced-search-output md-card.prm-hue1, prm-journals-search-bar .advanced-search-output md-card.prm-hue1, prm-browse-search-bar .advanced-search-output md-card.prm-hue1, prm-tags-search-bar .advanced-search-output md-card.prm-hue1, md-grid-tile md-list md-list-item.prm-hue1,
+    md-grid-tile .tile-content md-list-item.prm-hue1,
+    .tiles-grid-tile md-list md-list-item.prm-hue1,
+    .tiles-grid-tile .tile-content md-list-item.prm-hue1, md-grid-tile md-list md-divider.prm-hue1,
+    md-grid-tile .tile-content md-divider.prm-hue1,
+    .tiles-grid-tile md-list md-divider.prm-hue1,
+    .tiles-grid-tile .tile-content md-divider.prm-hue1 {
+      border-color: #f0f0f0;
+      border-color: #d5d5d5 !important; }
+    .prm-background-border.prm-hue2, prm-search-result-list .prm-hue2.results-header, .prm-hue2.list-item-wrapper, .action-list-content md-divider.prm-hue2, prm-search-bar .prm-hue2.advanced-search-tabs, prm-journals-search-bar .prm-hue2.advanced-search-tabs, prm-browse-search-bar .prm-hue2.advanced-search-tabs, prm-tags-search-bar .prm-hue2.advanced-search-tabs, prm-search-bar .advanced-search-output md-card.prm-hue2, prm-journals-search-bar .advanced-search-output md-card.prm-hue2, prm-browse-search-bar .advanced-search-output md-card.prm-hue2, prm-tags-search-bar .advanced-search-output md-card.prm-hue2, md-grid-tile md-list md-list-item.prm-hue2,
+    md-grid-tile .tile-content md-list-item.prm-hue2,
+    .tiles-grid-tile md-list md-list-item.prm-hue2,
+    .tiles-grid-tile .tile-content md-list-item.prm-hue2, md-grid-tile md-list md-divider.prm-hue2,
+    md-grid-tile .tile-content md-divider.prm-hue2,
+    .tiles-grid-tile md-list md-divider.prm-hue2,
+    .tiles-grid-tile .tile-content md-divider.prm-hue2 {
+      border-color: #ececec !important; }
+    .prm-background-border.prm-hue3, .bar.filter-bar, prm-search-result-list .prm-hue3.results-header, .prm-hue3.list-item-wrapper, .action-list-content md-divider.prm-hue3, prm-search-bar .prm-hue3.advanced-search-tabs, prm-journals-search-bar .prm-hue3.advanced-search-tabs, prm-browse-search-bar .prm-hue3.advanced-search-tabs, prm-tags-search-bar .prm-hue3.advanced-search-tabs, prm-search-bar .advanced-search-output md-card.prm-hue3, prm-journals-search-bar .advanced-search-output md-card.prm-hue3, prm-browse-search-bar .advanced-search-output md-card.prm-hue3, prm-tags-search-bar .advanced-search-output md-card.prm-hue3, md-grid-tile md-list md-list-item.prm-hue3,
+    md-grid-tile .tile-content md-list-item.prm-hue3,
+    .tiles-grid-tile md-list md-list-item.prm-hue3,
+    .tiles-grid-tile .tile-content md-list-item.prm-hue3, md-grid-tile md-list md-divider.prm-hue3,
+    md-grid-tile .tile-content md-divider.prm-hue3,
+    .tiles-grid-tile md-list md-divider.prm-hue3,
+    .tiles-grid-tile .tile-content md-divider.prm-hue3 {
+      border-color: #e1e1e1; }
+    .prm-background-border.prm-hue4, prm-search-result-list .prm-hue4.results-header, .prm-hue4.list-item-wrapper, .action-list-content md-divider.prm-hue4, prm-search-bar .prm-hue4.advanced-search-tabs, prm-journals-search-bar .prm-hue4.advanced-search-tabs, prm-browse-search-bar .prm-hue4.advanced-search-tabs, prm-tags-search-bar .prm-hue4.advanced-search-tabs, prm-search-bar .advanced-search-output md-card.prm-hue4, prm-journals-search-bar .advanced-search-output md-card.prm-hue4, prm-browse-search-bar .advanced-search-output md-card.prm-hue4, prm-tags-search-bar .advanced-search-output md-card.prm-hue4, md-grid-tile md-list md-list-item.prm-hue4,
+    md-grid-tile .tile-content md-list-item.prm-hue4,
+    .tiles-grid-tile md-list md-list-item.prm-hue4,
+    .tiles-grid-tile .tile-content md-list-item.prm-hue4, md-grid-tile md-list md-divider.prm-hue4,
+    md-grid-tile .tile-content md-divider.prm-hue4,
+    .tiles-grid-tile md-list md-divider.prm-hue4,
+    .tiles-grid-tile .tile-content md-divider.prm-hue4, md-toolbar.citations-toolbar .toolbar-section,
+    md-toolbar.md-primoExplore-theme.citations-toolbar .toolbar-section,
+    md-toolbar:not(.md-menu-toolbar).citations-toolbar .toolbar-section {
+      border-color: #d7d7d7; }
+
+.prm-links, .md-button.arrow-link-button [link-arrow], a, .md-button.arrow-link-button .button-content, [class*="NFT"] > span,
+[class*="check_"] > span,
+[class*="_more"] > span,
+[class*="_unknown"] > span,
+[class*="may_"] > span,
+[class*="does_not_exist"] > span,
+.woldcat > span,
+.getit > span, [class*="available"] > span,
+[class*="FT"] > span,
+.not_restricted > span,
+.fulltext > span,
+.fulltext_linktorsrc > span, [class*="unavailable"] > span,
+[class*="no_"] > span,
+.restricted > span,
+.duedate > span, .login-dialog md-list md-list-item .md-list-item-text h3,
+.login-dialog md-list md-list-item .md-list-item-text .list-item-title,
+.login-dialog md-list md-list-item > .md-no-style .md-list-item-text h3,
+.login-dialog md-list md-list-item > .md-no-style .md-list-item-text .list-item-title,
+.login-dialog .md-list md-list-item .md-list-item-text h3,
+.login-dialog .md-list md-list-item .md-list-item-text .list-item-title,
+.login-dialog .md-list md-list-item > .md-no-style .md-list-item-text h3,
+.login-dialog .md-list md-list-item > .md-no-style .md-list-item-text .list-item-title,
+.login-dialog .md-list[class$="-line"] md-list-item .md-list-item-text h3,
+.login-dialog .md-list[class$="-line"] md-list-item .md-list-item-text .list-item-title,
+.login-dialog .md-list[class$="-line"] md-list-item > .md-no-style .md-list-item-text h3,
+.login-dialog .md-list[class$="-line"] md-list-item > .md-no-style .md-list-item-text .list-item-title, .login-dialog .collapsable-container md-list md-list-item .md-list-item-inner, prm-tags-list .md-chips .md-chip .md-chip-content strong, prm-tags-list .md-chips md-chip .md-chip-content strong, prm-tags-list md-chips .md-chip .md-chip-content strong, prm-tags-list md-chips md-chip .md-chip-content strong, md-tabs.tabs-as-links md-tab-item,
+md-tabs.tabs-as-links md-tab-item:not([disabled]), md-tabs.tabs-as-app .back-button, md-grid-tile .tile-header .header-link .arrow-icon,
+.tiles-grid-tile .tile-header .header-link .arrow-icon, md-grid-tile .tile-header .header-link:hover, md-grid-tile .tile-header .header-link:focus,
+.tiles-grid-tile .tile-header .header-link:hover,
+.tiles-grid-tile .tile-header .header-link:focus, md-grid-tile .tile-header .md-button,
+.tiles-grid-tile .tile-header .md-button, md-input-container.has-fixed-message [ng-message] a, .separate-list-items md-list-item .item-loader-with-text .md-button, md-list-item.list-item-as-link {
+  color: #001add; }
+  .prm-links-important, .text-link {
+    color: #001add !important; }
+  .prm-links.prm-links-hover, .md-button.arrow-link-button .prm-links-hover[link-arrow], a.prm-links-hover, .md-button.arrow-link-button .prm-links-hover.button-content, [class*="NFT"] > span.prm-links-hover,
+  [class*="check_"] > span.prm-links-hover,
+  [class*="_more"] > span.prm-links-hover,
+  [class*="_unknown"] > span.prm-links-hover,
+  [class*="may_"] > span.prm-links-hover,
+  [class*="does_not_exist"] > span.prm-links-hover,
+  .woldcat > span.prm-links-hover,
+  .getit > span.prm-links-hover, [class*="available"] > span.prm-links-hover,
+  [class*="FT"] > span.prm-links-hover,
+  .not_restricted > span.prm-links-hover,
+  .fulltext > span.prm-links-hover,
+  .fulltext_linktorsrc > span.prm-links-hover, [class*="unavailable"] > span.prm-links-hover,
+  [class*="no_"] > span.prm-links-hover,
+  .restricted > span.prm-links-hover,
+  .duedate > span.prm-links-hover, .login-dialog md-list md-list-item .md-list-item-text h3.prm-links-hover,
+  .login-dialog md-list md-list-item .md-list-item-text .prm-links-hover.list-item-title,
+  .login-dialog .md-list md-list-item .md-list-item-text h3.prm-links-hover,
+  .login-dialog .md-list md-list-item .md-list-item-text .prm-links-hover.list-item-title,
+  .login-dialog .md-list[class$="-line"] md-list-item > .md-no-style .md-list-item-text h3.prm-links-hover,
+  .login-dialog .md-list[class$="-line"] md-list-item > .md-no-style .md-list-item-text .prm-links-hover.list-item-title, .login-dialog .collapsable-container md-list md-list-item .prm-links-hover.md-list-item-inner, prm-tags-list .md-chips .md-chip .md-chip-content strong.prm-links-hover, prm-tags-list .md-chips md-chip .md-chip-content strong.prm-links-hover, prm-tags-list md-chips .md-chip .md-chip-content strong.prm-links-hover, prm-tags-list md-chips md-chip .md-chip-content strong.prm-links-hover, md-tabs.tabs-as-links md-tab-item.prm-links-hover, md-tabs.tabs-as-app .prm-links-hover.back-button, md-grid-tile .tile-header .header-link .prm-links-hover.arrow-icon,
+  .tiles-grid-tile .tile-header .header-link .prm-links-hover.arrow-icon, md-grid-tile .tile-header .prm-links-hover.header-link:hover, md-grid-tile .tile-header .prm-links-hover.header-link:focus,
+  .tiles-grid-tile .tile-header .prm-links-hover.header-link:hover,
+  .tiles-grid-tile .tile-header .prm-links-hover.header-link:focus, md-grid-tile .tile-header .prm-links-hover.md-button,
+  .tiles-grid-tile .tile-header .prm-links-hover.md-button, md-input-container.has-fixed-message [ng-message] a.prm-links-hover, .separate-list-items md-list-item .item-loader-with-text .prm-links-hover.md-button, md-list-item.prm-links-hover.list-item-as-link {
+    color: #000e77; }
+  .prm-links.prm-alt-link, .md-button.arrow-link-button .prm-alt-link[link-arrow], a.prm-alt-link, .md-button.arrow-link-button .prm-alt-link.button-content, [class*="NFT"] > span.prm-alt-link,
+  [class*="check_"] > span.prm-alt-link,
+  [class*="_more"] > span.prm-alt-link,
+  [class*="_unknown"] > span.prm-alt-link,
+  [class*="may_"] > span.prm-alt-link,
+  [class*="does_not_exist"] > span.prm-alt-link,
+  .woldcat > span.prm-alt-link,
+  .getit > span.prm-alt-link, [class*="available"] > span.prm-alt-link,
+  [class*="FT"] > span.prm-alt-link,
+  .not_restricted > span.prm-alt-link,
+  .fulltext > span.prm-alt-link,
+  .fulltext_linktorsrc > span.prm-alt-link, [class*="unavailable"] > span.prm-alt-link,
+  [class*="no_"] > span.prm-alt-link,
+  .restricted > span.prm-alt-link,
+  .duedate > span.prm-alt-link, .login-dialog md-list md-list-item .md-list-item-text h3.prm-alt-link,
+  .login-dialog md-list md-list-item .md-list-item-text .prm-alt-link.list-item-title,
+  .login-dialog .md-list md-list-item .md-list-item-text h3.prm-alt-link,
+  .login-dialog .md-list md-list-item .md-list-item-text .prm-alt-link.list-item-title,
+  .login-dialog .md-list[class$="-line"] md-list-item > .md-no-style .md-list-item-text h3.prm-alt-link,
+  .login-dialog .md-list[class$="-line"] md-list-item > .md-no-style .md-list-item-text .prm-alt-link.list-item-title, .login-dialog .collapsable-container md-list md-list-item .prm-alt-link.md-list-item-inner, prm-tags-list .md-chips .md-chip .md-chip-content strong.prm-alt-link, prm-tags-list .md-chips md-chip .md-chip-content strong.prm-alt-link, prm-tags-list md-chips .md-chip .md-chip-content strong.prm-alt-link, prm-tags-list md-chips md-chip .md-chip-content strong.prm-alt-link, md-tabs.tabs-as-links md-tab-item.prm-alt-link, md-tabs.tabs-as-app .prm-alt-link.back-button, md-grid-tile .tile-header .header-link .prm-alt-link.arrow-icon,
+  .tiles-grid-tile .tile-header .header-link .prm-alt-link.arrow-icon, md-grid-tile .tile-header .prm-alt-link.header-link:hover, md-grid-tile .tile-header .prm-alt-link.header-link:focus,
+  .tiles-grid-tile .tile-header .prm-alt-link.header-link:hover,
+  .tiles-grid-tile .tile-header .prm-alt-link.header-link:focus, md-grid-tile .tile-header .prm-alt-link.md-button,
+  .tiles-grid-tile .tile-header .prm-alt-link.md-button, md-input-container.has-fixed-message [ng-message] a.prm-alt-link, .separate-list-items md-list-item .item-loader-with-text .prm-alt-link.md-button, md-list-item.prm-alt-link.list-item-as-link {
+    color: #775c34; }
+    .prm-links.prm-alt-link.prm-hue1, .md-button.arrow-link-button .prm-alt-link.prm-hue1[link-arrow], a.prm-alt-link.prm-hue1, .md-button.arrow-link-button .prm-alt-link.prm-hue1.button-content, [class*="NFT"] > span.prm-alt-link.prm-hue1,
+    [class*="check_"] > span.prm-alt-link.prm-hue1,
+    [class*="_more"] > span.prm-alt-link.prm-hue1,
+    [class*="_unknown"] > span.prm-alt-link.prm-hue1,
+    [class*="may_"] > span.prm-alt-link.prm-hue1,
+    [class*="does_not_exist"] > span.prm-alt-link.prm-hue1,
+    .woldcat > span.prm-alt-link.prm-hue1,
+    .getit > span.prm-alt-link.prm-hue1, [class*="available"] > span.prm-alt-link.prm-hue1,
+    [class*="FT"] > span.prm-alt-link.prm-hue1,
+    .not_restricted > span.prm-alt-link.prm-hue1,
+    .fulltext > span.prm-alt-link.prm-hue1,
+    .fulltext_linktorsrc > span.prm-alt-link.prm-hue1, [class*="unavailable"] > span.prm-alt-link.prm-hue1,
+    [class*="no_"] > span.prm-alt-link.prm-hue1,
+    .restricted > span.prm-alt-link.prm-hue1,
+    .duedate > span.prm-alt-link.prm-hue1, .login-dialog md-list md-list-item .md-list-item-text h3.prm-alt-link.prm-hue1,
+    .login-dialog md-list md-list-item .md-list-item-text .prm-alt-link.prm-hue1.list-item-title,
+    .login-dialog .md-list md-list-item .md-list-item-text h3.prm-alt-link.prm-hue1,
+    .login-dialog .md-list md-list-item .md-list-item-text .prm-alt-link.prm-hue1.list-item-title, .login-dialog .collapsable-container md-list md-list-item .prm-alt-link.prm-hue1.md-list-item-inner, prm-main-menu[menu-type="full"] md-card .md-headline, prm-tags-list .md-chips .md-chip .md-chip-content strong.prm-alt-link.prm-hue1, prm-tags-list .md-chips md-chip .md-chip-content strong.prm-alt-link.prm-hue1, prm-tags-list md-chips .md-chip .md-chip-content strong.prm-alt-link.prm-hue1, prm-tags-list md-chips md-chip .md-chip-content strong.prm-alt-link.prm-hue1, md-tabs.tabs-as-links md-tab-item.prm-alt-link.prm-hue1, md-tabs.tabs-as-app .prm-alt-link.prm-hue1.back-button, md-grid-tile .tile-header .header-link .prm-alt-link.prm-hue1.arrow-icon,
+    .tiles-grid-tile .tile-header .header-link .prm-alt-link.prm-hue1.arrow-icon, md-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:hover, md-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:focus,
+    .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:hover,
+    .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.header-link:focus, md-grid-tile .tile-header .prm-alt-link.prm-hue1.md-button,
+    .tiles-grid-tile .tile-header .prm-alt-link.prm-hue1.md-button, md-input-container.has-fixed-message [ng-message] a.prm-alt-link.prm-hue1, .separate-list-items md-list-item .item-loader-with-text .prm-alt-link.prm-hue1.md-button, md-list-item.prm-alt-link.prm-hue1.list-item-as-link {
+      color: #73E9FF; }
+  .prm-links-bg {
+    color: #001add; }
+    .prm-links-bg:hover:not([disabled]), .prm-links-bg:focus:not([disabled]), .prm-links-bg.hovered:not([disabled]), .prm-links-bg.md-focused:not([disabled]), .prm-links-bg._md-focused:not([disabled]) {
+      color: #000e77;
+      background-color: rgba(0, 26, 221, 0.1); }
+    .prm-links-bg.prm-hue-1 {
+      background-color: rgba(0, 26, 221, 0.1); }
+  .prm-links-background.prm-hue-1, a:hover, .md-button.arrow-link-button .button-content:hover, .recommendations-title:hover > span > span, .recommendations-title.hover > span > span, prm-tags-list .md-chips .md-chip .md-chip-content:hover strong, prm-tags-list .md-chips md-chip .md-chip-content:hover strong, prm-tags-list md-chips .md-chip .md-chip-content:hover strong, prm-tags-list md-chips md-chip .md-chip-content:hover strong, a:focus, .md-button.arrow-link-button .button-content:focus, a.hover, .md-button.arrow-link-button .hover.button-content, .md-button.arrow-link-button:hover .button-content, .md-button.arrow-link-button:focus .button-content, prm-citation-trails-item.active-item md-card > .md-button:hover .item-title span, prm-citation-trails-item.active-item md-card > .md-button:focus .item-title span {
+    background-color: rgba(0, 26, 221, 0.1); }
+  .prm-links-background.prm-hue-2 {
+    background-color: rgba(0, 26, 221, 0); }
+  .prm-links-hover.prm-hue-1, a:hover, .md-button.arrow-link-button .button-content:hover, .recommendations-title:hover > span > span, .recommendations-title.hover > span > span, prm-tags-list .md-chips .md-chip .md-chip-content:hover strong, prm-tags-list .md-chips md-chip .md-chip-content:hover strong, prm-tags-list md-chips .md-chip .md-chip-content:hover strong, prm-tags-list md-chips md-chip .md-chip-content:hover strong, a:focus, .md-button.arrow-link-button .button-content:focus, a.hover, .md-button.arrow-link-button .hover.button-content, .md-button.arrow-link-button:hover .button-content, .md-button.arrow-link-button:focus .button-content, prm-citation-trails-item.active-item md-card > .md-button:hover .item-title span, prm-citation-trails-item.active-item md-card > .md-button:focus .item-title span {
+    color: #000e77; }
+  .prm-links-hover.prm-hue-2 {
+    color: rgba(0, 14, 119, 0.5); }
+  .prm-links-hover.prm-hue-3 {
+    color: rgba(0, 26, 221, 0); }
+
+.prm-text, body, a.a-tag-as-wrapper, .md-button.arrow-link-button .a-tag-as-wrapper.button-content, a.a-tag-as-wrapper:hover, .recommendations-title:hover > span > span.a-tag-as-wrapper, .recommendations-title.hover > span > span.a-tag-as-wrapper, prm-tags-list .md-chips .md-chip .md-chip-content:hover strong.a-tag-as-wrapper, prm-tags-list .md-chips md-chip .md-chip-content:hover strong.a-tag-as-wrapper, prm-tags-list md-chips .md-chip .md-chip-content:hover strong.a-tag-as-wrapper, prm-tags-list md-chips md-chip .md-chip-content:hover strong.a-tag-as-wrapper, a.a-tag-as-wrapper:focus, .hack-a-tag-unclickable a, .hack-a-tag-unclickable .md-button.arrow-link-button .button-content, .md-button.arrow-link-button .hack-a-tag-unclickable .button-content, prm-search-bar, prm-journals-search-bar, prm-browse-search-bar, prm-tags-search-bar, prm-virtual-browse-item md-card md-card-title, prm-virtual-browse-item md-card md-card-content, md-input-container.static-select.md-input-has-value label,
+md-input-container.static-select.md-input-has-value label:not(.md-no-float), .presentable-disabled-inputs md-input-container label, md-tooltip.bright-tooltip .md-content, md-tooltip.bright-tooltip ._md-content, md-toolbar.transparent-toolbar,
+md-toolbar.md-primoExplore-theme.transparent-toolbar,
+md-toolbar.transparent-toolbar:not(.md-menu-toolbar), md-toolbar.default-toolbar,
+md-toolbar.md-primoExplore-theme.default-toolbar,
+md-toolbar.default-toolbar:not(.md-menu-toolbar) {
+  color: #3a3a3a; }
+  .prm-text.prm-hue1, body.prm-hue1, .weak-text, .numbered-list .item:before, prm-brief-result-container .media-content-type, prm-snippet prm-icon, .prm-recommendations-fullview .resource-count, a.prm-hue1.a-tag-as-wrapper, .md-button.arrow-link-button .prm-hue1.a-tag-as-wrapper.button-content, .recommendations-title:hover > span > span.prm-hue1.a-tag-as-wrapper, .recommendations-title.hover > span > span.prm-hue1.a-tag-as-wrapper, prm-tags-list .md-chips .md-chip .md-chip-content:hover strong.prm-hue1.a-tag-as-wrapper, prm-tags-list .md-chips md-chip .md-chip-content:hover strong.prm-hue1.a-tag-as-wrapper, prm-tags-list md-chips .md-chip .md-chip-content:hover strong.prm-hue1.a-tag-as-wrapper, prm-tags-list md-chips md-chip .md-chip-content:hover strong.prm-hue1.a-tag-as-wrapper, .hack-a-tag-unclickable a.prm-hue1, .hack-a-tag-unclickable .md-button.arrow-link-button .prm-hue1.button-content, .md-button.arrow-link-button .hack-a-tag-unclickable .prm-hue1.button-content, prm-search-bar.prm-hue1, prm-journals-search-bar.prm-hue1, prm-browse-search-bar.prm-hue1, prm-tags-search-bar.prm-hue1, prm-virtual-browse-item md-card md-card-title.prm-hue1, prm-virtual-browse-item md-card md-card-content.prm-hue1, md-input-container.static-select.md-input-has-value label.prm-hue1, .presentable-disabled-inputs md-input-container label.prm-hue1, md-tooltip.bright-tooltip .prm-hue1.md-content, md-tooltip.bright-tooltip .prm-hue1._md-content, md-toolbar.prm-hue1.transparent-toolbar, md-toolbar.prm-hue1.default-toolbar {
+    color: #878787; }
+
+.prm-warn, md-input-container.md-required:before, md-input-container.md-input-invalid:before, .required-starlet, .md-chip-remove-container button:hover md-icon, .md-chip-remove-container button:focus md-icon, prm-tags-list .md-chips.md-removable .md-chip .md-chip-remove md-icon, prm-tags-list .md-chips.md-removable md-chip .md-chip-remove md-icon, prm-tags-list md-chips.md-removable .md-chip .md-chip-remove md-icon, prm-tags-list md-chips.md-removable md-chip .md-chip-remove md-icon, md-input-container.md-input-invalid, .md-chips .md-chip.toggleable-chip .md-chip-remove-container prm-icon.close-button {
+  color: #C61029; }
+  .prm-warn-bg, .multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked ._md-icon, md-input-container.md-input-invalid:after, prm-tags-list .md-chips .md-input-invalid.md-chip-input-container:after, prm-tags-list .md-chips .md-input-invalid._md-chip-input-container:after, prm-tags-list md-chips .md-input-invalid.md-chip-input-container:after, prm-tags-list md-chips .md-input-invalid._md-chip-input-container:after {
+    background-color: #C61029; }
+
+.prm-alert, .bar.alert-bar, .classic-input .search-scope {
+  color: black; }
+  .prm-alert-bg, .bar.alert-bar, .classic-input .search-scope {
+    background-color: #F7EDA3; }
+  .prm-alert-border, .bar.alert-bar, .classic-input .search-scope {
+    border-color: #ede49e; }
+
+.prm-highlight, prm-breadcrumbs .md-chip.persistent-facet {
+  background-color: #FFFCC4; }
+  .prm-highlight.prm-hue1, .list-item-wrapper .item-bookmarked,
+  .list-item-wrapper .item-bookmarked:hover, prm-breadcrumbs .prm-hue1.md-chip.persistent-facet {
+    background-color: #FFFCC4; }
+
+.prm-notice, .status-maybe, [class*="NFT"],
+[class*="check_"],
+[class*="_more"],
+[class*="_unknown"],
+[class*="may_"],
+[class*="does_not_exist"],
+.woldcat,
+.getit, prm-search-result-frbr-line a > prm-icon:first-child, prm-search-result-frbr-line .md-button.arrow-link-button .button-content > prm-icon:first-child, .md-button.arrow-link-button prm-search-result-frbr-line .button-content > prm-icon:first-child {
+  color: #C75B12; }
+
+.prm-positive, .status-available, [class*="available"],
+[class*="FT"],
+.not_restricted,
+.fulltext,
+.fulltext_linktorsrc {
+  color: #4A7C01; }
+  .prm-positive-bg, .multiselect-submit .multiselect-submit-inner .md-button.md-primary {
+    background-color: #4A7C01; }
+
+.prm-negative, .status-unavailable, [class*="unavailable"],
+[class*="no_"],
+.restricted,
+.duedate {
+  color: #C75B12; }
+
+.prm-citation-color, prm-citation-trails-item .item-type {
+  color: tomato; }
+  .prm-citation-color.citation-hover, prm-citation-trails-item .citation-hover.item-type, prm-citation-trails-indication .md-button.md-icon-button:hover, prm-citation-trails-indication .md-button.button-with-icon:hover {
+    color: #7a1300; }
+
+.prm-citation-title, prm-citation-trails-item.active-item .item-title, prm-opac .related-title .related-title-name, prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item .item-title, prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item .item-title, md-list.prm-list.prm-linkable-list-items md-list-item .item-title {
+  color: #44707b; }
+
+.prm-hover-list-element-bg, prm-brief-result-container .list-item-primary-content:before, prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:hover + .md-list-item-inner,
+prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:hover + ._md-list-item-inner, prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:focus + .md-list-item-inner,
+prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:focus + ._md-list-item-inner, prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:hover + .md-list-item-inner,
+prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:hover + ._md-list-item-inner, prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:focus + .md-list-item-inner,
+prm-tags-results-list md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:focus + ._md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:hover + .md-list-item-inner, md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-item > .md-button > .button-content:hover + .md-list-item-inner, .md-button.arrow-link-button md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > .button-content:hover + .md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item.recommendations-title:hover > span.md-button > span + .md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item.recommendations-title.hover > span.md-button > span + .md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list .md-chips .md-chip .md-chip-content:hover md-list-item > .md-button > strong + .md-list-item-inner, prm-tags-list .md-chips .md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > strong + .md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list .md-chips md-chip .md-chip-content:hover md-list-item > .md-button > strong + .md-list-item-inner, prm-tags-list .md-chips md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > strong + .md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list md-chips .md-chip .md-chip-content:hover md-list-item > .md-button > strong + .md-list-item-inner, prm-tags-list md-chips .md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > strong + .md-list-item-inner, md-list.prm-list.prm-linkable-list-items prm-tags-list md-chips md-chip .md-chip-content:hover md-list-item > .md-button > strong + .md-list-item-inner, prm-tags-list md-chips md-chip .md-chip-content:hover md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > strong + .md-list-item-inner,
+md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:hover + ._md-list-item-inner,
+md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-item > .md-button > .button-content:hover + ._md-list-item-inner, .md-button.arrow-link-button
+md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > .button-content:hover + ._md-list-item-inner,
+md-list.prm-list.prm-linkable-list-items md-list-item.recommendations-title:hover > span.md-button > span + ._md-list-item-inner,
+md-list.prm-list.prm-linkable-list-items md-list-item.recommendations-title.hover > span.md-button > span + ._md-list-item-inner,
+md-list.prm-list.prm-linkable-list-items prm-tags-list .md-chips .md-chip .md-chip-content:hover md-list-item > .md-button > strong + ._md-list-item-inner, prm-tags-list .md-chips .md-chip .md-chip-content:hover
+md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > strong + ._md-list-item-inner,
+md-list.prm-list.prm-linkable-list-items prm-tags-list .md-chips md-chip .md-chip-content:hover md-list-item > .md-button > strong + ._md-list-item-inner, prm-tags-list .md-chips md-chip .md-chip-content:hover
+md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > strong + ._md-list-item-inner,
+md-list.prm-list.prm-linkable-list-items prm-tags-list md-chips .md-chip .md-chip-content:hover md-list-item > .md-button > strong + ._md-list-item-inner, prm-tags-list md-chips .md-chip .md-chip-content:hover
+md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > strong + ._md-list-item-inner,
+md-list.prm-list.prm-linkable-list-items prm-tags-list md-chips md-chip .md-chip-content:hover md-list-item > .md-button > strong + ._md-list-item-inner, prm-tags-list md-chips md-chip .md-chip-content:hover
+md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > strong + ._md-list-item-inner, md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:focus + .md-list-item-inner, md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-item > .md-button > .button-content:focus + .md-list-item-inner, .md-button.arrow-link-button md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > .button-content:focus + .md-list-item-inner,
+md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > a:focus + ._md-list-item-inner,
+md-list.prm-list.prm-linkable-list-items .md-button.arrow-link-button md-list-item > .md-button > .button-content:focus + ._md-list-item-inner, .md-button.arrow-link-button
+md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > .button-content:focus + ._md-list-item-inner {
+  background-color: white; }
+
+.prm-peer-reviewed {
+  color: #8359d4; }
+
+.prm-open-access {
+  color: #f68212; }
+
+.prm-personalization, prm-search-result-list prm-personalize-results-button .md-button md-switch.md-checked .md-label, prm-search-result-list prm-personalize-results-button .md-button md-switch.md-checked ._md-label, prm-search-result-list prm-personalize-results-button .md-button md-switch._md-checked .md-label, prm-search-result-list prm-personalize-results-button .md-button md-switch._md-checked ._md-label, .sidebar .personalization-section .section-title-header,
+.sidebar .personalization-section .sidebar-list,
+.sidebar .personalization-section md-checkbox {
+  color: #7d1538; }
+  .prm-personalization-bg, prm-search-result-list prm-personalize-results-button .md-button md-switch.md-checked .md-bar, prm-search-result-list prm-personalize-results-button .md-button md-switch.md-checked ._md-bar, prm-search-result-list prm-personalize-results-button .md-button md-switch._md-checked .md-bar, prm-search-result-list prm-personalize-results-button .md-button md-switch._md-checked ._md-bar, prm-search-result-list prm-personalize-results-button .md-button md-switch.md-checked .md-thumb, prm-search-result-list prm-personalize-results-button .md-button md-switch.md-checked ._md-thumb, prm-search-result-list prm-personalize-results-button .md-button md-switch._md-checked .md-thumb, prm-search-result-list prm-personalize-results-button .md-button md-switch._md-checked ._md-thumb, .sidebar .personalization-section md-checkbox.md-checked .md-icon, .sidebar .personalization-section .sidebar-list li:before, .sidebar .personalization-section ul li:before {
+    background-color: #7d1538; }
+
+/* primary color hook end*/
+/* Text selection color */
+::selection {
+   background: #FFE816;
+   color: #000;
+}
+::-moz-selection { 
+   background: #FFE816;
+   color: #000;
+}
+
+.donotdisplay {
+   display: none !important;
+}
+
+prm-topbar {
+   height: auto;
+}
+#local-top-menu .local-top-menu-row {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: space-between;
+   align-content: stretch;
+   align-items: center;
+   background-color: #4B2E83;
+}
+
+#local-top-menu #local-logo-user-row {
+   height: 70px;
+   max-height: 70px;
+}
+#local-top-menu #local-user-menu {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: flex-end;
+   align-content: stretch;
+   align-items: center;   
+}
+#local-top-menu #local-logo-user-row #local-skips-logo {
+   height: 100%;
+   display: flex;
+  align-items: stretch;
+  justify-content: center;   
+  min-height: 100%;
+}
+
+#local-top-menu  prm-skip-to {
+   position: relative;
+   height: 100%;
+   min-height: 100%;
+}  
+#local-top-menu  prm-skip-to a {
+   display: flex;
+   height: 100%;
+   min-height: 100%;   
+}
+#local-top-menu  prm-skip-to a:hover {
+   text-decoration: underline;
+}
+#local-top-menu  prm-skip-to a:focus {
+   position: absolute;
+   background-color: #165788;
+   color: #fff;
+   font-weight: bold;
+   z-index: 20;
+   height: 100%;
+   min-height: 100%;
+   outline: dotted 1px #aaa !important;  
+}
+
+#local-top-menu prm-logo div#banner{
+   padding: 0 0.85em;
+}
+#local-top-menu prm-logo div#banner a {
+   padding-bottom: 0;
+   display: flex;
+   min-height: 100%;
+   align-items: center;
+}
+
+
+
+
+#local-top-menu prm-logo div#banner a:hover,
+#local-top-menu prm-logo div#banner a:focus {
+   color: transparent;
+   background-color: transparent;
+   box-shadow: none;
+}
+#local-top-menu prm-logo div#banner a:focus {
+   outline: dotted 1px #aaa !important;
+}
+   
+   
+#local-top-menu prm-logo div#banner a img {
+   max-height: none;
+   height: auto;
+   min-width: 350px;
+}
+
+
+
+prm-main-menu[menu-type="full"] prm-library-card-menu + md-divider,
+prm-main-menu[menu-type="full"] prm-library-card-menu + md-divider + div {
+   display: none;
+}
+
+
+#local-top-menu prm-search-bookmark-filter  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: center;
+}
+
+#local-top-menu prm-authentication {
+   margin-right: 0.75em;
+}
+
+#local-user-menu prm-library-card-menu button,
+#local-top-menu prm-authentication button {
+   color: #fff;
+   padding-top: 2px;
+   padding-bottom: 2px;
+   border-radius: 5px;
+}
+#local-top-menu prm-authentication button[ng-click*="handleLogin"] {
+   background-color: #4A7C01;
+}
+#local-top-menu prm-authentication button[ng-click*="handleLogin"]:hover:not([disabled]),
+#local-top-menu prm-authentication button[ng-click*="handleLogin"]:focus:not([disabled]) {
+   background-color: #D7A900;
+   color: #000;
+}
+
+#local-top-menu prm-search-bookmark-filter a.md-button.md-icon-button {
+   color: #fff;
+   border-radius: 5px;
+   box-shadow: none !important; 
+   margin: 0 2px;   
+}
+
+#local-top-menu prm-search-bookmark-filter #favorites-button::before {
+   border-radius: 5px;
+   background-color: #C75B12;
+}
+
+#local-top-menu prm-library-card-menu button:hover:not([disabled]),
+#local-top-menu prm-library-card-menu button:focus:not([disabled]),
+#local-top-menu prm-authentication button[ng-click*="handleLogout"]:hover:not([disabled]),
+#local-top-menu prm-authentication button[ng-click*="handleLogout"]:focus:not([disabled]), 
+#local-top-menu prm-search-bookmark-filter a.md-button.md-icon-button:hover:not([disabled]),
+#local-top-menu prm-search-bookmark-filter a.md-button.md-icon-button:focus:not([disabled]) {
+   color: #D7A900;
+}
+#local-top-menu prm-library-card-menu button:focus:not([disabled]),
+#local-top-menu prm-authentication button[ng-click*="handleLogout"]:focus:not([disabled]), 
+#local-top-menu prm-search-bookmark-filter a.md-button.md-icon-button:focus:not([disabled]) {
+   outline: dotted 1px #aaa !important;
+}
+
+#local-top-menu prm-search-bookmark-filter #favorites-button md-icon {
+   transition-duration: 0.4s;
+   transition-delay: 0s;
+}
+
+#local-top-menu prm-search-bookmark-filter #favorites-button prm-icon svg {
+   transition-duration: 0.4s;
+}
+
+#local-top-menu prm-main-menu[menu-type="menu"] {
+   padding: 6px 0.75em 0;
+   height: 50px;
+   box-shadow: none !important;   
+}
+
+#local-top-menu prm-main-menu[menu-type="menu"]  .md-button {
+   color: #fff;
+   font-size: 1rem;
+   white-space: nowrap;
+   box-shadow: none;
+   border-radius: 5px;
+}
+#local-top-menu prm-main-menu[menu-type="menu"]  .md-button:hover,
+#local-top-menu prm-main-menu[menu-type="menu"]  .md-button:focus {
+   color: #D7A900;
+}
+#local-top-menu prm-main-menu[menu-type="menu"]  .md-button:focus {
+   outline: dotted 1px #aaa !important;
+   z-index: 100;
+}
+
+
+
+/* hide the responsive button for main menu by default */
+#local-top-menu #local-main-menu-responsive {
+   display: none;
+   padding: 0;
+   height: 100%;
+   margin-right: 4px;
+}
+#local-top-menu #local-main-menu-responsive button.md-button {
+   min-width: 0;
+   padding: 2px 0.5em;
+}
+
+@media screen and (max-width: 800px) {
+   #local-top-menu prm-main-menu[menu-type="menu"]  .md-button span.responsiveText {
+      display: none;
+   }
+}
+@media screen and (max-width: 740px) {
+   #local-top-menu prm-library-card-menu button > span {
+      /* display: none; */
+   }
+
+}
+@media screen and (max-width: 740px) {
+
+   #local-top-menu prm-authentication span.responsiveText {
+      display: none;
+   }
+
+}
+@media screen and (max-width: 725px) {  
+   #local-top-menu prm-logo div#banner a img {
+      min-width: 230px
+   }
+}
+@media screen and (max-width: 600px) {  
+   #local-top-menu #local-main-menu-responsive {
+      display: block;
+   }
+   #local-top-menu #local-main-menu-row {
+      display: none;
+   }
+   #local-top-menu prm-authentication {
+      display: none;
+   }
+   #local-top-menu prm-library-card-menu button {
+      min-width: 0;
+      padding-left: 8px;
+      padding-right: 8px;
+   }
+   #local-top-menu prm-library-card-menu button > span {
+      display: none;
+   }
+}
+@media screen and (max-width: 550px) {
+   #local-top-menu prm-logo div#banner a img {
+      min-width: 300px
+   }
+}
+@media screen and (max-width: 460px) {
+   #local-top-menu prm-logo div#banner a img {
+      min-width: 200px
+   }
+}
+@media screen and (max-width: 390px) {
+   #local-top-menu prm-logo div#banner a img {
+      min-width: 125px
+   }
+}
+
+
+prm-top-bar-before + div.layout-row { display: none; }
 
 /* TEMPORARY */
 
@@ -512,329 +1398,1016 @@ a[href^="http://sandbox01-na.alma.exlibrisgroup.com"]:after {
 
 /* Maybe remove the infamous gray bar */
 body.md-dialog-is-showing  {
-    overflow-x:visible!important;
+   overflow-x:visible!important;
 }
-
+/* UW Branding Font */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i');
 body {
-    font-family: 'Open Sans', sans-serif;
-} 
+   font-family: 'Open Sans', sans-serif;
+}
 
 /* Upper Left Branding Image */
-prm-topbar .top-nav-bar {
-    align-items: stretch;
-}
-prm-topbar prm-logo {
-    flex: 1 1 auto;
-    align-self: center;
-    max-width: 100% !important;
-    height: initial;
-/*     padding: 0 0.5em;
-    background-color: lime;    */ 
-    min-width: auto;
-}
-prm-logo .product-logo {  
-    padding: 0 0.85em;
-    line-height: 0px;
-/*     background-color: purple; */
-    min-width: auto;
-}
-prm-logo .logo-image, prm-logo img {
-    width: 100%;
-    max-width: 392px;
-    min-width: 120px;
-}
-prm-topbar .top-nav-bar > div.flex-50 {
-/*     background-color: darkred; */
-    max-width: 1em;
-}
-prm-search-topbar prm-search-bookmark-filter {
-    flex-grow: 0;
-}
+
+
 
 /* toolbar menu text */
+/*
 prm-topbar .md-button.button-over-dark {
-    color: #fff;
+   color: #fff;
 }
 prm-topbar .md-button.button-over-dark:hover:not([disabled]),
 prm-topbar .md-button.button-over-dark:focus:not([disabled]) {
-    color: #D7A900;
+   color: #D7A900;
 }
 prm-main-menu .md-button:focus {
-    outline: 1px dotted #D7A900;
+   outline: 1px dotted #D7A900;
 }
 prm-main-menu[menu-type="menu"] .md-button {
-    font-size: 90%;
-    box-shadow: none !important;
-}  
+   font-size: 90%;
+   box-shadow: none !important;
+}
+
+*/
+/* hide the default browse link in both main menus */
+prm-main-menu .top-nav-bar-links > a:last-of-type {
+  display: none;
+}
+prm-main-menu[menu-type="full"] div.custom-links-container > md-card:last-of-type {
+   display: none;
+}
 
 /* text-space on the home page */
 md-card.default-card {
-    background-color: #fff;
+   background-color: #fff;
 }
 
 /* alert bar for login */
 .alert-bar {
-    background-color: #4A7C01;
+   background-color: #4A7C01;
 }
 
 
 
 /* login alerts */
 .prm-alert-border, .bar.alert-bar {
-    background-color: #4A7C01;
-    border-color: #444;
-    color: #fff;
-    border-radius: 0;
+   background-color: #4A7C01;
+   border: none;
+   color: #fff;
+   border-radius: 0;
+   font-weight: bold;
 }
 .bar prm-authentication .md-button {
-    color: #fff;
+   color: #fff;
+   font-weight: bold;
 }
 .bar prm-authentication .md-button:hover:not([disabled]),
 .bar prm-authentication .md-button:focus:not([disabled]) {
-    color: #000;
-    background-color: #d7a900;
+   color: #000;
+   background-color: #d7a900;
 }
 .bar prm-authentication + md-divider {
-    display: none;
+   display: none;
 }
 .bar button.dismiss-alert-button {
-    color: #fff;
+   color: #fff;
 }
 .bar button.dismiss-alert-button:hover:not([disabled]),
 .bar button.dismiss-alert-button:focus:not([disabled]) {
-    color: #000;
-    background-color: #d7a900;
+   color: #000;
+   background-color: #d7a900;
 }
 
 
 /* result item background colors */
 prm-search-result-list .results-title,
 prm-search-result-list md-list-item {
-    background-color: white;
+   background-color: white;
+}
+
+
+/* Hide Features on Virtual Browse
+   The actual sections on the page have IDs we can hide. The problem is the menu
+   on the left of the Full Display. The only means to specifically target them
+   right now is to use aria-label.
+   
+   Recommendation: 
+   Add 'DO_NOT_USE' to the appropriate brief.results.tabs.* code table entry 
+   
+   Currently hidden features:
+   - Tags
+   - Virtual Browse
+ */
+prm-full-view#fullView #virtualBrowse,
+prm-full-view#fullView #tags,
+prm-full-view#fullView div#services-index button[aria-label^="DO_NOT_USE"] {
+   display: none;
+}
+
+/* fullview overall */
+.full-view-inner-container {
+   background-color: white;
+}
+
+/* Item Title */
+prm-brief-result .item-title span {
+   color: inherit;
+}
+prm-brief-result .item-title a {
+   color: #4b2e83;
+}
+prm-brief-result .item-title a:hover,
+prm-brief-result .item-title a:focus  {
+   color: #85754d;
+}
+prm-full-view prm-brief-result .item-title {
+   cursor: default;
+}
+prm-full-view prm-brief-result .item-title a:hover,
+prm-full-view prm-brief-result .item-title a:focus  {
+   color: #4b2e83;
+   cursor: default;
+}
+
+prm-login-alma-mashup > .bar.alert-bar {
+   /* border-bottom: none; */
+}
+
+
+
+.result-item-actions > .md-button {
+   opacity: 0.8;
+}
+
+/* citation trail buttons */
+prm-citation-trails-indication {
+   margin-right: 0.5em;
+}
+prm-citation-trails-indication .md-button.button-with-icon,
+prm-citation-trails-indication .md-button.md-icon-button {
+   background-color: #4b2e83;
+   color: #fff;
+}
+prm-citation-trails-indication .md-button.button-with-icon._md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon.hovered:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon.md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon:focus:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon:hover:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button._md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button.hovered:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button.md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button:focus:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button:hover:not([disabled]) {
+   color: #d7a900;
+}
+prm-citation-trails-indication .md-button.button-with-icon._md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon.hovered:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon.md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon:focus:not([disabled]),
+prm-citation-trails-indication .md-button.button-with-icon:hover:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button._md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button.hovered:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button.md-focused:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button:focus:not([disabled]),
+prm-citation-trails-indication .md-button.md-icon-button:hover:not([disabled]) {
+   background-color: rgb(62,32,108);
+}
+prm-citation-trails-item .item-type {
+   color: #85754D;
+   font-size: 1rem;
+}
+
+/* fix availability & request options wrapping */
+.__gt-xs .full-view-section-content {
+   padding-left: 10em;
+}
+prm-full-view .services-index-under #services-index {
+   max-width: 10em; /* 7.5em + 2.5em */
+}
+prm-full-view prm-brief-result-container .result-item-text {
+   padding-left: 4.5em; /* + 2.5em given increased width of share/save sidebar */
+}
+
+
+div#services-index .md-button{
+   white-space: normal;
+   line-height: normal;
+   padding-top: 8px;
+   padding-bottom: 8px;
+}
+
+
+/* in prm-full-view-after, we hide optional notes we might like to add to
+   certain item's full display
+ */
+prm-full-view-after #localOptionalStatements {
+   display: none;
+}
+prm-full-view {
+   color: #000;
+}
+prm-full-view .localNote {
+   padding: 0.75em 1em;
+   font-size: 0.9rem;
+   font-weight: bold;
+   color: #fff;
+   background-color: #165788;
+}
+.full-view-section md-divider {
+   opacity: 1;
+   border-bottom: solid 2px #85754D;
+}
+prm-full-view .localNote p {
+   margin: 0;
+}
+prm-full-view .section-title.light-text {
+   font-weight: normal;
+   color: #000;
+   padding-right: 0.5em;
+}
+
+parm-full-view .localNote p + p {
+   margin-top: 0.5em;
+}
+prm-full-view .localNote a:link,
+prm-full-view .localNote a:visited {
+   color: #FFE816;
+}
+prm-full-view .localNote a:hover,
+prm-full-view .localNote a:focus {
+   text-decoration: underline;
+   background-color: transparent;
+   color: #FFE816;
+   box-shadow: none;
+}
+prm-full-view .localNote a svg {
+   color: #FFE816;
+   margin-left: 1px;   
+}
+prm-full-view .localNote.localNoteOADOI {
+   background-color: #E9E9E9;
+   color: #000;
+   display: flex;
+   align-items: center;
+}
+prm-full-view .localNote.localNoteOADOI img {
+   width: 25px;
+   height: 25px;
+   margin-right: 0.5em;
+}
+prm-full-view .localNote.localNoteOADOI a:link,
+prm-full-view .localNote.localNoteOADOI a:visited,
+prm-full-view .localNote.localNoteOADOI a svg {
+   color: #001add;
+}
+
+prm-alma-mashup.margin-bottom-large {
+   margin-bottom: 0;
+}
+
+
+/* Show/Hide Summit Holdings */
+#summitButton {
+   background-color: #4B2E83;
+   color: #fff;
+   font-weight: bold;
+   padding: 0 8px;
+   margin-left: 0;
+}
+#summitButton:hover,
+#summitButton:focus {
+   color: #D7A900;
+}
+#summitButton:focus {
+   outline: dotted 1px #444 !important;
+   outline-offset: 1px;
+}
+#summitLinks {
+   border: solid 1px #444;
+   padding: 0.5em 0.75em;
+}
+#summitLinks md-list-item.md-2-line {
+   min-height: 0;
+}
+#summitLinks md-list-item + md-list-item {
+   margin-top: 0.75em;
+}
+#summitLinks  md-list-item span.availability-status {
+   font-weight: bold;
+}
+#summitLinks  md-list-item prm-icon {
+   display: none;
+}
+
+/* Alerts - UW Library */
+div#libAlerts-outer {
+   background-color: #C61029;
+   color: #fff;
+   line-height: 1.25;
+   font-size: 1.125rem;
+   padding: 0.75rem
+}
+div#libAlerts {
+   margin: 0 auto;
+   max-width: 94%;
+   padding-left: calc(70px + 0.75em);
+   position: relative;
+   min-height: 70px;
+}
+div#libAlerts:before {
+   content: '';
+   background-image: url('/primo-explore/custom/UW/img/_alert.png');
+   background-size: cover;
+   display: block;
+   width: 70px;
+   height: 70px;
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+#libAlerts > div + div {
+   margin-top: 0.75em;
+}
+div#libAlerts p {
+   margin: 0;
+}
+div#libAlerts p + p {
+   margin-top: 0.5em;
+}
+/* adds a little dividing line between UW-wide alerts and library alerts if both are present */
+div#uwalert-alert-message + div#libAlerts-outer {
+  border-top: solid 1px #d7a900
+}
+div#libAlerts a {
+   color: #FFE816;
+}
+div#libAlerts a:hover,
+div#libAlerts a:focus {
+   background-color: transparent;
+   color: #FFE816;
+   box-shadow: none;
+   text-decoration: underline;
+}
+div#libAlerts a:focus {
+   outline: dotted 1px #fff !important;
+   outline-offset: 1px;
+}
+
+/* help widget */
+#local-help-widget {
+   -webkit-transform-origin: left top;
+    transform-origin: left top;
+   -webkit-transform: rotate(90deg);
+   -ms-transform: rotate(90deg);
+    transform: rotate3d(0.001,0.001,1,90deg);
+   text-align: center;
+   position: fixed;
+   z-index: 900000;
+   display: block;
+   text-decoration: none;
+   cursor: pointer;
+   background-color: transparent;
+   padding: 0px;
+   font-size: 1rem;
+   font-weight: bold;
+   width: 140px;
+   top: 18%;
+   right: -141px;
+   transition: right 300ms;
+}
+#local-help-widget.moveLeft {
+   right: calc(-141px + 400px - 1px);
+}
+
+#local-help-widget button {
+   width: 100%;
+   display: block;
+   font-weight: bold;
+   background-color: #D7A900;
+   color: #000;
+   border: none;
+   padding-left: 0;
+   padding-right: 0;
+   padding-top: 0.5em;
+   padding-bottom: 0.5em;
+   border: solid 1px black;
+   border-radius: 0 0 15px 15px;
+}
+#local-help-widget button::-moz-focus-inner {
+   border-style: none;
+   padding: 0;
+}
+
+
+#local-help-widget button:hover,
+#local-help-widget button:focus {
+   /* padding-top: calc(0.75em + 8px); */
+   color: #fff;
+   background-color: #C75B12;
+}
+#local-help-widget button:focus {
+   outline: dotted 1px #aaa !important;
+}
+
+
+#help-modal-overlay {
+   display: none;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: white;
+   opacity: 0.25;
+   z-index: 900000;
+}
+#help-modal-overlay.open {
+   display: block;
+}
+
+#help-modal {
+   display: none;
+   transition: right 300ms;
+   position: fixed;
+   top: 18%;
+   right: -400px;
+   padding: 0;
+   border: 1px solid #000;
+   background-color: #fff;
+   z-index: 900002;
+   width: 400px;
+   min-height: 240px;
+}
+
+#help-modal.open {
+   display: block;
+}
+#help-modal.moveLeft {
+   right: -1px;
+}
+
+h1#help-modal-header {
+   color: #fff;
+   background-color: #4B2E83;
+   text-align: left;
+   padding: 10px;
+   font-size: 1.25rem;
+   font-weight: bold;
+   margin-bottom: 0;
+}
+button#help-modal-close {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   padding: 0;
+   border-style: none;
+   color: #fff;
+   background-color: transparent;
+}
+button#help-modal-close:focus,
+button#help-modal-close:hover {
+   color: #d7a900;
+}
+button#help-modal-close:focus {
+   outline: dotted 1px #fff;
+}
+#help-modal div.modal-content {
+   padding: 10px;
+}
+#help-modal div.modal-content div.modal-row + div.modal-row {
+   margin-top: 0.875em;
+}
+#help-modal div.modal-content div.modal-row > a {
+   display: flex;
+   font-weight: bold;
+   align-items: center;
+   font-size: 1.1rem;
+   margin-bottom: 3px;
+}
+#help-modal div.modal-content div.modal-row > a:focus,
+#help-modal div.modal-content div.modal-row > a:hover {
+   box-shadow: none;
+   color: #85754D;
+   background-color: transparent;
+}
+#help-modal div.modal-content div.modal-row > a:focus {
+   outline: dotted 1px #888;
+   outline-offset: 2px;
+}
+
+#help-modal div.modal-content div.modal-row > a span {
+   padding-left: 0.375em;
+}
+#help-modal div.modal-content div.modal-row > a img {
+   width: 30px;
+   height: 30px;
+}
+#help-modal div.modal-content div.modal-row p {
+   margin: 0;
+}
+
+
+/* Hide the edit button on personal details */
+md-card#personalDetails md-card-header {
+   display: none;
+}
+md-card#personalDetails md-divder {
+   margin: 0.5em 2px 1em;
+}
+
+/* hide the email controls */
+md-card#personalDetails div.card-content-section:nth-child(5) {
+   display: none;
+}
+/* hide the language area */
+md-card#personalDetails + md-card {
+   display: none;
+}
+
+md-card#personalDetails input[type="text"][disabled] {
+   color: #000;
+   border: none;
+   padding: 0;
+   line-height: initial;
+   height: auto;
+}
+md-card#personalDetails md-input-container label {
+   position:absolute;
+   left:-10000px;
+   top:auto;
+   width:1px;
+   height:1px;
+   overflow:hidden;
+   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+   clip: rect(1px, 1px, 1px, 1px);
+   clip-path: polygon(0px 0px, 0px 0px,0px 0px, 0px 0px);
+}
+
+md-card#personalDetails  md-card-content  > div > h4 {
+   width: auto;
+   height: auto;
+   overflow: auto;
+   left: 20px;
+   min-height: 0;
+   position: absolute;
+}
+md-card#personalDetails > md-card-content > div > div > div > md-input-container:nth-child(1) {
+   margin-top: 14px;
+}
+#local-personal-info-change-list {
+   padding-top: 8px;
+}
+
+/* facets */
+
+div.sidebar-section.available-facets {
+   margin-bottom: 0.75em;
+}
+
+prm-facet-group > div:first-child {
+   border: solid 1px #444;
 }
 
 prm-facet-group button.md-button.section-title {
    line-height: 1;
    border-radius: 0;
    color: #fff;
-   background-color: #85754D;
-   border: solid 1px #444;
+   background-color: #4B2E83;
    padding: 0.375em 0.375em;
    margin-bottom: 0;
+   margin-top: 0;
 }
 prm-facet-group button.md-button.section-title:hover:not([disabled]),
 prm-facet-group button.md-button.section-title:focus:not([disabled]) {
-    background-color: #D7A900;
-    color: #000;
-}
+   background-color: #D7A900;
 
+}
+prm-facet-group button.md-button.section-title  .section-title-header {
+   color: #fff;
+}
+prm-facet-group button.md-button.section-title:hover:not([disabled]) .section-title-header,
+prm-facet-group button.md-button.section-title:focus:not([disabled]) .section-title-header {
+   color: #000;
+}
 prm-facet-group button.md-button.section-title div.layout-row {
-    justify-content: space-between;
+   justify-content: space-between;
 }
 prm-facet-group button.md-button.section-title .section-title-header,
 prm-facet-group button.md-button.section-title prm-icon {
-    color: inherit;
+   color: inherit;
 }
-
+prm-facet-group div.expand-section-button {
+   text-align: right;
+} 
 prm-facet-group div.section-content {
-    background-color: #fff;
-    color: #001add;
-    border: solid 1px #444;
-    border-top-width: 0;
-    padding-bottom: 0.125em;
+   background-color: #fff;
+   color: #001add;
+   padding: 0.125em;
 }
 
 prm-facet-group div.expand-section-button {
-    text-align: right;
-}
-
-#virtualBrowse,
-prm-full-view#fullView div#services-index button[aria-label="brief.results.tabs.browseshelf"] {
-    display: none;
-}
-
-/* fullview overall */
-.full-view-inner-container {
-    background-color: white;
-}
-
-prm-alma-mashup {
-    border: solid 1px #444;
-}
-
-/* Item Title */
-prm-brief-result .item-title span {
-    color: inherit;
-}
-prm-brief-result .item-title a {
-    color: #4b2e83;
-}
-prm-brief-result .item-title a:hover,
-prm-brief-result .item-title a:focus  {
-    color: #85754d;
-}
-prm-full-view prm-brief-result .item-title {
-    cursor: default;
-}
-prm-full-view prm-brief-result .item-title a:hover,
-prm-full-view prm-brief-result .item-title a:focus  {
-    color: #4b2e83;
-    cursor: default;
-}
-
-prm-login-alma-mashup > .bar.alert-bar {
-    border-bottom: none;    
-}
-
-/* facet links */
+   text-align: right;
+} 
 prm-breadcrumbs .md-chip.facet-excluded {
-    color: #000;
+   color: #000;
+}
+prm-facet-group .md-chips {
+   font-size: 0.9375rem;
+}
+prm-facet-group .section-content .md-chips .md-chip {
+   justify-content: space-between;
+}
+/* Show More Button */
+prm-facet-group .md-button.button-as-link.link-alt-color {
+   margin: 6px 6px 4px !important;
+   color: #fff;
+   background-color: #4B2E83;
+   border-radius: 5px;
+   padding: 0.5em;
+}
+prm-facet-group .md-button.button-as-link.link-alt-color:hover:not([disabled]),
+prm-facet-group .md-button.button-as-link.link-alt-color:focus :not([disabled]){
+   color: #000;
+   background-color: #D7A900; 
+}
+/* facet name */
+prm-facet-group .section-content .md-chips .md-chip strong.facet-title {
+   color: #001add;
+   line-height: inherit;
+   border-radius: 5px;
+   margin-left: 2px;
+   padding-right: 4px;
+   padding-left: 5px;
+   z-index: 0;
+}
+prm-facet-group .section-content .md-chips .md-chip strong.facet-title:focus:not([disabled]),
+prm-facet-group .section-content .md-chips .md-chip strong.facet-title:focus:not([disabled]):before {
+   background-color: #E8E3D3;
+   color: #001add;
+}
+.section-content .md-chips .md-chip .facet-title:hover:not([disabled]) {
+   color: #001add;
+   background-color: #E8E3D3;
+}
+
+prm-facet-group .section-content .md-chips .md-chip strong.facet-title:before {
+   display: inline-block;
+   content: "";
+   position: absolute;
+   left: 31px; 
+   right: 0;
+   z-index: -1;
+   background-color: transparent;
+   height: 100%;
+}
+
+prm-facet-group .section-content .md-chips .md-chip strong.facet-title:hover:before,
+prm-facet-group .section-content .md-chips .md-chip strong.facet-title:focus:before {
+   background-color: #E8E3D3;
+}
+prm-facet .section-content .md-chips .md-chip .facet-title + span.text-in-brackets {
+   color: #000;
+   font-style: normal;
+   z-index: 2;
+}
+
+/* exclude button */
+.available-facets .section-content .md-chips .md-chip .button-include:focus:not([disabled]),
+.available-facets .section-content .md-chips .md-chip .button-include:focus:not([disabled]) {
+   color: #4A7C01;
+   background: #E8E3D3;
+}
+.available-facets .section-content .md-chips .md-chip .button-exclude:hover:not([disabled]),
+.available-facets .section-content .md-chips .md-chip .button-exclude:focus:not([disabled]) {
+   color: #C61029;
+   background: #E8E3D3;
+}
+
+
+
+
+
+/* checkboxes */
+.multiselect-facet-group .md-chip .md-chip-content md-checkbox {
+   left: 0;
+}
+.multiselect-facet-group .md-chip .md-chip-content,
+.multiselect-facet-group .md-chip .md-chip-remove-container {
+   left: 0;
+}
+/* make the facet checkbox always visible and not move left-right */
+.multiselect-facet-group.multiselect-inactive .md-chip md-checkbox,
+.multiselect-facet-group.multiselect-active .md-chip {
+   transform: none;
 }
 .section-content .md-chips .md-chip .md-chip-content {
-    color: #001add;
+   padding-left: 8px;
+   border-radius: 5px;
 }
-.md-button.button-as-link.link-alt-color {
-    color: #001add;    
+.section-content .md-chips .md-chip .md-chip-remove-container .md-button {
+   color: #001add;
+   opacity: 1;
+   border: 0;
+   border-radius: 5px;
+   min-height: 0;
+   height: 100%;
+   padding: 0 6px;
+   min-width: 0px;
+   width: auto;
+}
+.available-facets .section-content .md-chips .md-chip + .md-chip {
+   margin-top: 0.125em;
+}
+.available-facets .section-content .md-chips .md-chip:hover .md-button {
+   transform: none;
 }
 
-md-input-container .md-input {
-    border-width: 1px;
+
+
+.available-facets md-checkbox ._md-icon, 
+.available-facets md-checkbox .md-icon {
+   opacity: 1;
+   border-color: #888;
+}
+.available-facets md-checkbox:hover ._md-icon, 
+.available-facets md-checkbox:hover .md-icon,
+.available-facets md-checkbox:focus ._md-icon, 
+.available-facets md-checkbox:focus .md-icon  {
+   border-color: #000;
+   background-color: #E8E3D3;
+}
+.available-facets md-checkbox.md-checked ._md-icon,
+.available-facets md-checkbox.md-checked .md-icon {
+   color: #fff;
+   background-color: #4A7C01;
+}
+.available-facets md-checkbox.md-checked:hover ._md-icon,
+.available-facets md-checkbox.md-checked:hover .md-icon,
+.available-facets md-checkbox.md-checked:focus ._md-icon,
+.available-facets md-checkbox.md-checked:focus .md-icon {
+   background-color:  #D7A900;
+   color: #000;
+   
+}
+md-checkbox.md-focused:not([disabled]):not(.md-checked) ._md-container:before  {
+   background-color: transparent;
 }
 
-button[aria-label="creationdate"] + div {
-    padding-left: 0.85em;
-    padding-right: 0.35em;
+.multiselect-facet-group .md-chip.facet-excluded .md-chip-content md-checkbox ._md-icon:before {
+   transform: rotate(-45deg) ;
+   opacity: 0;
+   content: '';
+   position: absolute;
+   height: 2px;
+   width: 16px;
+   top: 9px;
+   left: auto;
+   right: 2px;
+   margin-top: 0;
+   background-color: #fff;
+   border: none;
 }
-md-input-container.md-input-has-value label:not(.md-no-float) {
-    opacity: 1;
+.multiselect-facet-group .md-chip.facet-excluded .md-chip-content md-checkbox ._md-icon:after {
+   transform: rotate(45deg);
+   opacity: 0;
+   content: '';
+   position: absolute;
+   height: 2px;
+   width: 16px;
+   top: 9px;
+   left: 2px;
+   margin-top: 0;
+   background-color: #fff;
+   border: none;
 }
-md-input-container label, 
-md-input-container label:not(.md-no-float):not(._md-container-ignore) {
-    color: #000;
+.multiselect-facet-group .md-chip.facet-excluded .md-chip-content md-checkbox.md-checked ._md-icon:before,
+.multiselect-facet-group .md-chip.facet-excluded .md-chip-content md-checkbox.md-checked ._md-icon:after {
+   opacity: 1;
 }
+
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:hover ._md-icon,
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:focus ._md-icon {
+   background-color: #D7A900;
+}
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:hover ._md-icon:before,
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:hover ._md-icon:after,
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:focus ._md-icon:before,
+.multiselect-facet-group .md-chip.facet-excluded md-checkbox.md-checked:focus ._md-icon:after { 
+   background-color: #000;
+}
+
+
+
+prm-facet .sidebar-inner-wrapper {
+   padding-left: 0;
+}
+
+md-content.main.padded-container {
+   padding: 1em;
+}
+
+
+
+.multiselect-facet-group .md-chip .md-range-content {
+   left: 0;
+   padding-left: 8px;
+   padding-top: 14px;
+   justify-content: space-between;
+}
+
+.md-range-content md-input-container {
+   margin: 0;
+}
+.md-range-content  md-input-container.md-input-has-value label:not(.md-no-float) {
+   color: #000;
+   opacity: 1;
+   transform: scale(1) translate3d(0,3px,0);
+}
+.md-range-content  md-input-container + button > span {
+   font-weight: bold;
+}
+
 md-input-container label[translate="facets.date.slider.from"] + input,
 md-input-container label[translate="facets.date.slider.to"] + input  {
-    font-size: 80%;
-    border: solid 1px #aaa;
-    border-bottom-width: 1px;
-    border-bottom-color: #aaa;
+   border-bottom-width: 1px;
+   border-bottom-color: #aaa;
+   max-width: 4em;
+   padding-right: 0;
 }
-md-input-container + md-input-container {
-    margin-left: 4px;
-}
-md-input-container.md-input-focused .md-input, md-input-container.md-input-resized .md-input, md-input-container .md-input.ng-invalid.ng-dirty {
-    border-width: 1px;
-    border-color: #444;
+.md-range-content md-input-container:after {
+
+   background-color: #C75B12;
 }
 
-md-input-container::after,
-md-input-container.md-input-focused::after {
-    height: 2px;
-    background-color: #4B2E83;
+/* multiselect apply panel */
+div.multiselect-submit {
+  margin-left: 0.5rem;
+}
+div.multiselect-submit div.multiselect-submit-inner {
+   background-color: #E8E3D3;
+   border-color: #000;
+   border-width: 1px 1px 0;
+   border-style: solid;
+   border-top-left-radius: 15px;
+   border-top-right-radius: 15px;   
+   padding: 15px 15px;
+}
+div.multiselect-submit div.multiselect-submit-inner button.md-button {
+   font-size: 0.9375rem;
+   border-radius: 5px;
+   margin: 0 3px;
+   line-height: 1;
+}
+div.multiselect-submit div.multiselect-submit-inner button:hover,
+div.multiselect-submit div.multiselect-submit-inner button:focus {
+   background-color: #D7A900 !important;
+   color: #000 !important;
+}
+div.multiselect-submit div.multiselect-submit-inner button:focus {
+   outline: dotted 1px #000 !important;
+   outline-offset: 1px;
 }
 
-.list-item-count {
-    opacity: 1;
-    color: #444;
-    
+/* external search */
+prm-facet-exact-after #externalSearch {
+   background-color: #fff;
 }
-
-prm-brief-result-container .media-content-type {
-    color: #444;
-    font-size: 87.5%;
+prm-facet-exact-after #externalSearch div.md-chip-content {
+   padding-left: 3px; /* 8 - 5px due to padding */
 }
-
-.result-item-actions > .md-button {
-    opacity: 0.8;
+prm-facet-exact-after #externalSearch div.md-chip-content strong {
+   line-height: 1;
 }
-
-/* citation trail buttons */
-prm-citation-trails-indication {
-    margin-right: 0.5em;
-} 
-prm-citation-trails-indication .md-button.button-with-icon, 
-prm-citation-trails-indication .md-button.md-icon-button {
-    background-color: #4b2e83;
-    color: #fff;
+prm-facet-exact-after #externalSearch div.md-chips {
+   margin-bottom: 4px;
 }
-prm-citation-trails-indication .md-button.button-with-icon._md-focused:not([disabled]),
-prm-citation-trails-indication .md-button.button-with-icon.hovered:not([disabled]),
-prm-citation-trails-indication .md-button.button-with-icon.md-focused:not([disabled]),
-prm-citation-trails-indication .md-button.button-with-icon:focus:not([disabled]),
-prm-citation-trails-indication .md-button.button-with-icon:hover:not([disabled]),
-prm-citation-trails-indication .md-button.md-icon-button._md-focused:not([disabled]),
-prm-citation-trails-indication .md-button.md-icon-button.hovered:not([disabled]),
-prm-citation-trails-indication .md-button.md-icon-button.md-focused:not([disabled]),
-prm-citation-trails-indication .md-button.md-icon-button:focus:not([disabled]),
-prm-citation-trails-indication .md-button.md-icon-button:hover:not([disabled]) {
-    color: #d7a900;
+prm-facet-exact-after #externalSearch a {
+   border-radius: 5px;
+   padding: 3px 5px;
+   min-height: 28px;
+   display: inline-flex;
+   align-items: center;
 }
-prm-citation-trails-indication .md-button.button-with-icon._md-focused:not([disabled]),
-prm-citation-trails-indication .md-button.button-with-icon.hovered:not([disabled]),
-prm-citation-trails-indication .md-button.button-with-icon.md-focused:not([disabled]),
-prm-citation-trails-indication .md-button.button-with-icon:focus:not([disabled]),
-prm-citation-trails-indication .md-button.button-with-icon:hover:not([disabled]),
-prm-citation-trails-indication .md-button.md-icon-button._md-focused:not([disabled]),
-prm-citation-trails-indication .md-button.md-icon-button.hovered:not([disabled]),
-prm-citation-trails-indication .md-button.md-icon-button.md-focused:not([disabled]),
-prm-citation-trails-indication .md-button.md-icon-button:focus:not([disabled]),
-prm-citation-trails-indication .md-button.md-icon-button:hover:not([disabled]) {
-    background-color: rgb(62,32,108);
+prm-facet-exact-after #externalSearch a:hover,
+prm-facet-exact-after #externalSearch a:focus {
+   background-color: #E8E3D3;
+   color: #001add;
+   text-decoration: none;
+   box-shadow: none;
 }
-prm-citation-trails-item .item-type {
-    color: #85754D;
-    font-size: 1rem;
+prm-facet-exact-after #externalSearch a prm-icon {
+   color: #001add;
+   margin-left: 2px;
 }
-
-/* fix availability & request options wrapping */
-.__gt-xs .full-view-section-content {
-    padding-left: 10em;
-}
-prm-full-view .services-index-under #services-index {
-    max-width: 10em; /* 7.5em + 2.5em */
-}
-prm-full-view prm-brief-result-container .result-item-text {
-    padding-left: 4.5em; /* + 2.5em given increased width of share/save sidebar */
+prm-facet-exact-after #externalSearch a > img {
+   width: 22px;
+   max-width: 22px;
+   height: 22px;
+   max-height: 22px;
+   display: block;
+   margin-right: 4px;
 }
 
 
-div#services-index .md-button{
-    white-space: normal;
-    line-height: normal;
-    padding-top: 8px; 
-    padding-bottom: 8px; 
+
+
+/* browse search */
+/* browse by dropdown */
+prm-browse-search-bar .classic-input .search-scope {
+   background-color: #E8E3D3;
+   border-color: #E8E3D3;
+}
+prm-browse-search-bar md-select:before {
+   content: '';
+   background-color: transparent;
+   height: 3px;
+   position: absolute;
+   left: 0;
+   right: 0;
+   bottom: 6px;
+}
+prm-browse-search-bar md-select:hover:before,
+prm-browse-search-bar md-select:focus:before {
+   background-color: #85754D;
 }
 
-   
-/* in prm-full-view-after, we hide optional notes we might like to add to 
-   certain item's full display
- */
-prm-full-view-after #localOptionalStatements {
-   display: none;
+/* H3 on browse list page */
+prm-browse-search md-list.prm-list.prm-linkable-list-items.prm-dense-list md-list-item .item-title {
+   color: #001add;
+}
+/* .__gt-xs prm-browse-search prm-page-nav-menu { */
+   /* left: auto ; */
+   /* right: 1.5em; */
+/* } */
+
+
+/* e-journals */
+/* journal search bar label */
+prm-journals-search-bar .classic-input .search-scope {
+   background-color: #E8E3D3;
+   border-color: #E8E3D3;
+}
+prm-journals-search-bar > div.layout-row > div.layout-column {
+   max-width: 90%;
+}
+prm-alphabet-toolbar .md-button {
+   font-weight: bold;
+}
+prm-alphabet-toolbar .md-button.active {
+   background: #85754D;
+   color: #fff;
+}
+prm-alphabet-toolbar .md-button:hover:not([disabled]),
+prm-alphabet-toolbar .md-button:focus:not([disabled]) {
+   color: #D7A900;
+   box-shadow: none;
+   background-color: rgba(0,0,0,.1);
+}
+prm-alphabet-toolbar .md-button:focus:not([disabled]) {
+   outline: dotted 1px #aaa !important;
 }
 
-prm-full-view .localNote {
-    padding: 0.75em 1em;
-    font-size: 0.9rem;
-    color: #fff;
-    background-color: #165788;
+md-content > div.local-homepage {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
 }
-prm-full-view .localNote p {
-   margin: 0;  
+md-card.homepage-campus {
+   flex-grow: 0;
+   box-shadow: 0 1px 0 0 rgba(0,0,0,.1),0 5px 5px -3px rgba(0,0,0,.2);
 }
-parm-full-view .localNote p + p {
-   margin-top: 0.5em;
+md-card.homepage-campus  md-card-title:not(#featuredResultTitle) {
+   padding: 0.5em 0.5em;
+   min-width: 25em;
 }
-prm-full-view .localNote a:link, 
-prm-full-view .localNote a:visited {
-    color: #FFE816;
+
+.homepage-campus h2 {
+   margin: 0;
+   font-size: 1.25rem;
+   font-weight: bold;
+   color: #000;
+
 }
-prm-full-view .localNote a:hover, 
-prm-full-view .localNote a:focus {
-    text-decoration: underline;
+md-card.homepage-campus  md-card-title:not(#featuredResultTitle)  + md-card-content.homepage-campus-links {
+   padding: 0;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: space-between;
+   align-content: stretch;
+   align-items: center;
+
 }
-prm-full-view .localNote a svg {
-   color: #FFE816;
-   margin-left: 1px;
+md-card-content.homepage-campus-links > a {
+   padding: 0.5em;
+ text-transform: uppercase;   
+}
+md-card-content.homepage-campus-links > a:hover,
+md-card-content.homepage-campus-links > a:focus {
+   color: #fff;
+   text-decoration: none;
+   background: #4B2E83;
+  
 }
