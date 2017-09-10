@@ -1117,9 +1117,11 @@ md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > .button-con
 /* Text selection color */
 ::selection {
    background: #FFE816;
+   color: #000;
 }
 ::-moz-selection { 
    background: #FFE816;
+   color: #000;
 }
 
 .donotdisplay {
@@ -1735,7 +1737,20 @@ div#libAlerts p + p {
 div#uwalert-alert-message + div#libAlerts-outer {
   border-top: solid 1px #d7a900
 }
-
+div#libAlerts a {
+   color: #FFE816;
+}
+div#libAlerts a:hover,
+div#libAlerts a:focus {
+   background-color: transparent;
+   color: #FFE816;
+   box-shadow: none;
+   text-decoration: underline;
+}
+div#libAlerts a:focus {
+   outline: dotted 1px #fff !important;
+   outline-offset: 1px;
+}
 
 /* help widget */
 #local-help-widget {
