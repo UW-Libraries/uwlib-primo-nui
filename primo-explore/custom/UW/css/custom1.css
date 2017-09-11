@@ -1124,8 +1124,18 @@ md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > .button-con
    color: #000;
 }
 
+body {
+   color: #000;
+}
+
 .donotdisplay {
    display: none !important;
+}
+
+/* select menus */
+md-select-menu,
+md-select-menu md-content {
+   max-height: 100vh;
 }
 
 prm-topbar {
@@ -1220,6 +1230,12 @@ prm-topbar {
 prm-main-menu[menu-type="full"] prm-library-card-menu + md-divider,
 prm-main-menu[menu-type="full"] prm-library-card-menu + md-divider + div {
    display: none;
+}
+
+/* increase spacing between the library card icon and the label */
+prm-library-card-menu > button > prm-icon + span {
+   margin-left: 6px !important;
+   display: inline-block !important;  
 }
 
 
@@ -1751,6 +1767,20 @@ div#libAlerts a:focus {
    outline: dotted 1px #fff !important;
    outline-offset: 1px;
 }
+@media screen and (max-width: 550px) {
+   div#libAlerts-outer {
+      font-size: 1rem;
+      padding: 0.5rem;
+   }
+   div#libAlerts {
+      padding-left: 0;
+   }
+   
+   div#libAlerts:before {
+      content: none;
+   }   
+}
+
 
 /* help widget */
 #local-help-widget {
@@ -1904,7 +1934,31 @@ button#help-modal-close:focus {
 #help-modal div.modal-content div.modal-row p {
    margin: 0;
 }
+@media screen and (max-width: 550px) {
+   #local-help-widget {
+      font-size: 0.75rem;
+      width: 100px;
+      top: 25%;
+      right: -101px;
+   }
+   #local-help-widget.moveLeft {
+      right: calc(-101px + 100vw - 1px);
+   }   
 
+   #help-modal {
+      display: none;
+      transition: right 300ms;
+      position: fixed;
+      top: 25%;
+      right: -100vw;
+      padding: 0;
+      border: 1px solid #000;
+      background-color: #fff;
+      z-index: 900002;
+      width: 100vw;
+      min-height: 240px;
+   }
+}
 
 /* Hide the edit button on personal details */
 md-card#personalDetails md-card-header {
@@ -2366,6 +2420,7 @@ prm-alphabet-toolbar .md-button:focus:not([disabled]) {
    outline: dotted 1px #aaa !important;
 }
 
+/* Homepage: Different Libraries Tiles */
 md-content > div.local-homepage {
     display: flex;
     flex-direction: row;
@@ -2379,16 +2434,14 @@ md-card.homepage-campus {
    box-shadow: 0 1px 0 0 rgba(0,0,0,.1),0 5px 5px -3px rgba(0,0,0,.2);
 }
 md-card.homepage-campus  md-card-title:not(#featuredResultTitle) {
-   padding: 0.5em 0.5em;
+   padding: 0.5rem;
    min-width: 25em;
 }
-
 .homepage-campus h2 {
    margin: 0;
    font-size: 1.25rem;
    font-weight: bold;
    color: #000;
-
 }
 md-card.homepage-campus  md-card-title:not(#featuredResultTitle)  + md-card-content.homepage-campus-links {
    padding: 0;
@@ -2401,8 +2454,8 @@ md-card.homepage-campus  md-card-title:not(#featuredResultTitle)  + md-card-cont
 
 }
 md-card-content.homepage-campus-links > a {
-   padding: 0.5em;
- text-transform: uppercase;   
+   padding: 0.5rem;
+   text-transform: uppercase;   
 }
 md-card-content.homepage-campus-links > a:hover,
 md-card-content.homepage-campus-links > a:focus {
@@ -2410,4 +2463,18 @@ md-card-content.homepage-campus-links > a:focus {
    text-decoration: none;
    background: #4B2E83;
   
+}
+
+@media screen and (max-width: 450px) {
+   md-card.homepage-campus  md-card-title:not(#featuredResultTitle) {
+      padding: 0.25rem 0.5rem;
+      min-width: calc(100vw - 40px) ;
+   }
+   .homepage-campus h2 {
+      font-size: 1rem;
+   }
+   md-card-content.homepage-campus-links > a {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+   }
 }
