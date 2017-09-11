@@ -262,7 +262,7 @@ prm-library-card-menu > button > prm-icon + span {
       padding-right: 8px;
    }
    #local-top-menu prm-library-card-menu button > span {
-      display: none;
+      display: none !important;
    }
 }
 @media screen and (max-width: 550px) {
@@ -604,25 +604,19 @@ div#libAlerts-outer {
    color: #fff;
    line-height: 1.25;
    font-size: 1.125rem;
-   padding: 0.75rem
+   padding: 0.75rem;
+   display: flex;
+}
+div#libAlerts-outer > img {
+   width: 70px;
+   height: 70px;
 }
 div#libAlerts {
    margin: 0 auto;
    max-width: 94%;
-   padding-left: calc(70px + 0.75em);
+   padding-left: 0.75rem;
    position: relative;
    min-height: 70px;
-}
-div#libAlerts:before {
-   content: '';
-   background-image: url('/primo-explore/custom/UW/img/_alert.png');
-   background-size: cover;
-   display: block;
-   width: 70px;
-   height: 70px;
-   position: absolute;
-   top: 0;
-   left: 0;
 }
 #libAlerts > div + div {
    margin-top: 0.75em;
@@ -656,13 +650,12 @@ div#libAlerts a:focus {
       font-size: 1rem;
       padding: 0.5rem;
    }
+   div#libAlerts-outer > img   {
+      display: none;
+   }
    div#libAlerts {
       padding-left: 0;
    }
-   
-   div#libAlerts:before {
-      content: none;
-   }   
 }
 
 

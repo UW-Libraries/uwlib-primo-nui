@@ -521,18 +521,19 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
             /* we use an if to only do it once. Otherwise, alert repetition can occur */
             if(!document.getElementById('libAlerts-outer')) {
                /* first create a space within primo-explore for the UW Library alerts to live */
-               angular.element(document.getElementsByTagName('primo-explore')[0]).prepend('<div id="libAlerts-outer" class="hide"><div id="libAlerts"></div></div>');
+               angular.element(document.getElementsByTagName('primo-explore')[0]).prepend('<div id="libAlerts-outer" class="donotdisplay"><img src="custom/' + LOCAL_VID + '/img/_alert.png" aria-hidden="true"><div id="libAlerts"></div></div>');
+               
                /* load the general UW library alerts JS. Once loaded (then) display the alerts if any */
                angularLoad.loadScript('https://www.lib.washington.edu/scripts/libalert.js').then(function() {
                   displayLibAlert();
                   if(document.querySelector('#libAlerts .alert') != null)
-                     angular.element(document.getElementById('libAlerts-outer')).removeClass('hide');                  
+                     angular.element(document.getElementById('libAlerts-outer')).removeClass('donotdisplay');                  
                });
                /* load the general Primo library alerts JS. Once loaded (then) display the alerts if any */
                angularLoad.loadScript('https://www.lib.washington.edu/static/public/primo/primo-alerts.js').then(function() {
                   displayPrimoLibAlert(); 
                   if(document.querySelector('#libAlerts .alert') != null)
-                     angular.element(document.getElementById('libAlerts-outer')).removeClass('hide');                      
+                     angular.element(document.getElementById('libAlerts-outer')).removeClass('donotdisplay');                      
                });;            
             }
             /* we do UW-wide alerts after so that they appear on top */
