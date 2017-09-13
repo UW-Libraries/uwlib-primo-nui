@@ -1534,6 +1534,12 @@ prm-brief-result .item-title a {
 prm-brief-result .item-title a:hover,
 prm-brief-result .item-title a:focus  {
    color: #85754d;
+   background-color: transparent;
+   box-shadow: none;
+}
+prm-brief-result .item-title a:focus {
+   outline: dotted 1px #444 !important;
+   outline-offset: 1px;
 }
 prm-full-view prm-brief-result .item-title {
    cursor: default;
@@ -1542,6 +1548,8 @@ prm-full-view prm-brief-result .item-title a:hover,
 prm-full-view prm-brief-result .item-title a:focus  {
    color: #4b2e83;
    cursor: default;
+   background-color: transparent;  
+   box-shadow: none;
 }
 
 prm-login-alma-mashup > .bar.alert-bar {
@@ -2471,3 +2479,38 @@ md-card-content.homepage-campus-links > a:focus {
       padding: 0.25rem 0.5rem;
    }
 }
+
+/* brief display availability */
+prm-search-result-availability-line [availability-type] {
+   position: relative;
+   top: -2px;
+   color: #444;
+   margin-right: 0.125em;
+}
+prm-full-view-service-container prm-search-result-availability-line [availability-type] {
+   margin-right: 0.25em;
+   top: -1px;
+}
+
+prm-search-result-availability-line > div.layout-row {
+   display: inline-flex;
+}
+prm-search-result-availability-line > div > prm-icon + button {
+   display: none !important;
+}
+prm-search-result-availability-line-after {
+   position: relative;
+}
+prm-search-result-availability-line-after span.button-content {
+   position: relative;
+}
+prm-search-result-availability-line-after span.button-content [external-link] {
+   display: none;
+}
+prm-search-result-availability-line-after a:hover,
+prm-search-result-availability-line-after a:focus {
+   background-color: transparent;
+   box-shadow: none;
+   text-decoration: underline !important;
+}
+

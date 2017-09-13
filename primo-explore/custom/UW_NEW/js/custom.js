@@ -179,10 +179,6 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
       - Adding local notes to any parts of the full view
         - Harvard Business Review notes
    */
-
-
-
-   
    var GenericSFDEController = function GenericSFDEController($scope, $http, $element, oadoiService, oadoiOptions) {
       this._$scope = $scope;
       this._$elem = $element;
@@ -243,8 +239,7 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
          );
       }
       // End Local Notes Handling
-   };
-      
+   };     
    GenericSFDEController.prototype.addOADOINote = function addOADOINote () {
       var $localScope = this._$scope;
       var $localElem = this._$elem;      
@@ -521,18 +516,19 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
             /* we use an if to only do it once. Otherwise, alert repetition can occur */
             if(!document.getElementById('libAlerts-outer')) {
                /* first create a space within primo-explore for the UW Library alerts to live */
-               angular.element(document.getElementsByTagName('primo-explore')[0]).prepend('<div id="libAlerts-outer" class="hide"><div id="libAlerts"></div></div>');
+               angular.element(document.getElementsByTagName('primo-explore')[0]).prepend('<div id="libAlerts-outer" class="donotdisplay"><img src="custom/' + LOCAL_VID + '/img/_alert.png" aria-hidden="true"><div id="libAlerts"></div></div>');
+               
                /* load the general UW library alerts JS. Once loaded (then) display the alerts if any */
                angularLoad.loadScript('https://www.lib.washington.edu/scripts/libalert.js').then(function() {
                   displayLibAlert();
                   if(document.querySelector('#libAlerts .alert') != null)
-                     angular.element(document.getElementById('libAlerts-outer')).removeClass('hide');                  
+                     angular.element(document.getElementById('libAlerts-outer')).removeClass('donotdisplay');                  
                });
                /* load the general Primo library alerts JS. Once loaded (then) display the alerts if any */
                angularLoad.loadScript('https://www.lib.washington.edu/static/public/primo/primo-alerts.js').then(function() {
                   displayPrimoLibAlert(); 
                   if(document.querySelector('#libAlerts .alert') != null)
-                     angular.element(document.getElementById('libAlerts-outer')).removeClass('hide');                      
+                     angular.element(document.getElementById('libAlerts-outer')).removeClass('donotdisplay');                      
                });;            
             }
             /* we do UW-wide alerts after so that they appear on top */
@@ -595,4 +591,54 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
    }]);
    /* ====== */
 
+   
+   var DisableAvailabilityLinkController = function DisableAvailabilityLinkController($scope, $element, $timeout) {
+      this._$scope = $scope;
+      this._$elem = $element;
+      this._$scope.lastAvailability = '';
+   }
+   DisableAvailabilityLinkController.prototype.$doCheck = function $doCheck () {   
+      var $textOnly = angular.element(this._$elem[0].querySelector('.localAvailabilityTextOnly'));
+      var $linkOnly = angular.element(this._$elem[0].querySelector('.localAvailabilityLink'));
+      var statusText = this._$elem[0].parentElement.querySelector('button span.button-content');
+      var briefResult = this._$elem[0].closest('prm-brief-result-container');
+      
+      if(statusText.textContent == this._$scope.lastAvailability)
+         return;
+      this._$scope.lastAvailability = statusText.textContent;
+      /* if a full display, don't make a link */
+      if(briefResult.closest('prm-full-view-service-container')) {
+         $textOnly.empty().append(angular.element(statusText).clone());
+         $textOnly.removeClass('donotdisplay');
+         $linkOnly.addClass('donotdisplay');
+      }
+      else {
+         var $newLink = $linkOnly.find('a');
+         var titleLink = briefResult.querySelector('.item-title a');
+         $newLink.attr('href', titleLink.getAttribute('href'));
+         $newLink.empty().append(angular.element(statusText).clone());
+         
+         $linkOnly.removeClass('donotdisplay');      
+         $textOnly.addClass('donotdisplay');
+      }
+   }
+
+   
+   app.component('prmSearchResultAvailabilityLineAfter', {
+      controller: 'disableAvailabilityLinkController',
+      bindings: {parentCtrl: '<'},
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/itemAvailability.html'
+   }).controller('disableAvailabilityLinkController', DisableAvailabilityLinkController);
+   
+   app.controller('AvailabilityTimeout', function($scope, $timeout) {
+      $scope.triggerTitleLink = function triggerTitleLink($event) {
+         $event.preventDefault();
+         var briefResult = $event.target.closest('prm-brief-result-container');
+         var titleLink = briefResult.querySelector('.list-item-primary-content');
+         $timeout( function() { 
+            angular.element(titleLink).triggerHandler('click'); 
+         });      
+      }
+   });
+   
 })();
