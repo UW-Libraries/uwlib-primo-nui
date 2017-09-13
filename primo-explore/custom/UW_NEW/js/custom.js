@@ -592,53 +592,53 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
    /* ====== */
 
    
-   var DisableAvailabilityLinkController = function DisableAvailabilityLinkController($scope, $element, $timeout) {
-      this._$scope = $scope;
-      this._$elem = $element;
-      this._$scope.lastAvailability = '';
-   }
-   DisableAvailabilityLinkController.prototype.$doCheck = function $doCheck () {   
-      var $textOnly = angular.element(this._$elem[0].querySelector('.localAvailabilityTextOnly'));
-      var $linkOnly = angular.element(this._$elem[0].querySelector('.localAvailabilityLink'));
-      var statusText = this._$elem[0].parentElement.querySelector('button span.button-content');
-      var briefResult = this._$elem[0].closest('prm-brief-result-container');
+   // var DisableAvailabilityLinkController = function DisableAvailabilityLinkController($scope, $element, $timeout) {
+      // this._$scope = $scope;
+      // this._$elem = $element;
+      // this._$scope.lastAvailability = '';
+   // }
+   // DisableAvailabilityLinkController.prototype.$doCheck = function $doCheck () {   
+      // var $textOnly = angular.element(this._$elem[0].querySelector('.localAvailabilityTextOnly'));
+      // var $linkOnly = angular.element(this._$elem[0].querySelector('.localAvailabilityLink'));
+      // var statusText = this._$elem[0].parentElement.querySelector('button span.button-content');
+      // var briefResult = this._$elem[0].closest('prm-brief-result-container');
       
-      if(statusText.textContent == this._$scope.lastAvailability)
-         return;
-      this._$scope.lastAvailability = statusText.textContent;
-      /* if a full display, don't make a link */
-      if(briefResult.closest('prm-full-view-service-container')) {
-         $textOnly.empty().append(angular.element(statusText).clone());
-         $textOnly.removeClass('donotdisplay');
-         $linkOnly.addClass('donotdisplay');
-      }
-      else {
-         var $newLink = $linkOnly.find('a');
-         var titleLink = briefResult.querySelector('.item-title a');
-         $newLink.attr('href', titleLink.getAttribute('href'));
-         $newLink.empty().append(angular.element(statusText).clone());
+      // if(statusText.textContent == this._$scope.lastAvailability)
+         // return;
+      // this._$scope.lastAvailability = statusText.textContent;
+      // /* if a full display, don't make a link */
+      // if(briefResult.closest('prm-full-view-service-container')) {
+         // $textOnly.empty().append(angular.element(statusText).clone());
+         // $textOnly.removeClass('donotdisplay');
+         // $linkOnly.addClass('donotdisplay');
+      // }
+      // else {
+         // var $newLink = $linkOnly.find('a');
+         // var titleLink = briefResult.querySelector('.item-title a');
+         // $newLink.attr('href', titleLink.getAttribute('href'));
+         // $newLink.empty().append(angular.element(statusText).clone());
          
-         $linkOnly.removeClass('donotdisplay');      
-         $textOnly.addClass('donotdisplay');
-      }
-   }
+         // $linkOnly.removeClass('donotdisplay');      
+         // $textOnly.addClass('donotdisplay');
+      // }
+   // }
 
    
-   app.component('prmSearchResultAvailabilityLineAfter', {
-      controller: 'disableAvailabilityLinkController',
-      bindings: {parentCtrl: '<'},
-      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/itemAvailability.html'
-   }).controller('disableAvailabilityLinkController', DisableAvailabilityLinkController);
+   // app.component('prmSearchResultAvailabilityLineAfter', {
+      // controller: 'disableAvailabilityLinkController',
+      // bindings: {parentCtrl: '<'},
+      // templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/itemAvailability.html'
+   // }).controller('disableAvailabilityLinkController', DisableAvailabilityLinkController);
    
-   app.controller('AvailabilityTimeout', function($scope, $timeout) {
-      $scope.triggerTitleLink = function triggerTitleLink($event) {
-         $event.preventDefault();
-         var briefResult = $event.target.closest('prm-brief-result-container');
-         var titleLink = briefResult.querySelector('.list-item-primary-content');
-         $timeout( function() { 
-            angular.element(titleLink).triggerHandler('click'); 
-         });      
-      }
-   });
+   // app.controller('AvailabilityTimeout', function($scope, $timeout) {
+      // $scope.triggerTitleLink = function triggerTitleLink($event) {
+         // $event.preventDefault();
+         // var briefResult = $event.target.closest('prm-brief-result-container');
+         // var titleLink = briefResult.querySelector('.list-item-primary-content');
+         // $timeout( function() { 
+            // angular.element(titleLink).triggerHandler('click'); 
+         // });      
+      // }
+   // });
    
 })();

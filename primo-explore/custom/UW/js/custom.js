@@ -591,7 +591,7 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
    }]);
    /* ====== */
 
-   
+   /*
    var DisableAvailabilityLinkController = function DisableAvailabilityLinkController($scope, $element, $timeout) {
       this._$scope = $scope;
       this._$elem = $element;
@@ -606,7 +606,7 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
       if(statusText.textContent == this._$scope.lastAvailability)
          return;
       this._$scope.lastAvailability = statusText.textContent;
-      /* if a full display, don't make a link */
+      // if a full display, don't make a link 
       if(briefResult.closest('prm-full-view-service-container')) {
          $textOnly.empty().append(angular.element(statusText).clone());
          $textOnly.removeClass('donotdisplay');
@@ -622,8 +622,8 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
          $textOnly.addClass('donotdisplay');
       }
    }
-
-   
+   */
+   /*
    app.component('prmSearchResultAvailabilityLineAfter', {
       controller: 'disableAvailabilityLinkController',
       bindings: {parentCtrl: '<'},
@@ -640,5 +640,5 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
          });      
       }
    });
-   
+   */
 })();
