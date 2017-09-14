@@ -491,6 +491,20 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
    }]);  
    /* ====== */
    
+   /* ====== Add Link to My ILL Account to Requests  ====== */
+   app.component('prmRequestsOverviewAfter', {
+      controller: 'illLinkOverviewController',
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/illLink.html'
+   })
+   .controller('illLinkOverviewController', ['$scope', '$element', function($scope,$element) {
+      this.$postLink = function() {
+         var target = document.getElementsByTagName('prm-requests-overview')[0].querySelector('.tile-header > div');
+         var $links = $element.find('prm-account-links');
+         angular.element(target).append($links);         
+      };
+   }]);  
+   /* ====== */
+   
     /* ====== Load Alerts ===== */
    app.component('prmTopBarBefore', {
       templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/localTopMatter.html',
