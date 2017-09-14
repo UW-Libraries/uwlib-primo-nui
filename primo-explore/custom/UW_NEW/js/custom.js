@@ -485,7 +485,7 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
       templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/personalDetails.html'
    })
    .controller('personalInfoController', ['$scope', function($scope) {
-      this.$onInit = function() {
+      this.$postLink = function() {
          angular.element(document.getElementById('personalDetails').querySelector('md-card-content')).append(document.getElementById('local-personal-info-change'));
       };
    }]);  
@@ -497,8 +497,9 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
       templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/illLink.html'
    })
    .controller('illLinkOverviewController', ['$scope', '$element', function($scope,$element) {
-      this.$postLink = function() {
-      
+      this.$onInit = function() {
+         var header = document.getElementsByTagName('prm-account')[0].querySelector('h1.toolbar-title').parentElement;
+         angular.element(header).append(document.getElementById('uwIllLink'));
       };
    }]);  
    /* ====== */
@@ -589,21 +590,7 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
    })
    .controller('MainMenuAfterController', MainMenuAfterController);
    /* ====== */
-   
-   /* ====== TABS AND SCOPES ALWAYS PRESENT ====== */
-   app.component('prmSearchBarAfter', {
-      controller: 'showScopesController',
-      bindings: {parentCtrl: '<'}
-   }).controller('showScopesController', [function () {
-      var vm = this;
-      vm.$onInit = function() {
-        this.parentCtrl.showTabsAndScopes = true;
-        this.parentCtrl.scopesDialerConfiguration.display = true;
-      };
-   }]);
-   /* ====== */
-
-   
+     
    // var DisableAvailabilityLinkController = function DisableAvailabilityLinkController($scope, $element, $timeout) {
       // this._$scope = $scope;
       // this._$elem = $element;

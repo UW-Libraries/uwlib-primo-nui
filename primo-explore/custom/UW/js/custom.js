@@ -578,19 +578,6 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
    .controller('MainMenuAfterController', MainMenuAfterController);
    /* ====== */
    
-   /* ====== TABS AND SCOPES ALWAYS PRESENT ====== */
-   app.component('prmSearchBarAfter', {
-      controller: 'showScopesController',
-      bindings: {parentCtrl: '<'}
-   }).controller('showScopesController', [function () {
-      var vm = this;
-      vm.$onInit = function() {
-        this.parentCtrl.showTabsAndScopes = true;
-        this.parentCtrl.scopesDialerConfiguration.display = true;
-      };
-   }]);
-   /* ====== */
-
    /*
    var DisableAvailabilityLinkController = function DisableAvailabilityLinkController($scope, $element, $timeout) {
       this._$scope = $scope;
