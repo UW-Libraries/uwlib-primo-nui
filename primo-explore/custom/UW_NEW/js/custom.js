@@ -497,9 +497,12 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
       templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/illLink.html'
    })
    .controller('illLinkOverviewController', ['$scope', '$element', function($scope,$element) {
-      this.$onInit = function() {
+      this.$postLink = function() {
          var header = document.getElementsByTagName('prm-account')[0].querySelector('h1.toolbar-title').parentElement;
-         angular.element(header).append(document.getElementById('uwIllLink'));
+         var illLink = document.getElementById('uwIllLink');
+         var divider = illLink.previousElementSibling;
+         angular.element(header).append(divider);
+         angular.element(header).append(illLink);
       };
    }]);  
    /* ====== */

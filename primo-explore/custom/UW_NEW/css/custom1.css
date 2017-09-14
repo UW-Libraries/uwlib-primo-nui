@@ -2539,3 +2539,41 @@ prm-full-view-service-container .result-item-actions .custom-button.pin-button:h
 prm-full-view-service-container .result-item-actions .custom-button.pin-button:focus:not([disabled]) {
    background-color: #D7A900 !important;
 }
+
+/* configuring my account toolbar and the My ILL accoutn link */
+/* configuring my account toolbar and the My ILL accoutn link */
+h1.toolbar-title {
+   color: #000;
+}
+#uwIllLink {
+  margin-left: .5em;
+  margin-right: .5em;
+  font-weight: 300;
+  color: #000;
+  font-size: 1.2em;
+  color: #001add;
+}
+#uwIllLink a:hover,
+#uwIllLink a:focus {
+  box-shadow: none;
+  background-color: transparent;
+  color: #001add;
+  text-decoration: underline;
+}
+#uwIllLink md-icon {
+  height: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  width: 20px;
+  margin-left: 2px;
+  top: -2px;
+}
+#uwIllLink md-icon svg {
+  color: #001add;
+}
+
+/* pay fines link */
+prm-fines-overview .tiles-grid-tile .tile-header .md-button md-icon {
+   min-height: 18px;
+   min-width: 18px;
+}
