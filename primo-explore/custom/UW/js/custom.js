@@ -485,8 +485,24 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
       templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/personalDetails.html'
    })
    .controller('personalInfoController', ['$scope', function($scope) {
-      this.$onInit = function() {
+      this.$postLink = function() {
          angular.element(document.getElementById('personalDetails').querySelector('md-card-content')).append(document.getElementById('local-personal-info-change'));
+      };
+   }]);  
+   /* ====== */
+   
+   /* ====== Add Link to My ILL Account to Requests  ====== */
+   app.component('prmAccountAfter', {
+      controller: 'illLinkOverviewController',
+      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/illLink.html'
+   })
+   .controller('illLinkOverviewController', ['$scope', '$element', function($scope,$element) {
+      this.$postLink = function() {
+         var header = document.getElementsByTagName('prm-account')[0].querySelector('h1.toolbar-title').parentElement;
+         var illLink = document.getElementById('uwIllLink');
+         var divider = illLink.previousElementSibling;
+         angular.element(header).append(divider);
+         angular.element(header).append(illLink);
       };
    }]);  
    /* ====== */
@@ -577,55 +593,54 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
    })
    .controller('MainMenuAfterController', MainMenuAfterController);
    /* ====== */
-   
-   /*
-   var DisableAvailabilityLinkController = function DisableAvailabilityLinkController($scope, $element, $timeout) {
-      this._$scope = $scope;
-      this._$elem = $element;
-      this._$scope.lastAvailability = '';
-   }
-   DisableAvailabilityLinkController.prototype.$doCheck = function $doCheck () {   
-      var $textOnly = angular.element(this._$elem[0].querySelector('.localAvailabilityTextOnly'));
-      var $linkOnly = angular.element(this._$elem[0].querySelector('.localAvailabilityLink'));
-      var statusText = this._$elem[0].parentElement.querySelector('button span.button-content');
-      var briefResult = this._$elem[0].closest('prm-brief-result-container');
+     
+   // var DisableAvailabilityLinkController = function DisableAvailabilityLinkController($scope, $element, $timeout) {
+      // this._$scope = $scope;
+      // this._$elem = $element;
+      // this._$scope.lastAvailability = '';
+   // }
+   // DisableAvailabilityLinkController.prototype.$doCheck = function $doCheck () {   
+      // var $textOnly = angular.element(this._$elem[0].querySelector('.localAvailabilityTextOnly'));
+      // var $linkOnly = angular.element(this._$elem[0].querySelector('.localAvailabilityLink'));
+      // var statusText = this._$elem[0].parentElement.querySelector('button span.button-content');
+      // var briefResult = this._$elem[0].closest('prm-brief-result-container');
       
-      if(statusText.textContent == this._$scope.lastAvailability)
-         return;
-      this._$scope.lastAvailability = statusText.textContent;
-      // if a full display, don't make a link 
-      if(briefResult.closest('prm-full-view-service-container')) {
-         $textOnly.empty().append(angular.element(statusText).clone());
-         $textOnly.removeClass('donotdisplay');
-         $linkOnly.addClass('donotdisplay');
-      }
-      else {
-         var $newLink = $linkOnly.find('a');
-         var titleLink = briefResult.querySelector('.item-title a');
-         $newLink.attr('href', titleLink.getAttribute('href'));
-         $newLink.empty().append(angular.element(statusText).clone());
+      // if(statusText.textContent == this._$scope.lastAvailability)
+         // return;
+      // this._$scope.lastAvailability = statusText.textContent;
+      // /* if a full display, don't make a link */
+      // if(briefResult.closest('prm-full-view-service-container')) {
+         // $textOnly.empty().append(angular.element(statusText).clone());
+         // $textOnly.removeClass('donotdisplay');
+         // $linkOnly.addClass('donotdisplay');
+      // }
+      // else {
+         // var $newLink = $linkOnly.find('a');
+         // var titleLink = briefResult.querySelector('.item-title a');
+         // $newLink.attr('href', titleLink.getAttribute('href'));
+         // $newLink.empty().append(angular.element(statusText).clone());
          
-         $linkOnly.removeClass('donotdisplay');      
-         $textOnly.addClass('donotdisplay');
-      }
-   }
-   */
-   /*
-   app.component('prmSearchResultAvailabilityLineAfter', {
-      controller: 'disableAvailabilityLinkController',
-      bindings: {parentCtrl: '<'},
-      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/itemAvailability.html'
-   }).controller('disableAvailabilityLinkController', DisableAvailabilityLinkController);
+         // $linkOnly.removeClass('donotdisplay');      
+         // $textOnly.addClass('donotdisplay');
+      // }
+   // }
+
    
-   app.controller('AvailabilityTimeout', function($scope, $timeout) {
-      $scope.triggerTitleLink = function triggerTitleLink($event) {
-         $event.preventDefault();
-         var briefResult = $event.target.closest('prm-brief-result-container');
-         var titleLink = briefResult.querySelector('.list-item-primary-content');
-         $timeout( function() { 
-            angular.element(titleLink).triggerHandler('click'); 
-         });      
-      }
-   });
-   */
+   // app.component('prmSearchResultAvailabilityLineAfter', {
+      // controller: 'disableAvailabilityLinkController',
+      // bindings: {parentCtrl: '<'},
+      // templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/itemAvailability.html'
+   // }).controller('disableAvailabilityLinkController', DisableAvailabilityLinkController);
+   
+   // app.controller('AvailabilityTimeout', function($scope, $timeout) {
+      // $scope.triggerTitleLink = function triggerTitleLink($event) {
+         // $event.preventDefault();
+         // var briefResult = $event.target.closest('prm-brief-result-container');
+         // var titleLink = briefResult.querySelector('.list-item-primary-content');
+         // $timeout( function() { 
+            // angular.element(titleLink).triggerHandler('click'); 
+         // });      
+      // }
+   // });
+   
 })();

@@ -1116,17 +1116,20 @@ md-list.prm-list.prm-linkable-list-items md-list-item > .md-button > .button-con
 /* primary color hook end*/
 /* Text selection color */
 ::selection {
-   background: #165788;
+   background: #FFE816;
    color: #000;
 }
 ::-moz-selection { 
-   background: #165788;
+   background: #FFE816;
    color: #000;
 }
 
 body {
    color: #000;
 }
+
+   
+
 
 .donotdisplay {
    display: none !important;
@@ -2480,36 +2483,97 @@ md-card-content.homepage-campus-links > a:focus {
    }
 }
 
-/* /* brief display availability */ */
-/* prm-search-result-availability-line [availability-type] { */
-   /* position: relative; */
-   /* top: -2px; */
-   /* color: #444; */
-   /* margin-right: 0.125em; */
-/* } */
-/* prm-full-view-service-container prm-search-result-availability-line [availability-type] { */
-   /* margin-right: 0.25em; */
-   /* top: -1px; */
-/* } */
-/* prm-search-result-availability-line > div.layout-row { */
-   /* display: inline-flex; */
-/* } */
-/* prm-search-result-availability-line > div > prm-icon + button { */
-   /* display: none !important; */
-/* } */
-/* prm-search-result-availability-line-after { */
-   /* position: relative; */
-/* } */
-/* prm-search-result-availability-line-after span.button-content { */
-   /* position: relative; */
-/* } */
-/* prm-search-result-availability-line-after span.button-content [external-link] { */
-   /* display: none; */
-/* } */
-/* prm-search-result-availability-line-after a:hover, */
-/* prm-search-result-availability-line-after a:focus { */
-   /* background-color: transparent; */
-   /* box-shadow: none; */
-   /* text-decoration: underline !important; */
-/* } */
+/* gets rid of the fan effect when there are multipel sources */
+prm-search-result-thumbnail-container .fan-img {
+   display: none;
+}
+prm-search-result-thumbnail-container .fan-img:nth-of-type(1) {
+   display: block;
+   transform: none;
+}
+prm-brief-result-container:hover prm-search-result-thumbnail-container .fan-img:nth-of-type(1) {
+   transform: none;
+}
+/* hides the multiple sources exist line on brief results but show it on full display */
+prm-search-result-frbr-line {
+   display: none;
+}
+prm-full-view-service-container prm-search-result-frbr-line  {
+   display: inline;
+   color: transparent;
+}
+prm-full-view-service-container prm-search-result-frbr-line span[translate="nui.pcgroup.display"] {
+   margin-right: -0.25em;
+   color: rgb(135,135,135);
+}
+prm-full-view-service-container prm-search-result-frbr-line span[translate="nui.pcgroup.display"]:before {
+   content: '(';
+}
+prm-full-view-service-container prm-search-result-frbr-line a:after {
+   display: inline-block;
+   color: rgb(135,135,135);
+   content: ')';
+}
+prm-full-view-service-container prm-search-result-frbr-line a:hover,
+prm-full-view-service-container prm-search-result-frbr-line a:focus {
+   background-color: transparent;
+   box-shadow: none;
+   text-decoration: underline;
+   color: #001add;
+}
 
+prm-full-view-service-container  prm-brief-result-container div.result-item-text div.media-content-type {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-end;
+   padding-right: 1em;
+}
+
+/* make the full display pin button more visible */
+prm-full-view-service-container .result-item-actions .custom-button.pin-button  {
+   color: #fff;
+   background-color: #4B2E83;
+}
+prm-full-view-service-container .result-item-actions .custom-button.pin-button:hover:not([disabled]),
+prm-full-view-service-container .result-item-actions .custom-button.pin-button:focus:not([disabled]) {
+   background-color: #D7A900 !important;
+}
+
+/* configuring my account toolbar and the My ILL accoutn link */
+/* configuring my account toolbar and the My ILL accoutn link */
+h1.toolbar-title {
+   color: #000;
+}
+#uwIllLink {
+  margin-left: .5em;
+  margin-right: .5em;
+  font-weight: 300;
+  color: #000;
+  font-size: 1.2em;
+  color: #001add;
+}
+#uwIllLink a:hover,
+#uwIllLink a:focus {
+  box-shadow: none;
+  background-color: transparent;
+  color: #001add;
+  text-decoration: underline;
+}
+#uwIllLink md-icon {
+  height: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  width: 20px;
+  margin-left: 2px;
+  top: -2px;
+}
+#uwIllLink md-icon svg {
+  color: #001add;
+}
+
+/* pay fines link */
+prm-fines-overview .tiles-grid-tile .tile-header .md-button md-icon {
+   min-height: 18px;
+   min-width: 18px;
+}
