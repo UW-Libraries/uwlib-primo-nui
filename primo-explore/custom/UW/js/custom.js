@@ -1,6 +1,8 @@
+/* ====== SET THIS VARIABLE BASED ON THE VIEW THIS FILE IS PART OF ====== */
 var LOCAL_VID = "UW";
+/* ====== */
 
-/* Adds a polyfill for matches and closest DOM functions */
+/* ====== Adds a polyfill for matches and closest DOM functions ====== */
 (function (ElementProto) {
    if (typeof ElementProto.matches !== 'function') {
       ElementProto.matches = ElementProto.msMatchesSelector || ElementProto.mozMatchesSelector || ElementProto.webkitMatchesSelector || function matches(selector) {
@@ -27,15 +29,18 @@ var LOCAL_VID = "UW";
       };
    }
 })(window.Element.prototype);
+/* ====== */
 
+/* ====== Helper functions ====== */
 function isBrowseSearch() {
    return window.location.href.indexOf('query=browse_') != -1;
 }
 function isEJournalsSearch() {
    return window.location.href.indexOf('primo-explore/jsearch?') != -1;
 }
+/* ====== */
 
-
+/* ====== variation of budak's code for adding external searches ====== */
 (function(){
 "use strict";
 'use strict';
@@ -84,18 +89,15 @@ angular
    ])
    .component('prmFacetAfter', {
       bindings: { parentCtrl: '<' },
-      controller: function () {
-         if(!isBrowseSearch() && !isEJournalsSearch()) {
-            
-            this.parentCtrl.facetService.results.unshift({
-               name: 'External Search',
-               displayedType: 'exact',
-               limitCount: 0,
-               facetGroupCollapsed: false,
-               values: undefined
-            })
-         }
-      }
+      controller: ['externalSearchService', function (externalSearchService) {
+         externalSearchService.controller = this.parentCtrl
+         externalSearchService.addExtSearch()
+      }]
+   })   
+   .component('prmPageNavMenuAfter', {
+      controller: ['externalSearchService', function (externalSearchService) {
+         if (externalSearchService.controller) externalSearchService.addExtSearch()
+      }]
    })
    .component('prmFacetExactAfter', {
       bindings: { parentCtrl: '<' },
@@ -108,8 +110,27 @@ angular
             return (!isBrowseSearch() && !isEJournalsSearch());
          }
       }]
-});
-
+   })
+   .factory('externalSearchService', function () {
+      return {
+         get controller() {
+            return this.prmFacetCtrl || false
+         },
+         set controller(controller) {
+            this.prmFacetCtrl = controller
+         },
+         addExtSearch: function () {
+            this.prmFacetCtrl.facetService.results.unshift({
+               name: 'External Search',
+               displayedType: 'exact',
+               limitCount: 0,
+               facetGroupCollapsed: false,
+               values: undefined
+            })
+         }
+      }
+   });   
+/* ====== */
 
 
 /************************************* BEGIN Bootstrap Script ************************************/
@@ -170,12 +191,11 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
          };
       };
    }]);
-
    /* ====== */
 
    /* ====== Code for making edits to the full view ====== */
    /* Includes:
-      - Alma skin fix
+      - oaDOI note
       - Adding local notes to any parts of the full view
         - Harvard Business Review notes
    */
@@ -359,7 +379,7 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
    
   
    
-   /* ====== Add help ====== */
+   /* ====== Add help modal ====== */
    var GenericTopbarAfterController = function GenericTopbarAfterController($scope, $element) {
       this._$scope = $scope;
       this._$elem = $element;
@@ -466,8 +486,7 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
             }
          }
       }
-   };
-      
+   };      
    GenericTopbarAfterController.prototype.$postLink = function $postLink () {
       document.body.append(document.getElementById('help-modal'));
       document.body.append(document.getElementById('help-modal-overlay'));
@@ -491,7 +510,7 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
    }]);  
    /* ====== */
    
-   /* ====== Add Link to My ILL Account to Requests  ====== */
+   /* ====== Add Link to My ILL Account to the account page  ====== */
    app.component('prmAccountAfter', {
       controller: 'illLinkOverviewController',
       templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/illLink.html'
@@ -593,5 +612,5 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
    })
    .controller('MainMenuAfterController', MainMenuAfterController);
    /* ====== */
- 
+       
 })();
