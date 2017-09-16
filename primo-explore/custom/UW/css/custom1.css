@@ -1904,11 +1904,16 @@ button#help-modal-close:hover {
 button#help-modal-close:focus {
    outline: dotted 1px #fff;
 }
-#help-modal div.modal-content {
-   padding: 10px;
+
+#help-modal div.modal-content div.modal-row  {
+   margin-right: 0.75rem;
+   margin-left: 0.75rem;
+}
+#help-modal div.modal-content div.modal-row.modal-row-first {
+   margin-top: 0.5rem;
 }
 #help-modal div.modal-content div.modal-row + div.modal-row {
-   margin-top: 0.875em;
+   margin-top: 0.75rem;
 }
 #help-modal div.modal-content div.modal-row > a {
    display: flex;
@@ -1938,6 +1943,29 @@ button#help-modal-close:focus {
 #help-modal div.modal-content div.modal-row p {
    margin: 0;
 }
+#help-modal div.modal-content div.modal-row.help-footer {
+   margin-left: 0;
+   margin-right: 0;
+   display: flex;
+   justify-content: space-between;
+   background-color: #E8E3D3;
+   border-top: solid 1px #000;
+}
+#help-modal div.modal-content div.modal-row.help-footer a {
+   padding: 0;
+   margin-bottom: 0;
+}
+#help-modal div.modal-content div.modal-row.help-footer a span {
+  padding-left: 0;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+} 
+#help-modal div.modal-content div.modal-row.help-footer a:hover,
+#help-modal div.modal-content div.modal-row.help-footer a:focus {
+   text-decoration: underline;
+   color: #001add;
+}
+
 @media screen and (max-width: 550px) {
    #local-help-widget {
       font-size: 0.75rem;

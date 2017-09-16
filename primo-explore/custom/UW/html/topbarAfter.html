@@ -10,7 +10,7 @@
       <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="close"></prm-icon>
    </button>   
    <div class="modal-content">
-      <div class="modal-row">
+      <div class="modal-row modal-row-first">
          <a href="http://www.lib.washington.edu/chat.html" 
             id="help-modal-chat"
             ng-click="openChatWindow($event)"
@@ -34,13 +34,26 @@
          <a href="http://www.lib.washington.edu/about/contact/" 
             target="_blank"
             id="help-modal-contact"            
-            title="Contact information for UW Libraries (new window)"
-            class="last-modal-link">
+            title="Contact information for UW Libraries (new window)">
             <img ng-controller="GlobalVariables" src="{{'custom/' + LOCAL_VID + '/img/_people.png'}}" aria-hidden="true" />
             <span>Contact Us</span>
          </a>
          <p>Options for contacting UW Libraries staff.</p>
       </div>      
+      <div class="modal-row help-footer">
+         <a href="https://www.washington.edu/online/privacy/" 
+            target="_blank"
+            id="help-modal-privacy"            
+            title="UW Online Privacy Statement (new window)">
+            <span>Privacy Statement</span>
+         </a>
+         <a href="https://www.washington.edu/online/terms" 
+            target="_blank"
+            id="help-modal-terms"            
+            title="UW Website Terms and Conditions of Use (new window)">
+            <span>Terms of Use</span>
+         </a>
+      </div>        
    </div>
 </div>
 <div id="help-modal-overlay" ng-click="closeHelpModal()"></div>
