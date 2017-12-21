@@ -1312,12 +1312,12 @@ prm-browse-search md-list.prm-list.prm-linkable-list-items.prm-dense-list md-lis
 
 /* e-journals */
 /* journal search bar label */
-prm-journals-search-bar .classic-input .search-scope {
+prm-atoz-search-bar .classic-input .search-scope {
    background-color: #E8E3D3;
    border-color: #E8E3D3;
 }
-prm-journals-search-bar > div.layout-row > div.layout-column {
-   max-width: 90%;
+prm-atoz-search-bar > div.layout-row > div.layout-column {
+   max-width: 60%;
 }
 prm-alphabet-toolbar .md-button {
    font-weight: bold;
