@@ -725,7 +725,7 @@ md-toolbar.default-toolbar:not(.md-menu-toolbar) {
 .request-form md-input-container .md-input-container-dummy > .md-select-dummy ._md-select-value._md-select-placeholder, .result-item-actions .md-icon-button, .result-item-actions .more-options-button, prm-add-query-to-saved-searches .custom-button, .md-autocomplete-suggestions .suggestion-scope, md-tabs md-tabs-wrapper md-tabs-canvas md-pagination-wrapper md-tab-item.md-active:not([disabled]), md-tabs md-tabs-wrapper md-tabs-canvas md-pagination-wrapper md-tab-item.md-focused:not([disabled]), md-tab-content .tab-content-header md-input-container md-select-value .md-text {
   color: #4B2E83; }
 
-.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar, prm-journals-search-bar, prm-browse-search-bar, prm-tags-search-bar {
+.prm-primary-bg, prm-spinner.overlay-cover.light-on-dark:after, prm-search-bar, prm-atoz-search-bar, prm-browse-search-bar, prm-tags-search-bar {
   color: white;
   background-color: #4B2E83; }
   .prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar, prm-search-bar.prm-hue1, prm-journals-search-bar.prm-hue1, prm-browse-search-bar.prm-hue1, prm-tags-search-bar.prm-hue1 {
@@ -2433,7 +2433,14 @@ prm-journals-search-bar .classic-input .search-scope {
    border-color: #E8E3D3;
 }
 prm-journals-search-bar > div.layout-row > div.layout-column {
-   max-width: 90%;
+   max-width: 60%;
+}
+prm-atoz-search-bar .classic-input .search-scope {
+   background-color: #E8E3D3;
+   border-color: #E8E3D3;
+}
+prm-atoz-search-bar > div.layout-row > div.layout-column {
+   max-width: 60%;
 }
 prm-alphabet-toolbar .md-button {
    font-weight: bold;
