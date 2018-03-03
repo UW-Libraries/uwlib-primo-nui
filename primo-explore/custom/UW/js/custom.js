@@ -257,41 +257,6 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
       // End Local Notes Handling
    };     
 
-      var $localScope = this._$scope;
-      var $localElem = this._$elem;      
-      var email = this.oadoiOptions.email;
-      var section = $localScope.$parent.$ctrl.service.scrollId;
-      /* only put on the first getit link section */
-      if(section != 'getit_link1_0')
-         return false;
-      /* check for presence of doi */
-      var obj = $localScope.$ctrl.parentCtrl.item.pnx.addata;      
-      if(!obj.hasOwnProperty('doi'))
-         return false;
-      var doi = obj.doi[0];
-      if(doi) {
-         $localScope.oadoilink = null;     
-         $localScope.oadoilinktext = '';
-         var url = 'https://api.oadoi.org/v2/' + doi + '?email=' + email;
-         var response = this.oadoiService.getOaiData(url).then(function(response) {
-            var oalink = null;
-            try {
-               oalink = response.data.best_oa_location.url;
-            }
-            catch(e) { }
-            if(oalink != null) {
-               /* we got an OA hit, so update the link and make the note visible */
-               $localScope.oadoilink = oalink;
-               $localScope.oadoilinktext = oalink.split('/', 3).join('/'); /* just get protocol/domain */
-               var oadoiNote = $localElem.parent()[0].querySelector('.localNoteOADOI');               
-               if(oadoiNote)
-                  angular.element(oadoiNote).removeClass('donotdisplay');
-            }
-         });      
-         return true; /* service might respond until later but we might as well prep the note */
-      }
-      return false;
-   };
    GenericSFDEController.prototype.addHarvardBusinessReviewNote = function addHarvardBusinessReviewNote () {
       if(this.parentCtrl.index != 1) // is not the view it online tab
          { return false; }
