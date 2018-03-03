@@ -201,27 +201,21 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
       - Adding local notes to any parts of the full view
         - Harvard Business Review notes
    */
-   var GenericSFDEController = function GenericSFDEController($scope, $http, $element, oadoiService, oadoiOptions) {
+   var GenericSFDEController = function GenericSFDEController($scope, $element) {
       this._$scope = $scope;
       this._$elem = $element;
-      this._$http = $http;
-      this.oadoiService = oadoiService;
-      this.oadoiOptions = oadoiOptions;
-      $scope.LOCAL_VID = LOCAL_VID;
          
       // Local Notes Handling 
-      this.localNoteOrder = ['HBR','OADOI']; // place in order you want them to appear ultimately
+      this.localNoteOrder = ['HBR']; // place in order you want them to appear ultimately
       this.localNoteStatus = []; // associative boolean array of notes to add
       this.localNotesPresent = false;
       // End Local Notes Handling
    };
    GenericSFDEController.prototype.$onInit = function $onInit () {
-      var $localScope = this._$scope;
-      var $localElem = this._$elem
       
       // Local Notes Handling 
       this.localNoteStatus['HBR'] = this.addHarvardBusinessReviewNote();
-      this.localNoteStatus['OADOI'] = this.addOADOINote();
+
       // OR the localNoteStatus together
       var $localStatus = this.localNoteStatus;
       this.localNotesPresent = Object.keys(this.localNoteStatus).reduce( 
@@ -262,7 +256,7 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
       }
       // End Local Notes Handling
    };     
-   GenericSFDEController.prototype.addOADOINote = function addOADOINote () {
+
       var $localScope = this._$scope;
       var $localElem = this._$elem;      
       var email = this.oadoiOptions.email;
@@ -321,26 +315,7 @@ app.controller('GlobalVariables', ['$scope', function($scope) {
       bindings: {parentCtrl: '<'}, /*bind to parentCtrl to read PNX*/
       controller: 'genericSFDEController',
       templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/fullPageOptionalNotes.html'
-   })
-   .controller('genericSFDEController',GenericSFDEController)
-   .constant('oadoiOptions', {
-      'email': 'libsys@uw.edu'
-   })
-   .factory('oadoiService', ['$http', function($http) {
-      return {
-         getOaiData: function (url) {
-            return $http({
-               method: 'GET',
-               url: url,
-               cache: true
-            })
-         }
-      }
-   }]).run(
-      ($http) => {
-         // Necessary for requests to succeed...not sure why
-         $http.defaults.headers.common = { 'X-From-ExL-API-Gateway': undefined }
-   });
+   }).controller('genericSFDEController',GenericSFDEController);
    /* ====== */
    
    /* ====== Code for making edits to individual brief results ====== */
