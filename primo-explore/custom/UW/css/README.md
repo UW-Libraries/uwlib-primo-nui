@@ -68,6 +68,11 @@ prm-topbar.md-primoExplore-theme input {....}
 
 
 ##Recipes/Examples:
+# Updating Primo Directive names ('prm-xxxxx') - pryorsw 3/5/18  
+In a recent Primo update, a database search screen was added in addition to the journals search screen. This new database search screen seems to use the same setup/code 
+as the journals search, as they have updated the primo directive for the search bar from 'prm-journals-search' to 'prm-atoz-search' to make it more generic. This broke our
+custom formatting (color, primarily) on the journals search bar. Editing custom1.css with the new directive names is overwritten every time ```gulp run --view [viewname]``` is run.  
+To permanently change these directives (or add new ones, etc.), make the changes in ```app-colors.css```
 
 
 # css Recipe 1 - Color Scheme
