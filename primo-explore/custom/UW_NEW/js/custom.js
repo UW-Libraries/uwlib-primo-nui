@@ -41,13 +41,12 @@ function isEJournalsSearch() {
 /* ====== */
 
 /* ====== variation of budak's code for adding external searches ====== */
+/* ====== updated 6/19/18 by pryorsw with code from 'jeremym' in primo-nui Slack channel ====== */
 (function(){
 "use strict";
 'use strict';
 
-angular
-   .module('externalSearch', [])
-   .value('searchTargets', [
+angular.module('externalSearch', []).value('searchTargets', [
       {
           "name": "UW WorldCat",
           "url": "https://uwashington.on.worldcat.org/search?databaseList=&queryString=",
@@ -85,53 +84,57 @@ angular
                return terms[2] || "";
             }
          }
-      }  
-   ])
-   .component('prmFacetAfter', {
-      bindings: { parentCtrl: '<' },
-      controller: ['externalSearchService', function (externalSearchService) {
-         externalSearchService.controller = this.parentCtrl
-         externalSearchService.addExtSearch()
-      }]
-   })   
-   .component('prmPageNavMenuAfter', {
-      controller: ['externalSearchService', function (externalSearchService) {
-         if (externalSearchService.controller) externalSearchService.addExtSearch()
-      }]
-   })
-   .component('prmFacetExactAfter', {
-      bindings: { parentCtrl: '<' },
-      templateUrl: '/primo-explore/custom/' + LOCAL_VID + '/html/externalSearchFacet.html',
-      controller: ['$scope', '$location', 'searchTargets', function ($scope, $location, searchTargets) {
-         $scope.name = this.parentCtrl.facetGroup.name
-         $scope.search = $location.search().query
-         $scope.targets = searchTargets;
-         this.isRelevantSearch = function () {
-            return (!isBrowseSearch() && !isEJournalsSearch());
-         }
-      }]
-   })
-   .factory('externalSearchService', function () {
-      return {
-         get controller() {
-            return this.prmFacetCtrl || false
-         },
-         set controller(controller) {
-            this.prmFacetCtrl = controller
-         },
-         addExtSearch: function () {
-            if (this.prmFacetCtrl.facetService.results[0].name !== 'External Search') {
-               this.prmFacetCtrl.facetService.results.unshift({
-                  name: 'External Search',
-                  displayedType: 'exact',
-                  limitCount: 0,
-                  facetGroupCollapsed: false,
-                  values: undefined
-               })
+      } 
+	  ]).component('prmFacetAfter', {
+  bindings: { parentCtrl: '<' },
+  controller: ['externalSearchService', function (externalSearchService) {
+    externalSearchService.controller = this.parentCtrl;
+    externalSearchService.addExtSearch();
+  }]
+}).component('prmPageNavMenuAfter', {
+  controller: ['externalSearchService', function (externalSearchService) {
+    if (externalSearchService.controller) externalSearchService.addExtSearch();
+  }]
+}).component('prmFacetExactAfter', {
+  bindings: { parentCtrl: '<' },
+  template: '\n      <div ng-if="name === \'External Search\'">\n          <div ng-hide="$ctrl.parentCtrl.facetGroup.facetGroupCollapsed">\n              <div class="section-content animate-max-height-variable">\n                  <div class="md-chips md-chips-wrap">\n                      <div ng-repeat="target in targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">\n                          <div class="md-chip-content layout-row" role="button" tabindex="0">\n                              <strong dir="auto" title="{{ target.name }}">\n                                  <a ng-href="{{ target.url + target.mapping(queries, filters) }}" target="_blank">\n                                      <img ng-src="{{ target.img }}" width="22" height="22" style="vertical-align:middle;"> {{ target.name }}\n                                  </a>\n                              </strong>\n                          </div>\n                      </div>\n                  </div>\n              </div>\n          </div>\n      </div>',
+  controller: ['$scope', '$location', 'searchTargets', function ($scope, $location, searchTargets) {
+    $scope.name = this.parentCtrl.facetGroup.name;
+    $scope.targets = searchTargets;
+    var query = $location.search().query;
+    var filter = $location.search().pfilter;
+    $scope.queries = Array.isArray(query) ? query : query ? [query] : false;
+    $scope.filters = Array.isArray(filter) ? filter : filter ? [filter] : false;
+  }]
+}).factory('externalSearchService', function () {
+  return {
+    get controller() {
+      return this.prmFacetCtrl || false;
+    },
+    set controller(controller) {
+      this.prmFacetCtrl = controller;
+    },
+    addExtSearch: function addExtSearch() {
+      var xx=this;
+      var checkExist = setInterval(function() {
+
+         if (xx.prmFacetCtrl.facetService.results[0] && xx.prmFacetCtrl.facetService.results[0].name !="External Search") {
+            if (xx.prmFacetCtrl.facetService.results.name !== 'External Search') {
+              xx.prmFacetCtrl.facetService.results.unshift({
+                name: 'External Search',
+                displayedType: 'exact',
+                limitCount: 0,
+                facetGroupCollapsed: false,
+                values: undefined
+              });
             }
+            clearInterval(checkExist);
          }
-      }
-   });   
+      }, 100);
+
+    }
+  };
+});
 /* ====== */
 
 
