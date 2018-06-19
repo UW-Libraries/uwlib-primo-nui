@@ -1,5 +1,5 @@
 /* ====== SET THIS VARIABLE BASED ON THE VIEW THIS FILE IS PART OF ====== */
-var LOCAL_VID = "UW_NEW";
+var LOCAL_VID = "UW";
 /* ====== */
 
 /* ====== Adds a polyfill for matches and closest DOM functions ====== */
