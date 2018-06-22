@@ -16,9 +16,26 @@ git push
 
 ## Pushing Commits To This Repo
 
-To make sure everything gets committed correctly, be sure to be specific when pushing changes up to this BitBucket repo:
+To view/confirm what files of your local copies have changed:
+`git status`
+
+This will show which files differ from the remote copies and which ones (if any) are staged for commit. To stage files for commit:
+`git add FILE_NAME`
+
+You can then 'git status' again to check, and to commit the staged files:
+`git commit`
+
+Enter a comment describing the commit (if you're using the github client/gitBASH, this is in 'vi' syntax/style).
+
+At this point, the commit is still staged on your machine. It must still be pushed to the remote repository (GitHub).
+
+To make sure everything gets added correctly, be sure to be specific when pushing changes up to this BitBucket repo:
 
 `git push origin BRANCH_NAME`
+
+e.g.
+
+`git push origin master`
 
 ## Using the primo-devenv
 
