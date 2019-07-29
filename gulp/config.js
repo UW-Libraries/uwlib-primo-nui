@@ -6,10 +6,40 @@ let customCssFile =  'custom1.css';
 let mainFile = 'main.js';
 
 let browserify;
-let view ;
-let ve ;
+let view;
+let ve;
+let useScss;
+let reinstallNodeModules;
+let saml;
+let cas;
+
+
 function setView(_view) {
     view = _view;
+}
+
+function setSaml(_saml) {
+  saml = _saml;
+}
+
+function getSaml() {
+  return saml;
+}
+
+function setCas(_cas) {
+    cas = _cas;
+}
+
+function getCas() {
+    return cas;
+}
+
+function setUseScss(_useScss) {
+	useScss = _useScss;
+}
+
+function getUseScss() {
+	return useScss;
 }
 
 function setProxy(_proxy) {
@@ -33,6 +63,13 @@ function setBrowserify(_browserify) {
     browserify = _browserify;
 }
 
+function setReinstallNodeModules(_reinstallNodeModules) {
+	reinstallNodeModules = _reinstallNodeModules;
+}
+
+function getReinstallNodeModules() {
+	return reinstallNodeModules;
+}
 
 function getView(){
     return view;
@@ -68,13 +105,27 @@ function customCssMainPath() {
 function customColorsPath(){
     return `colors.json`;
 }
+
+function viewRootDir() {
+	return `primo-explore/custom/${view}`;
+}
+
 function viewCssDir() {
     return `primo-explore/custom/${view}/css`;
+}
+function customScssDir() {
+		return `primo-explore/custom/${view}/scss`;
+}
+function customScssMainPath() {
+		return customScssDir() + "/main.scss";
 }
 function customCssPath() {
     return `primo-explore/custom/${view}/css/custom1.css`;
 }
 
+function customNpmModuleRootDir() {
+	return `primo-explore/custom/${view}/node_modules`;
+}
 
 function customNpmJsCustomPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/js/custom.js`;
@@ -89,20 +140,34 @@ function customNpmJsPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/js/*.js`;
 }
 
+function customNpmDistPath() {
+  return `primo-explore/custom/${view}/node_modules/primo-explore*/dist/*.js`;
+}
+
 
 function customNpmCssPath() {
     return `primo-explore/custom/${view}/node_modules/primo-explore*/css/*.css`;
 }
 
-
+function customNpmHtmlPath() {
+    return `primo-explore/custom/${view}/node_modules/primo-explore*/html/*.html`;
+}
 
 var SERVERS = {
     local: 'http://localhost:8002'
 };
 
-/*Note that for SSL environments (https) define the server as: var PROXY_SERVER = https://your-server:443*/
-// var PROXY_SERVER = 'https://alliance-primo-sb.hosted.exlibrisgroup.com:443';
+/**
+ * The URL to your sandbox or production Primo instance.
+ * For SSL environments (https), the port number (443) must be included.
+ *
+ * Examples:
+ *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
+ *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
+ */
+#var PROXY_SERVER = 'http://your-server:your-port';
 var PROXY_SERVER = 'https://alliance-primo.hosted.exlibrisgroup.com:443';
+
 
 let buildParams = {
     customFile: customFile,
@@ -111,14 +176,20 @@ let buildParams = {
     customModulePath: customModulePath,
     mainPath: mainPath,
     mainJsPath: mainJsPath,
+		viewRootDir: viewRootDir,
     viewJsDir: viewJsDir,
     viewHtmlDir: viewHtmlDir,
     viewCssDir: viewCssDir,
+		customScssDir: customScssDir,
+		customScssMainPath: customScssMainPath,
     customCssPath: customCssPath,
+		customNpmModuleRootDir: customNpmModuleRootDir,
     customNpmJsPath: customNpmJsPath,
+    customNpmDistPath: customNpmDistPath,
     customNpmJsCustomPath: customNpmJsCustomPath,
     customNpmJsModulePath: customNpmJsModulePath,
     customNpmCssPath: customNpmCssPath,
+    customNpmHtmlPath: customNpmHtmlPath,
     customCssMainPath: customCssMainPath,
     customColorsPath: customColorsPath
 };
@@ -127,11 +198,20 @@ module.exports = {
     buildParams: buildParams,
     PROXY_SERVER: PROXY_SERVER,
     setView: setView,
+		setUseScss: setUseScss,
+		getUseScss: getUseScss,
     setProxy: setProxy,
+		getReinstallNodeModules: getReinstallNodeModules,
+		setReinstallNodeModules: setReinstallNodeModules,
     proxy: getProxy,
     view: getView,
     getBrowserify: getBrowserify,
     setBrowserify: setBrowserify,
     getVe: getVe,
-    setVe: setVe
+    setVe: setVe,
+    getSaml: getSaml,
+    setSaml: setSaml,
+    getCas: getCas,
+    setCas: setCas
 };
+>>>>>>> upstream/master
