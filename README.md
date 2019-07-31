@@ -18,11 +18,8 @@ git push
 
 To view/confirm what files of your local copies have changed:
 `git status`
-
-This will show which files differ from the remote copies and which ones (if any) are staged for commit (Note, if you properly/regularly use 'git pull' to merge remote changes with your local files and keep your local copy "clean" this shouldn't be too much of an issue; but life happens, you know, and sometimes the gulp process seems to create changed files that I'm not sure I want to commit, so I always check). To stage files for commit:
-`git add FILE_NAME`
-
 You can then 'git status' again to check, and to commit the staged files:
+
 `git commit`
 
 Enter a comment describing the commit (if you're using the github client/gitBASH, this is in 'vi' syntax/style).
